@@ -1,0 +1,66 @@
+<div id="divGeofence" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" title="">
+    <form id="frmGeofence" class="form-horizontal">
+        <div class="modal-body form-horizontal">
+            <div class="control-group">
+                <!-- Text input-->
+                <label class="control-label" for="name" data-i18n="geofence.name"><%= t('geofence.name') %></label>
+                <div class="controls">
+                    <input type="text" placeholder="<%= t('geofence.name') %>" class="input" id="name" name="name" data-i18n="[placeholder]geofence.name">
+                </div>
+            </div>
+            <div class="control-group" id="divGeofenceType">
+                <!-- Text input-->
+                <label class="control-label" for="type" data-i18n="geofence.type"><%= t('geofence.type') %></label>
+
+                <div class="controls">
+                    <input type="text" placeholder="<%= t('geofence.set_area') %>" class="input" id="type" name="type" readonly data-i18n="[placeholder]geofence.set_area"><br>
+                    <span id="typeInfo"></span>
+                </div>
+            </div>
+            <div class="control-group" id="divPoiType">
+                <!-- Text input-->
+                <label class="control-label" for="type" data-i18n="geofence.type"><%= t('geofence.type') %></label>
+
+                <div class="controls">
+                    <select id="poiType" class="input">
+                        <option value="1"><%= t('geofence.poi_type.1') %></option>
+                        <option value="2"><%= t('geofence.poi_type.2') %></option>
+                        <option value="3"><%= t('geofence.poi_type.3') %></option>
+                        <option value="4"><%= t('geofence.poi_type.4') %></option>
+                        <option value="5"><%= t('geofence.poi_type.5') %></option>
+                        <option value="6"><%= t('geofence.poi_type.6') %></option>
+                        <option value="7"><%= t('geofence.poi_type.7') %></option>
+                        <option value="8"><%= t('geofence.poi_type.8') %></option>
+                        <option value="9"><%= t('geofence.poi_type.9') %></option>
+                        <option value="10"><%= t('geofence.poi_type.10') %></option>
+                        <option value="11"><%= t('geofence.poi_type.11') %></option>
+                    </select>
+                    <img id="poiIcon" src="poi/1.png">
+                </div>
+            </div>
+            <div class="control-group" id="divWidth">
+                <!-- Text input-->
+                <label class="control-label" for="width" data-i18n="geofence.width"><%= t('geofence.width') %></label>
+                <div class="controls">
+                    <input type="number" placeholder="<%= t('geofence.width') %>" class="input" id="width" name="width" data-i18n="[placeholder]geofence.width">
+                </div>
+            </div>
+            <div class="control-group">
+                <!-- Search input-->
+                <label class="control-label" for="remark" data-i18n="geofence.remark"><%= t('geofence.remark') %></label>
+
+                <div class="controls">
+                    <input type="text" placeholder="<%= t('geofence.remark') %>" class="input" id="remark" name="remark"data-i18n="[placeholder]geofence.remark">
+                </div>
+            </div>
+            <div class="control-group" id="pnlDate" style="display:none">
+                <!-- Text input-->
+                <label class="control-label" for="createdAt" data-i18n="geofence.create_date"><%= t('geofence.create_date') %></label>
+
+                <div class="controls">
+                    <input type="text" placeholder="" class="input" id="createdAt" name="createdAt">
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

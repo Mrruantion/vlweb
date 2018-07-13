@@ -1,0 +1,169 @@
+.tip {
+    background: #fff;
+    margin-top: 15px;
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #CCC;
+}
+.move_top_hr::before {
+    border-top: 0
+}
+.p_tb0 {
+    padding-top: 0;
+    padding-bottom: 0;
+}
+.m_t0 {
+    margin-top: 0
+}
+.f14 {
+    font-size: 14px;
+}
+.f15 {
+    font-size: 15px;
+}
+.t_a_r {
+    text-align: right;
+}
+.f_l{
+   float: left; 
+}
+check::before,check::after{
+    border-top: 0;
+    border-bottom: 0;
+}
+.w_a {
+    width: auto;
+}
+.b_c_w {
+    background-color: #fff;
+}
+.p_0 {
+    padding: 0;
+}
+.f_w_7{
+    font-weight: 700;
+}
+.c_9 {
+    color:#999;
+}
+.h_10 {
+    height: 10%;
+}
+.h_93{
+    height: 93%;
+}
+.b_b_1{
+    border-bottom: 1px solid #ccc;
+}
+.t_a_c{
+    text-align: center;
+}
+.w_100{
+    width: 100%;
+}
+.t_a_r {
+    text-align: right;
+}
+.t_a_l{
+    text-align: left;
+}
+
+.b_t_1{
+    border-top: 1px solid #ccc;
+}
+.submit {
+    position: fixed;
+    bottom: 0;
+    width:100%
+}
+.great{
+    color: #78ef78;
+    background: #fff;
+    border: 1px solid #78ef78;
+    border-radius: 0;
+    font-weight: 100
+}
+.auditing {
+    color: #1D59B4;
+    border: 1px solid #1D59B4;
+}
+.chang_f12{
+    font-size: 12px;
+    -webkit-transform-origin-x: 0;
+    -webkit-transform: scale(0.90);
+    transform-origin: 0;
+    transform: scale(0.90);
+}
+.phone{
+    margin: 0;
+    box-sizing: border-box;
+    height: 50px;
+    width: 50px;
+    border-radius: 5px;
+}
+.phone::before{
+    height: 25px;
+    width: 2px;
+}
+.phone::after{
+    width:25px;
+    height: 2px;
+}
+.l_h_40 {
+    line-height: 40px;
+}
+.o_auto{
+    overflow: auto;
+}
+.p_b40 {
+    padding-bottom: 40px;
+}
+.m_15{
+    margin: 15px;
+}
+.icon-delete {
+    color:#000;
+    font-size: 16px
+}
+.icon-delete::before{
+    content: "\EA0F";
+}
+.elli {
+    font-size: 22px;
+    padding: 0 5px;
+    color: #ccc;
+}
+.addr_book {
+    position: absolute;
+    bottom: -24px;
+    font-size: 12px;
+    width: 50px;
+    text-align: center;
+}
+.weui-icon_toast.weui-icon-warn:before {
+    color: #FFFFFF;
+    font-size: 45px;
+    content: "\EA0C";
+}
+.advice {
+    margin: 0 15px;
+    border-bottom: 1px solid #ccc;
+    padding: 15px 0px;
+}
+.flow {
+    border-bottom:0
+}
+.flow_agree{
+    text-align: left;
+    padding: 0 15px 15px;
+    position: relative;
+}
+.small_img{
+    width: 30px;
+    height: 30px;
+    vertical-align: middle;
+    border-radius: 5px;
+}
+.flow_agree_icon{
+    font-weight: 900;
+    color: #2f7dcd;
+}

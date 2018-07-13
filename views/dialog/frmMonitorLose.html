@@ -1,0 +1,50 @@
+<div id="divLose" title="" style="display:none">
+    <div id="frmCustomer" class="form-horizontal">
+        <div class="modal-body form-horizontal">
+            <div class="control-group">
+                <!-- Text input-->
+                <label class="control-label" for="divStartTime" data-i18n="vehicle.divStartTime">
+                    开始时间
+                </label>
+
+                <div class="controls">
+                    <div class="input-append date divStartTime input-medium" data-date-format="yyyy-mm-dd hh:ii:ss" data-link-field="dtp_input1">
+                        <input id="divStartTime" class="input-medium" type="text">
+                        <span class="add-on">
+                            <i class="icon-th"></i>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="control-group">
+                <!-- Text input-->
+                <label class="control-label" for="divEndTime" data-i18n="vehicle.divEndTime">
+                    结束时间
+                </label>
+
+                <div class="controls">
+                    <div class="input-append date divEndTime input-medium" data-date-format="yyyy-mm-dd hh:ii:ss" data-link-field="dtp_input1">
+                        <input id="divEndTime" class="input-medium" type="text">
+                        <span class="add-on">
+                            <i class="icon-th"></i>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="control-group">
+                <!-- Text input-->
+                <label class="control-label" for="searchText" data-i18n="customer.password_again">地点搜索</label>
+
+                <div class="controls">
+                    <input id="searchText" autofocus name="searchText" style="width:52%" type="text" placeholder="输入地址" data-i18n="[placeholder]customer.password_again">
+                    <button type="button" class="btn btn-primary" id="addAddress">添加</button>
+                    <!-- <button type="button" class="btn btn-primary" id="addCustomer1">搜索</button> -->
+
+                </div>
+            </div>
+            <div id="address_list" style="position: relative;">
+                <span style="position: absolute;left:64px;top:3px">途经点</span>
+            </div>
+        </div>
+    </div>
+</div>

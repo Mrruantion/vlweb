@@ -1,0 +1,43 @@
+<div id="divCard" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" title="导入流量卡" data-i18n="[title]device.import_device">
+    <form id="frmCard" class="form-horizontal">
+        <div class="modal-body form-horizontal">
+            <div class="control-group">
+                <!-- Text input-->
+                <label class="control-label" for="csvfile" data-i18n="system.select_file"><%= t('system.select_file') %></label>
+                <div class="controls">
+                    <span id="scan" style="position: relative" class="btn btn-primary input-group-addon">Browser<input id="csvfile" name="csvfile" style="width: 60px;height:40px; position: absolute;top:-6px;left: -4px;opacity: 0; filter:alpha(opacity=0)" class="form-control" type="file"></span>
+                </div>
+            </div>
+            <div class="control-group">
+                <!-- Text input-->
+                <label class="control-label" for="cardType" data-i18n="device.work_type">卡类型</label>
+
+                <div class="controls">
+                    <select class="input-xlarge" id="cardType" name="cardType">
+                        <option value="0" data-i18n="device.wired_device">内部卡</option>
+                        <option value="1" data-i18n="device.wireless_device">外部卡</option>
+                    </select>
+                </div>
+            </div>
+            <div class="control-group">
+                <!-- Text input-->
+                <label class="control-label" for="supplier" data-i18n="device.work_type">供应商</label>
+
+                <div class="controls">
+                    <select class="input-xlarge" id="supplier" name="supplier">
+                        <option value="0" data-i18n="device.wired_device">谷米</option>
+                        <option value="1" data-i18n="device.wireless_device">尚通</option>
+                    </select>
+                </div>
+            </div>
+            <div class="control-group">
+                <!-- Text input-->
+                <label class="control-label" for="cards" data-i18n="device.import_device">导入流量卡</label>
+                <div class="controls">
+                    <textarea disabled rows="10" cols="20" class="input-xlarge" id="cards" name="cards"></textarea>
+                    <p id="count"></p>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

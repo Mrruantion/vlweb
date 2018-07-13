@@ -1,0 +1,22 @@
+<div id="divCustomerList" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" title="<%= t('system.customer') %>">
+    <form id="frmCustomerList" class="form-horizontal">
+        <div class="control-group">
+            <!-- Text input-->
+            <input type="hidden" id="change_obj_id" name="change_obj_id">
+            <label class="control-label" for="change_obj_name"><%= t('vehicle.name') %></label>
+
+            <div class="controls">
+                <input type="text" placeholder="<%= t('vehicle.name') %>" class="input-xlarge" id="change_obj_name" name="change_obj_name">
+            </div>
+        </div>
+        <div class="control-group">
+            <!-- Select Basic -->
+            <label class="control-label" for="change_cust_id"><%= t('customer.name') %></label>
+
+            <div class="controls">
+                <select id="change_cust_id" class="input-xlarge">
+                </select>
+            </div>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,31 @@
+<div id="divDepart" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" title="">
+    <form id="frmDepart" class="form-horizontal">
+        <div class="modal-body form-horizontal">
+            <div class="control-group">
+                <!-- Text input-->
+                <label class="control-label" for="depart_name" data-i18n="depart.name"><%= t('depart.name') %></label>
+
+                <div class="controls">
+                    <input id="depart_name" name="depart_name" type="text" placeholder="<%= t('depart.name') %>" class="input-xlarge" data-i18n="[placeholder]depart.name">
+                </div>
+            </div>
+            <div class="control-group">
+                <!-- Text input-->
+                <label class="control-label" for="is_support_depart"></label>
+
+                <div class="controls">
+                    <input id="is_support_depart" name="is_support_depart" type="checkbox" class="input-xlarge" style="margin: 0px">
+                    <span data-i18n="depart.is_support_depart"><%= t('depart.is_support_depart') %></span>
+                </div>
+            </div>
+            <div class="control-group" id="create_time_bar">
+                <!-- Search input-->
+                <label class="control-label" for="create_time" data-i18n="depart.create_date"><%= t('depart.create_date') %></label>
+
+                <div class="controls">
+                    <input id="create_time" name="create_time" type="text" class="input-xlarge" disabled>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

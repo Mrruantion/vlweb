@@ -1,0 +1,66 @@
+div.dataTables_length label {
+    width: 460px;
+    float: left;
+    text-align: left;
+}
+
+div.dataTables_length select {
+    width: 75px;
+}
+
+div.dataTables_filter label {
+    float: right;
+    width: 460px;
+}
+
+div.dataTables_info {
+    padding-top: 8px;
+}
+
+div.dataTables_paginate {
+    float: right;
+    margin: 0px;
+    padding: 1px;
+}
+
+table {
+    /*margin: 1em 0;*/
+    clear: both;
+}
+
+table.dataTable th:active {
+    outline: none;
+}
+
+table.dataTable tbody tr.selected {
+    background-color: #f9f9f9;
+}
+
+table.dataTable tbody tr input[type="checkbox"],th input[type="checkbox"] {
+    margin-top: -2px;
+}
+
+.table-hover tbody tr:hover>td, .table-hover tbody tr:hover>th {
+    background-color: #f9f9f9;
+}
+
+.table-hover tbody tr:hover.selected>td, .table-hover tbody tr:hover.selected>th {
+    background-color: #f3f3f3;
+}
+
+.dataTables_scroll {
+    font-size: 12px;
+}
+
+.dataTables_scroll .dataTables_scrollHead {
+    background-color: #f9f9f9;
+    height: 36px;
+}
+
+.dataTables_scroll .dataTables_scrollHead table {
+    width: 100%;
+}
+
+.dataTables_scroll .dataTables_scrollBody {
+
+}

@@ -1,0 +1,410 @@
+<div id="divVehicle" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" title="">
+    <form id="frmVehicle" class="form-horizontal">
+        <div class="tabbable tabs-top">
+            <ul id="vehicleTab" class="nav nav-tabs">
+                <li class="active">
+                    <a href="#basePanel" data-toggle="tab" value="1" data-i18n="vehicle.base_info">
+                        <%= t('vehicle.base_info') %>
+                    </a>
+                </li>
+                <!--<li>-->
+                <!--<a href="#vehiclePanel" data-toggle="tab" value="2">目标信息</a>-->
+                <!--</li>-->
+                <!--<li>-->
+                <!--<a href="#loanPanel" data-toggle="tab" value="3">贷款信息</a>-->
+                <!--</li>-->
+                <li>
+                    <a href="#_customerPanel" data-toggle="tab" value="5" data-i18n="vehicle.maintenance">
+                        <!-- <%= t('vehicle.maintenance') %> -->
+                        <%= t('vehicle.cust_info') %>
+                    </a>
+                </li>
+                <li>
+                    <a href="#devicePanel" data-toggle="tab" value="4" data-i18n="vehicle.bind_device">
+                        <%= t('vehicle.device_info') %>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#maintenancePanel" data-toggle="tab" value="5" data-i18n="vehicle.maintenance">
+                        <%= t('vehicle.maintenance') %>
+                    </a>
+                </li>
+                <li>
+                    <a href="#alertSetPanel" data-toggle="tab" value="5" data-i18n="vehicle.maintenance">
+                        <!-- <%= t('vehicle.maintenance') %> -->
+                        <%= t('vehicle.alert_set') %>
+                    </a>
+                </li>
+            </ul>
+            <!--<div class="control-group">-->
+            <!--&lt;!&ndash; Select Basic &ndash;&gt;-->
+            <!--<label class="control-label" for="obj_type">目标类型</label>-->
+
+            <!--<div class="controls">-->
+            <!--<select class="input-xlarge" id="obj_type" name="obj_type">-->
+            <!--<option value="1">轿车</option>-->
+            <!--<option value="2">货车</option>-->
+            <!--<option value="3">客车</option>-->
+            <!--<option value="4">特种目标</option>-->
+            <!--<option value="5">警车</option>-->
+            <!--</select>-->
+            <!--</div>-->
+            <!--</div>-->
+
+
+            <div class="tab-content">
+                <div class="tab-pane active row-fluid" id="basePanel">
+                    <div class="span6">
+                        <div class="control-group">
+                            <!-- Text input-->
+                            <label class="control-label" for="obj_name" data-i18n="vehicle.name">
+                                <%= t('vehicle.name') %>
+                            </label>
+
+                            <div class="controls">
+                                <input type="text" placeholder="<%= t('vehicle.name') %>" class="input-medium" id="obj_name" name="obj_name" data-i18n="[placeholder]vehicle.name">
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <!-- Text input-->
+                            <label class="control-label" for="depart_name" data-i18n="system.depart">
+                                <%= t('system.depart') %>
+                            </label>
+
+                            <div class="controls">
+                                <input type="text" placeholder="<%= t('system.depart') %>" class="input-medium" id="depart_name" name="depart_name" data-i18n="[placeholder]system.depart"
+                                    style="width:100px" disabled>
+                                <button type="button" class="btn" id="selectDepart" data-i18n="system.select">
+                                    <%= t('system.select') %>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <!-- Text input-->
+                            <label class="control-label" for="vehicleType" data-i18n="vehicle.objectType">
+                                <!-- 目标类型 -->
+                                <%= t('vehicle.objectType') %>
+                                    <!-- <%= t('vehicle.tel') %> -->
+                            </label>
+                            <div class="controls">
+                                <!-- <input type="text"  class="input-medium" id="tel" name="tel" data-i18n="[placeholder]vehicle.tel"> -->
+                                <select class="input-medium objectType" id="objectType" style="width:80%">
+                                    <!-- <%= t('vehicle.objectTypeList') %> -->
+                                    <option value="0">
+                                        <%= t('vehicle.objectTypeList.default') %>
+                                    </option>
+                                    <option value="1">
+                                        <%= t('vehicle.objectTypeList.car') %>
+                                    </option>
+                                    <option value="2">
+                                        <%= t('vehicle.objectTypeList.bus') %>
+                                    </option>
+                                    <option value="3">
+                                        <%= t('vehicle.objectTypeList.truck') %>
+                                    </option>
+                                    <option value="4">
+                                        <%= t('vehicle.objectTypeList.police') %>
+                                    </option>
+                                    <option value="5">
+                                        <%= t('vehicle.objectTypeList.cement') %>
+                                    </option>
+                                    <option value="6">
+                                        <%= t('vehicle.objectTypeList.motor') %>
+                                    </option>
+                                    <option value="7">
+                                        <%= t('vehicle.objectTypeList.ship') %>
+                                    </option>
+                                    <option value="8">
+                                        <%= t('vehicle.objectTypeList.tractor') %>
+                                    </option>
+                                    <option value="9">
+                                        <%= t('vehicle.objectTypeList.police_box') %>
+                                    </option>
+                                    <!-- <option value="01">小型汽车</option>
+                                    <option value="02" selected="selected">大型汽车</option> -->
+                                </select>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <!-- Text input-->
+                            <label class="control-label" for="obj_model" data-i18n="vehicle.model">
+                                <%= t('vehicle.model') %>
+                            </label>
+
+                            <div class="controls">
+                                <input type="text" placeholder="<%= t('vehicle.model') %>" class="input-medium" id="obj_model" name="obj_model" data-i18n="[placeholder]vehicle.model">
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <!-- Search input-->
+                            <label class="control-label" for="sim" data-i18n="vehicle.sim">
+                                <%= t('vehicle.sim') %>
+                            </label>
+
+                            <div class="controls">
+                                <input type="text" placeholder="<%= t('vehicle.sim') %>" class="input-medium" id="sim" name="sim" data-i18n="[placeholder]vehicle.sim">
+                            </div>
+                        </div>
+
+
+                    </div>
+                    <div class="span5">
+                        <div class="control-group">
+                            <!-- Text input-->
+                            <label class="control-label" for="contact" data-i18n="vehicle.contact">
+                                <%= t('vehicle.contact') %>
+                            </label>
+
+                            <div class="controls">
+                                <input type="text" placeholder="<%= t('vehicle.contact') %>" class="input-medium" id="contact" name="contact" data-i18n="[placeholder]vehicle.contact">
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <!-- Text input-->
+                            <label class="control-label" for="tel" data-i18n="vehicle.tel">
+                                <%= t('vehicle.tel') %>
+                            </label>
+
+                            <div class="controls">
+                                <input type="text" placeholder="<%= t('vehicle.tel') %>" class="input-medium" id="tel" name="tel" data-i18n="[placeholder]vehicle.tel">
+                            </div>
+                        </div>
+                        <div class="control-group" id="service_end_date_panel">
+                            <!-- Text input-->
+                            <label class="control-label" for="service_end_date" data-i18n="vehicle.end_date">
+                                <%= t('vehicle.end_date') %>
+                            </label>
+
+                            <div class="controls">
+                                <input type="text" class="input-medium" id="service_end_date" name="service_end_date" disabled>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <!-- Text input-->
+                            <label class="control-label" for="fuelTankCapacity">
+                                <!-- <%= t('vehicle.end_date') %> -->
+                                <%= t('vehicle.fuel_tank') %>
+                            </label>
+
+                            <div class="controls">
+                                <input type="text" class="input-medium" id="fuelTankCapacity" name="fuelTankCapacity" placeholder="<%= t('vehicle.fuel_tank') %>"
+                                    onkeyup="value=value.replace(/[^d\.{0,1}\d]/g,'')">
+                            </div>
+                        </div>
+
+                        <div class="control-group">
+                            <label class="control-label" for="remark" data-i18n="vehicle.remark">
+                                <%= t('vehicle.remark') %>
+                            </label>
+
+                            <div class="controls">
+                                <textarea rows="3" cols="20" class="input-medium" id="remark" name="remark"></textarea>
+                            </div>
+                        </div>
+
+                        <!-- <div class="control-group">
+                            <label class="control-label" for="remark" data-i18n="vehicle.remark">
+                                <%= t('vehicle.remark') %>
+                            </label>
+
+                            <div class="controls">
+                                <textarea rows="3" cols="20" class="input-medium" id="remark" name="remark"></textarea>
+                            </div>
+                        </div> -->
+                    </div>
+                </div>
+                <!-- 绑定设备 -->
+                <div class="tab-pane row-fluid" id="devicePanel">
+
+                    <div class="control-group">
+                        <!-- Text input-->
+                        <label class="control-label" for="device_id" data-i18n="device.id">
+                            <%= t('device.id') %>
+                        </label>
+
+                        <div class="controls">
+                            <input type="text" placeholder="<%= t('device.id') %>" class="input-medium" id="device_id" name="device_id" data-provide="typeahead"
+                                data-items="5" autocomplete="off" data-source="" data-i18n="[placeholder]device.id"> &nbsp;&nbsp;
+                            <button type="button" class="btn" id="unbind" style="display:none" data-i18n="device.unbind">
+                                <%= t('device.unbind') %>
+                            </button>
+                            <button type="button" class="btn" id="bind" style="display:none" data-i18n="device.bind">
+                                <%= t('device.bind') %>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 客户信息 -->
+                <div class="tab-pane row-fluid" id="_customerPanel">
+                    <div class="span6">
+                        <div class="control-group">
+                            <!-- Text input-->
+                            <label class="control-label" for="plogin_username" data-i18n="customer.login_username">
+                                <%= t('customer.login_username') %>
+                            </label>
+
+                            <div class="controls">
+                                <input type="text" disabled placeholder="<%= t('customer.login_username') %>" class="input-medium" id="plogin_username" name="plogin_username"
+                                    data-i18n="[placeholder]customer.login_username">
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <!-- Text input-->
+                            <label class="control-label" for="pname" data-i18n="customer.name">
+                                <%= t('customer.name') %>
+                            </label>
+
+                            <div class="controls">
+                                <input type="text" disabled placeholder="<%= t('customer.name') %>" class="input-medium" id="pname" name="pname" data-i18n="[placeholder]customer.name">
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <!-- Text input-->
+                            <label class="control-label" for="pcust_type" data-i18n="customer.cust_type">
+                                <%= t('customer.cust_type') %>
+                            </label>
+
+                            <div class="controls">
+                                <input type="text" disabled placeholder="<%= t('customer.cust_type') %>" class="input-medium" id="pcust_type" name="pcust_type"
+                                    data-i18n="[placeholder]customer.cust_type">
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <!-- Search input-->
+                            <label class="control-label" for="pcreate_time" data-i18n="customer.create_date">
+                                <%= t('customer.create_date') %>
+                            </label>
+
+                            <div class="controls">
+                                <input id="pcreate_time" name="pcreate_time" type="text" class="input-medium" disabled>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="span5">
+                        <div class="control-group">
+                            <!-- Text input-->
+                            <label class="control-label" for="prole" data-i18n="customer.role">
+                                <%= t('customer.role') %>
+                            </label>
+
+                            <div class="controls">
+                                <input type="text" placeholder="<%= t('customer.role') %>" disabled class="input-medium" id="prole" name="prole" data-i18n="[placeholder]customer.role">
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <!-- Text input-->
+                            <label class="control-label" for="pcontact" data-i18n="customer.contact">
+                                <%= t('customer.contact') %>
+                            </label>
+
+                            <div class="controls">
+                                <input type="text" placeholder="<%= t('customer.contact') %>" disabled class="input-medium" id="pcontact" name="contact"
+                                    data-i18n="[placeholder]customer.contact">
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <!-- Text input-->
+                            <label class="control-label" for="ptel" data-i18n="customer.tel">
+                                <%= t('customer.tel') %>
+                            </label>
+
+                            <div class="controls">
+                                <input type="text" placeholder="<%= t('customer.tel') %>" disabled class="input-medium" id="ptel" name="ptel" data-i18n="[placeholder]customer.tel">
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <!-- 维保信息 -->
+                <div class="tab-pane row-fluid" id="maintenancePanel">
+                    <div class="span5">
+                        <div class="control-group">
+                            <!-- Text input-->
+                            <label class="control-label" for="insuranceExpireIn" data-i18n="vehicle.insuranceExpireIn">
+                                <%= t('vehicle.insuranceExpireIn') %>
+                            </label>
+
+                            <div class="controls">
+                                <div class="input-append date insuranceExpireIn input-medium" data-date-format="yyyy-mm-dd" data-link-field="dtp_input1">
+                                    <input id="insuranceExpireIn" class="input-medium" style="width:82%" type="text" value="">
+                                    <span class="add-on">
+                                        <i class="icon-th"></i>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="control-group">
+                            <!-- Text input-->
+                            <label class="control-label" for="inspectExpireIn" data-i18n="vehicle.inspectExpireIn">
+                                <%= t('vehicle.inspectExpireIn') %>
+                            </label>
+
+                            <div class="controls">
+                                <div class="input-append date inspectExpireIn input-medium" data-date-format="yyyy-mm-dd" data-link-field="dtp_input1">
+                                    <input id="inspectExpireIn" class="input-medium" style="width:82%" type="text" value="">
+                                    <span class="add-on">
+                                        <i class="icon-th"></i>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="span5">
+                        <div class="control-group">
+                            <!-- Text input-->
+                            <label class="control-label" for="maintainExpireIn" data-i18n="vehicle.maintainExpireIn">
+                                <%= t('vehicle.maintainExpireIn') %>
+                            </label>
+
+                            <div class="controls">
+                                <div class="input-append date maintainExpireIn input-medium" data-date-format="yyyy-mm-dd" data-link-field="dtp_input1">
+                                    <input id="maintainExpireIn" class="input-medium" style="width:82%" type="text" value="">
+                                    <span class="add-on">
+                                        <i class="icon-th"></i>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="control-group" id="service_end_date_panel">
+                            <!-- Text input-->
+                            <label class="control-label" for="maintainMileage" data-i18n="vehicle.maintainMileage">
+                                <%= t('vehicle.maintainMileage') %>
+                            </label>
+
+                            <div class="controls">
+                                <input type="text" class="input-medium" id="maintainMileage" name="maintainMileage">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane row-fluid" id="alertSetPanel">
+                    <!-- <div> -->
+                    <!-- <div id="_selectAll"></div> -->
+                    <ul class="ulClass">
+                        <!-- <li>
+                            <input type="checkbox" id="0x3001" value="0x3001">
+                            <label for="0x3001">紧急报警</label>
+                        </li> -->
+                        <!-- <li><input type="checkbox"><label for="0x3001">紧急报警</label></li>
+                            <li><input type="checkbox"><label for="0x3001">紧急报警</label></li>
+                            <li><input type="checkbox"><label for="0x3001">紧急报警</label></li>
+                            <li><input type="checkbox"><label for="0x3001">紧急报警</label></li>
+                            <li><input type="checkbox"><label for="0x3001">紧急报警</label></li>
+                            <li><input type="checkbox"><label for="0x3001">紧急报警</label></li>
+                            <li><input type="checkbox"><label for="0x3001">紧急报警</label></li>
+                            <li><input type="checkbox"><label for="0x3001">紧急报警</label></li>
+                            <li><input type="checkbox"><label for="0x3001">紧急报警</label></li>
+                            <li><input type="checkbox"><label for="0x3001">紧急报警</label></li>
+                            <li><input type="checkbox"><label for="0x3001">紧急报警</label></li>
+                            <li><input type="checkbox"><label for="0x3001">紧急报警</label></li> -->
+                    </ul>
+                    <!-- </div> -->
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

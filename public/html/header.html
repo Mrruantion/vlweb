@@ -1,0 +1,21 @@
+<div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container-fluid">
+            <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="brand" href="#"><%= opt.title %></a>
+
+            <div class="nav-collapse collapse">
+                <p class="navbar-text pull-right">
+                    <a id="notify" class="icon-envelope" href="/alert"><span id="alertBadge" class="badge badge-important">..</span></a>
+                    <a id="dealer_name" href="#" class="navbar-link"></a>
+                    <a id="btnExit" href="#" class="navbar-link" data-i18n="header.exit"><%= t('header.exit') %></a>
+                </p>
+                <% include menu.html %>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+    <style>
+        html,
+        body {
+            font-family: 'Helvetica Neue',Helvetica,sans-serif;
+            background-color: #fff;
+        }
+        .head {
+            height: 40px;
+        }
+        #head {
+            line-height: 40px;
+        }
+        .head-img {
+            width: 40px;
+            height: 40px;
+        }
+        #head-img1 {
+            position: absolute;
+            bottom: 10px;
+            right: 40px;
+            width: 40px;
+            height: 40px;
+        }
+        .title{
+            margin: 20px;
+            color: #242424;
+            font-size: 24px;
+            line-height: 30px;
+        }
+        .remark {
+            color: #B5B5B5;
+            font-size: 12px;
+            margin: 20px;
+        }
+        .body {
+            color: #242424;
+            font-size: 14px;
+            margin: 20px;
+        }
+        .body p {
+            color: #242424;
+            font-size: 17px;
+            line-height: 28px;
+            margin-top: 0;
+            margin-bottom: 10px;
+            /*text-indent: 2em;*/
+        }
+        .body img {
+            width: 100%;
+        }
+        .update {
+            font-style: normal;
+            color: #999999;
+            margin-right: -25px;
+            font-size: 15px
+        }
+    </style>
+</head>
+
+<body>
+<div id="content" class="mui-content">
+    <div class="mui-scroll">
+        <h3 class="title"><%= title %></h3>
+        <p class="remark"><%= author %> <%= createdAt %></p>
+        <div class="body">
+            <%- content %>
+        </div>
+    </div>
+</div>
+</body>
+
+</html>

@@ -1,0 +1,48 @@
+body {
+    padding-top: 40px;
+    padding-bottom: 0px;
+    overflow: hidden;
+}
+
+.form-horizontal .control-label {
+    width: 60px;
+}
+
+.form-horizontal .controls {
+    margin-left: 70px;
+}
+
+#divBranch, #alert, #divAccount {
+    display: none;
+}
+
+.input-xlarge {
+    width: 240px;
+}
+
+.icon-map-marker {
+    color: #0007ff;
+    padding-left: 5px;
+    padding-top: 5px;
+    font-size: 24px;
+}
+
+.container-fluid2 {
+    padding-right: 0px;
+    padding-left: 0px;
+}
+
+.sidebar-nav {
+    padding-bottom: 3000px;
+    margin-bottom: -3000px;
+    overflow: hidden;
+    background-color: #f0f6f6;
+}
+
+#branchKey {
+    /*width: 230px;*/
+}
+
+.none {
+    display:none;
+}

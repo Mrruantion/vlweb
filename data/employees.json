@@ -1,0 +1,50 @@
+{
+	"_id" : ObjectId("5a1b8e29a9240752b00ef3b1"),
+	"ACL" : [
+		"852442628162195500"
+	],
+	"companyId" : "852442628162195500",
+	"createdAt" : ISODate("2017-11-27T12:01:45.703+08:00"),
+	"creator" : 852442628162195456.0,
+	"departId" : "934291285332856800",
+	"email" : "",
+	"isDriver" : false,
+	"isInCharge" : false,
+	"licenseType" : [ ],
+	"name" : "胡晓峰",
+	"objectId" : 934995636183502848.0,
+	"responsibility" : [
+		"1"
+	],
+	"role" : "9",
+	"roleId" : "934994706356637700",
+	"sex" : NumberInt("1"),
+	"tel" : "13310000000",
+	"uid" : "934995634061185000",
+	"updatedAt" : ISODate("2017-11-27T12:16:10.177+08:00")
+},
+{
+	"_id" : ObjectId("5a1bb74ca9240752b00ef3b3"),
+	"ACL" : [
+		"852442628162195500"
+	],
+	"companyId" : "852442628162195500",
+	"createdAt" : ISODate("2017-11-27T14:57:16.258+08:00"),
+	"creator" : 852442628162195456.0,
+	"departId" : "934061703056986100",
+	"email" : "",
+	"isDriver" : false,
+	"isInCharge" : false,
+	"licenseType" : [ ],
+	"name" : "高建新",
+	"objectId" : 935039804532461568.0,
+	"responsibility" : [
+		"1"
+	],
+	"role" : "12",
+	"roleId" : "934994706356637700",
+	"sex" : NumberInt("1"),
+	"tel" : "13310000002",
+	"uid" : "935039802259148800",
+	"updatedAt" : ISODate("2017-11-27T16:54:00.324+08:00")
+},

@@ -1,0 +1,120 @@
+body {
+    padding-top: 40px;
+    padding-bottom: 0px;
+    overflow: hidden;
+}
+
+.container-fluid2 {
+    padding-right: 0px;
+    padding-left: 0px;
+}
+
+.sidebar-nav {
+    padding-bottom: 3000px;
+    margin-bottom: -3000px;
+    overflow: hidden;
+    background-color: #eee;
+    border-right: solid 1px #eee;
+}
+
+.vehicleList {
+    padding-top: 20px;
+    margin-left: 20px!important;
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+
+.reportPanel {
+    padding-top: 20px;
+    margin-left: 20px!important;
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+
+.customer-tool {
+    padding: 10px 10px 10px 10px;
+}
+
+.customer-list {
+    overflow-x: hidden;
+    overflow-y: auto;
+    padding-top: 20px;
+}
+
+#customerTree {
+    overflow-x: hidden;
+    overflow-y: auto;
+    /*background-color: #fff;*/
+    /*border: solid 1px #efefef;*/
+}
+
+.myform {
+    margin: 5px 0px 5px 0px;
+    text-align: center;
+}
+
+.input-xsmall {
+    width: 230px;
+}
+
+.input-padding {
+    padding: 0px 0px 0px 0px;
+}
+
+.input-append {
+    margin-bottom: 0px;
+}
+
+.span2 {
+    width: 240px;
+}
+
+.modal-header {
+    +height: 32px;
+}
+
+.modal-body {
+    max-height: 400px;
+}
+
+#divCustomer, #divVehicle, #alert, #divAccount, #divCustomerList, #divArticle, #divRole, #divUser, #divBooking, #divDevice, #divDeviceAssign, #divDeviceEdit, #divCustomerAssign, #divGeofence, #divGeofenceAssign, #divDeviceSet, #divIdle, #divPicture {
+    display: none;
+}
+
+.icon-remove {
+    color: #b94a48;
+    padding-top: 5px;
+}
+
+.icon-plus {
+    color: #599726;
+    padding-top: 5px;
+}
+
+*+html .icon-remove, .icon-user {
+    padding-top: 7px !important;
+}
+
+@media (max-width: 980px) {
+    /* Enable use of floated navbar text */
+    .navbar-text.pull-right {
+        float: none;
+        padding-left: 5px;
+        padding-right: 5px;
+    }
+}
+
+.customer-header {
+    padding: 20px;
+    font-size: 16px;
+    text-shadow: 0 0px 0 rgba(255,255,255,0.5)!important;
+}
+
+.customer-menu li {
+    line-height: 30px;
+    text-shadow: 0 0px 0 rgba(255,255,255,0.5)!important;
+}
+
+#sendTo {
+    color: #08c;
+}

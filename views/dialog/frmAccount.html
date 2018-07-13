@@ -1,0 +1,206 @@
+<div id="divAccount" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" title="<%= t('account.my_account') %>" data-i18n="[title]account.my_account">
+    <form id="frmAccount" class="form-horizontal">
+        <div class="tabbable tabs-top">
+            <ul id="acountTab" class="nav nav-tabs">
+                <li class="active">
+                    <a href="#accountPanel" data-toggle="tab" value="1" data-i18n="account.base_info"><%= t('account.base_info') %></a>
+                </li>
+                <li>
+                    <a href="#balancePanel" data-toggle="tab" value="3"><%= t('account.balanceMessage') %></a>
+                </li>
+                <li>
+                    <a href="#passwordPanel" data-toggle="tab" value="2" data-i18n="account.password_info"><%= t('account.password_info') %></a>
+                </li>
+                <li>
+                    <a href="#feePanel" data-toggle="tab" value="4" data-i18n="account.password_info">费率</a>
+                </li>
+            </ul>
+            <div class="tab-content">
+                <div class="tab-pane active row-fluid" id="accountPanel">
+                    <div>
+                        <div class="control-group">
+                            <!-- Text input-->
+                            <label class="control-label" for="_cust_name" data-i18n="customer.name"><%= t('customer.name') %></label>
+
+                            <div class="controls">
+                                <input id="_cust_name" name="_cust_name" type="text" placeholder="<%= t('customer.name') %>" class="input-xlarge" data-i18n="[placeholder]customer.name">
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <!-- Text input-->
+                            <label class="control-label" for="_contacter" data-i18n="customer.contact"><%= t('customer.contact') %></label>
+
+                            <div class="controls">
+                                <input id="_contacter" name="_contacter" type="text" placeholder="<%= t('customer.contact') %>" class="input-xlarge" data-i18n="[placeholder]customer.contact">
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <!-- Search input-->
+                            <label class="control-label" for="_contacter_tel" data-i18n="customer.tel"><%= t('customer.tel') %></label>
+
+                            <div class="controls">
+                                <input id="_contacter_tel" name="_contacter_tel" type="text" placeholder="<%= t('customer.tel') %>"
+                                       class="input-xlarge" data-i18n="[placeholder]customer.tel">
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <!-- Search input-->
+                            <label class="control-label" for="bindWx" id="bindWxLabel">绑定微信</label>
+
+                            <div class="controls">
+                                <input id="bindWx" name="bindWx" type="password" placeholder="请输入本平台密码" style="width: 62%">
+                                <button class="btn btn-primary hide" id="bindWxBtn" type="button" >绑定</button>
+                                <button class="btn btn-primary hide" id="unbindWxBtn" type="button" >解绑</button>
+                            </div>
+                        </div>
+                        <div id="bindWxNameDiv" class="hide">
+                            <div class="control-group">
+                                <label class="control-label hide" for="bindWxName" >微信</label>
+                                <div class="controls" id="bindWxName" style="line-height: 30px">
+                                    <img src="" style="height: 50px;border-radius: 5px">
+                                    <span style="font-weight: 600;margin-left: 10px;"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- <div id="date_fee">
+                            <hr>
+                            <div class="control-group">
+                                <label class="control-label" for="current_month_fee" data-i18n="customer.fee_month"><%= t('customer.fee_month') %></label>
+
+                                <div class="controls">
+                                    <input id="current_month_fee" name="current_month_fee" type="text" placeholder="0.00" class="input-mini" data-i18n="[placeholder]customer.fee_month">元
+                                    <span class="parent-fee"><%= t('account.benchmarkMonthFee') %>：<span id="parent_month_fee">0.00</span>元</span>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label" for="current_year_fee" data-i18n="customer.fee_year"><%= t('customer.fee_year') %></label>
+
+                                <div class="controls">
+                                    <input id="current_year_fee" name="current_year_fee" type="text" placeholder="0.00" class="input-mini" data-i18n="[placeholder]customer.fee_year">元
+                                    <span class="parent-fee"><%= t('account.benchmarkYearFee') %>：<span id="parent_year_fee">0.00</span>元</span>
+                                </div>
+                            </div>
+                        </div> -->
+                    </div>
+                </div>
+                <div class="tab-pane row-fluid" id="balancePanel">
+                    <div>
+                        <div class="control-group">
+                            <div style="display: inline-block;width:50%;float: left;"><span class="control-label" ><%= t('account.balance')%>:</span><span style="display: inline-block;padding-top: 5px;line-height: 20px;padding-left: 5px;font-weight: bold;font-size: 14px;color: #06bf06" id="balance">0000</span></div>
+                            <div style="display: inline-block;width:50%;float: left;"><span class="control-label" ><%= t('account.frozenBalance')%>:</span><span style="display: inline-block;padding-top: 5px;line-height: 20px;padding-left: 5px;font-weight: bold;font-size: 14px;color: #e01a1a" id="frozenBalance">0000</span></div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label" for="recharge"><%= t('account.amount')%></label>
+
+                            <div class="controls">
+                                <input id="rechargeAmount" name="rechargeAmount" type="text" placeholder="<%= t('account.amount')%>" class="input-xlarge" style="width:45%;">
+                                <button class="btn btn-primary" id="rechargeBtn"><%= t('account.recharge')%></button>
+                                <button class="btn btn-primary" id="amountWithdraw"><%= t('account.withdraw')%></button>
+                            </div>
+                            <!-- <div>冻结资金：<span>0000</span></div> -->
+                        </div>
+                        <div id="drawWarn" style=" margin-bottom:  0;text-align:  center;font-size:  14px;color: red;">提现微信会收取千分之六(0.6%)手续费,最大提现金额为<span></span>元</div>
+                        <div id="drawText" style=" margin-bottom:  0;text-align:  center;font-size:  14px;color: red;"></div>
+                    </div>
+                </div>
+                <div class="tab-pane row-fluid" id="passwordPanel">
+                    <div>
+                        <div class="control-group">
+                            <!-- Text input-->
+                            <label class="control-label" for="account_old_password" data-i18n="account.old_password"><%= t('account.old_password') %></label>
+
+                            <div class="controls">
+                                <input id="account_old_password" name="account_old_password" type="password" placeholder="<%= t('account.modify_password') %>"
+                                       class="input-xlarge" data-i18n="[placeholder]account.modify_password">
+                            </div>
+                        </div>
+                        <div class="control-group" id="password_bar">
+                            <!-- Text input-->
+                            <label class="control-label" for="account_password" data-i18n="account.new_password"><%= t('account.new_password') %></label>
+
+                            <div class="controls">
+                                <input id="account_password" name="account_password" type="password" placeholder="<%= t('account.modify_password') %>"
+                                       class="input-xlarge" data-i18n="[placeholder]account.modify_password">
+                            </div>
+                        </div>
+                        <div class="control-group" id="password_bar22">
+                            <!-- Text input-->
+                            <label class="control-label" for="account_password2" data-i18n="account.password_again"><%= t('account.password_again') %></label>
+
+                            <div class="controls">
+                                <input id="account_password2" name="account_password2" type="password" placeholder="<%= t('account.password_again') %>" class="input-xlarge" data-i18n="[placeholder]account.password_again">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane row-fluid" id="feePanel">
+                    <div>
+                        <div class="control-group">
+                            <label class="control-label" for="current_month_fee" data-i18n="customer.fee_month"><%= t('customer.fee_month') %></label>
+
+                            <div class="controls">
+                                <input id="current_month_fee" name="current_month_fee" type="text" placeholder="0.00" class="input-mini" data-i18n="[placeholder]customer.fee_month">元
+                                <span class="parent-fee"><%= t('account.benchmarkMonthFee') %>：<span id="parent_month_fee">0.00</span>元</span>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label" for="current_year_fee" data-i18n="customer.fee_year"><%= t('customer.fee_year') %></label>
+
+                            <div class="controls">
+                                <input id="current_year_fee" name="current_year_fee" type="text" placeholder="0.00" class="input-mini" data-i18n="[placeholder]customer.fee_year">元
+                                <span class="parent-fee"><%= t('account.benchmarkYearFee') %>：<span id="parent_year_fee">0.00</span>元</span>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="control-group">
+                            <label class="control-label" for="2m_year_fee" data-i18n="customer.fee_year">
+                                <span style="margin-right: 5px;">2M</span>
+                                <%= t('customer.fee_year') %>
+                            </label>
+                            <div class="controls">
+                                <input id="2m_year_fee" name="2m_year_fee" type="text" placeholder="0.00" class="input-mini" data-i18n="[placeholder]customer.fee_year">元
+                                <span class="parent-fee"><%= t('account.benchmarkYearFee') %>：
+                                    <span id="2mparent_year_fee">0.00</span>元</span>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label" for="5m_year_fee" data-i18n="customer.fee_year">
+                                <span style="margin-right: 5px;">5M</span>
+                                <%= t('customer.fee_year') %>
+                            </label>
+        
+                            <div class="controls">
+                                <input id="5m_year_fee" name="5m_year_fee" type="text" placeholder="0.00" class="input-mini" data-i18n="[placeholder]customer.fee_year">元
+                                <span class="parent-fee"><%= t('account.benchmarkYearFee') %>：
+                                    <span id="5mparent_year_fee">0.00</span>元</span>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label" for="30m_year_fee" data-i18n="customer.fee_month">
+                                <span style="margin-right: 5px;">30M</span>
+                                <%= t('customer.fee_year') %>
+                            </label>
+        
+                            <div class="controls">
+                                <input id="30m_year_fee" name="30m_year_fee" type="text" placeholder="0.00" class="input-mini" data-i18n="[placeholder]customer.fee_year">元
+                                <span class="parent-fee"><%= t('account.benchmarkYearFee') %>：
+                                    <span id="30mparent_year_fee">0.00</span>元</span>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label" for="100m_year_fee" data-i18n="customer.fee_year">
+                                <span style="margin-right: 5px;">100M</span>
+                                <%= t('customer.fee_year') %>
+                            </label>
+                            <div class="controls">
+                                <input id="100m_year_fee"  name="100m_year_fee" type="text" placeholder="0.00" class="input-mini" data-i18n="[placeholder]customer.fee_year">元
+                                <span class="parent-fee"><%= t('account.benchmarkYearFee') %>：
+                                    <span id="100mparent_year_fee">0.00</span>元</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

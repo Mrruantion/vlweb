@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>
+<html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>
+<html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>
+<html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js"> <!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    <title><%= opt.title %></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- Le styles -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/datatable.css" rel="stylesheet">
+    <link href="css/demo_table_jui.css" rel="stylesheet">
+    <link href="css/jquery.contextMenu.css" rel="stylesheet">
+    <link href="css/jquery-ui-1.10.0.custom.css" rel="stylesheet">
+    <link href="css/font-awesome.min.css" rel="stylesheet">
+    <link href="js/jqTree/jqtree.css" rel="stylesheet">
+    <link href="js/zTree/css/metroStyle/metroStyle.css" rel="stylesheet" type="text/css"/>
+    <!--[if IE 7]>
+    <link href="css/font-awesome-ie7.min.css" rel="stylesheet">
+    <![endif]-->
+    <!--[if lt IE 9]>
+    <link href="/css/jquery.ui.1.10.0.ie.css" rel="stylesheet">
+    <![endif]-->
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/index.css" rel="stylesheet">
+    <link href="css/Icon/iconfont.css" rel="stylesheet">
+    <link href="css/bootstrap-responsive.min.css" rel="stylesheet">
+    <link href="css/customerSelector.css" rel="stylesheet">
+
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv.js"></script>
+    <![endif]-->
+
+    <!-- Fav and touch icons -->
+    <!--<link rel="apple-touch-icon-precomposed" sizes="144x144" href="../assets/ico/apple-touch-icon-144-precomposed.png">-->
+    <!--<link rel="apple-touch-icon-precomposed" sizes="114x114" href="../assets/ico/apple-touch-icon-114-precomposed.png">-->
+    <!--<link rel="apple-touch-icon-precomposed" sizes="72x72" href="../assets/ico/apple-touch-icon-72-precomposed.png">-->
+    <!--<link rel="apple-touch-icon-precomposed" href="../assets/ico/apple-touch-icon-57-precomposed.png">-->
+    <!--<link rel="shortcut icon" href="../assets/ico/favicon.png">-->
+
+    <style>
+        .tabs-left>.nav-tabs .active>a, .tabs-left>.nav-tabs .active>a:hover, .tabs-left>.nav-tabs .active>a:focus {
+            border-color: #fff #ddd #fff #fff;
+        }
+        .nav-tabs>.active>a, .nav-tabs>.active>a:hover, .nav-tabs>.active>a:focus {
+            background-color: #f7f7f7;
+        }
+
+        .work-type {
+            float: left;
+            padding-left: 23px;
+            width: 60px;
+            word-break: break-all;
+        }
+
+        select {
+            /*margin-top: 5px;*/
+            margin-bottom: 5px;
+        }
+
+        .longMode {
+            padding-top: 0px!important;
+            text-align: left!important;
+            width: 150px!important;
+        }
+
+        form {
+            margin: 0 0 0px;
+        }
+
+        .ui-widget-content {
+            background: #ffffff repeat-x;
+        }
+
+
+    </style>
+</head>
+
+<body>
+
+<!-- 头部 -->
+<% include html/header.html %>
+
+<div class="container-fluid">
+    <div id="alert" class="alert alert-block alert-error fade in">
+        <!--<button type="button" class="close" data-dismiss="alert">&times;</button>-->
+        <span id="err_msg"></span>
+    </div>
+    <div class="row-fluid">
+        <div class="span12 dataList">
+            <div class="toolbar" style="line-height: 30px;height: 30px;margin-bottom: 10px">
+                <span class="pull-left" style="vertical-align: middle" data-i18n="report.customer_name"><%= t('report.customer_name') %></span>
+                <div class="controls input-append pull-left" style="line-height: 30px; padding-right: 10px">
+                    <input id="customer" class="input-medium2" type="text" placeholder="<%= t('report.select_customer') %>" data-i18n="[placeholder]report.select_customer">
+                </div>
+                <span class="pull-left" style="vertical-align: middle" data-i18n="report.vehicle_name"><%= t('report.vehicle_name') %></span>
+                <div class="controls input-append pull-left" style="line-height: 30px">
+                    <input id="name2" class="input-medium2" type="text" placeholder="<%= t('report.select_vehicle') %>" data-i18n="[placeholder]report.select_vehicle">
+                </div>
+                <div class="input-append pull-left" style="line-height: 30px">
+                    <!--<input id="searchVehicle" class="input-large" type="text" data-provide="typeahead" data-items="5" autocomplete="off" data-source="" placeholder="选择目标">-->
+                    <!--<input id="name2" name="name2" type="text" placeholder="选择目标" class="input" value="">-->
+                    <input id="did2" name="did2" type="hidden" value="">
+                    <button class="btn btn-primary" type="button" id="deivceSet" data-i18n="setting.set"><%= t('setting.set') %></button>
+                    <!-- <button class="btn btn-primary" type="button" id="delVehicle">删除</button> -->
+                    <!-- <a href="#frmVehicle" role="button" class="btn" data-toggle="modal"><i class="icon-plus"></i> 新增</a>
+                    <a href="#" role="button" class="btn"><i class="icon-remove"></i> 删除</a> -->
+                </div>
+            </div>
+            <div id="list">
+                <!--<table class="table table-hover table-striped table-bordered" width="100%" cellpadding="0"-->
+                       <!--cellspacing="0" border="0" id="booking_list">-->
+                    <!--<thead>-->
+                    <!--<tr>-->
+                        <!--&lt;!&ndash; <th width="20px" style="text-align: center !important;"><input id="checkAll" type="checkbox"></th> &ndash;&gt;-->
+                        <!--<th width="10%">城市</th>-->
+                        <!--<th width="10%">姓名</th>-->
+                        <!--<th width="10%">电话</th>-->
+                        <!--<th width="5%">性别</th>-->
+                        <!--<th width="5%">状态</th>-->
+                        <!--<th width="25%">处理结果</th>-->
+                        <!--<th width="15%">处理时间</th>-->
+                        <!--<th width="15%">预约时间</th>-->
+                        <!--<th width="60px">操作</th>-->
+                    <!--</tr>-->
+                    <!--</thead>-->
+                    <!--<tbody>-->
+                    <!--</tbody>-->
+                <!--</table>-->
+            </div>
+        </div>
+        <!--/span-->
+    </div>
+    <!--/row-->
+
+    <!-- 新增或者修改账户 -->
+    <% include dialog/frmDeviceSet.html %>
+
+    <!-- 新增或者修改账户 -->
+    <% include dialog/frmAccount.html %>
+
+</div>
+
+<!-- 版本信息 -->
+<% include html/footer.html %>
+<!--/.fluid-container-->
+
+<!-- Le javascript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="js/jquery-1.10.2.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/jquery-ui-1.10.0.custom.min.js"></script>
+<script src='js/jquery.cookie.js'></script>
+<script src="js/jquery.dataTables.js"></script>
+<script src="js/jquery.contextmenu.r2.js"></script>
+<script src="js/jquery.placeholder.1.3.min.js"></script>
+<script src="js/jquery.scrollLoading.js"></script>
+<script src="js/jquery.validate.min.js"></script>
+<script src="js/bootstrap.dataTable.js"></script>
+<script src="js/jqTree/tree.jquery.js"></script>
+<script src="js/bootstrap-contextmenu.js"></script>
+<script src='js/md5.js'></script>
+<script src="js/system.js"></script>
+<script src="js/json.js"></script>
+<script src="js/locales.js"></script>
+<script src="js/wistorm/md5.js"></script>
+<script src="js/wistorm/define.js"></script>
+<script src="js/wistorm/wistorm.js"></script>
+<script src="js/table.js"></script>
+<script type="text/javascript" src="js/zTree/js/jquery.ztree.core-3.4.js"></script>
+<script type="text/javascript" src="js/zTree/js/jquery.ztree.excheck-3.4.js"></script>
+<script src="js/customerSelector.js"></script>
+<script src="js/vehicleSelector.js"></script>
+<script src="js/deviceSet.js"></script>
+<script src="js/command.js"></script>
+<script src="js/account.js"></script>
+
+</body>
+</html>

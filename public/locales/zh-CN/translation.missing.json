@@ -1,0 +1,31 @@
+{
+  "acount": {
+    "base_info": "acount.base_info"
+  },
+  "customer": {
+    "fee_month": "customer.fee_month",
+    "fee_year": "customer.fee_year"
+  },
+  "report": {
+    "tag_report": "report.tag_report",
+    "gps_report": "report.gps_report"
+  },
+  "geofence": {
+    "search_poi": "geofence.search_poi",
+    "search_checkpoint": "geofence.search_checkpoint",
+    "search_route": "geofence.search_route",
+    "poi_type": {
+      "1": "geofence.poi_type.1",
+      "2": "geofence.poi_type.2",
+      "3": "geofence.poi_type.3",
+      "4": "geofence.poi_type.4",
+      "5": "geofence.poi_type.5",
+      "6": "geofence.poi_type.6",
+      "7": "geofence.poi_type.7",
+      "8": "geofence.poi_type.8",
+      "9": "geofence.poi_type.9",
+      "10": "geofence.poi_type.10",
+      "11": "geofence.poi_type.11"
+    }
+  }
+}

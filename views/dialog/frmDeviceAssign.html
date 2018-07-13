@@ -1,0 +1,32 @@
+<div id="divDeviceAssign" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" title="<%= t('device.assign_device') %>" data-i18n="[title]device.assign_device">
+    <form id="frmDeviceAssign" class="form-horizontal">
+        <div class="modal-body form-horizontal">
+            <div class="control-group">
+                <!-- Text input-->
+                <label class="control-label" for="dCustomerTreeAssign" data-i18n="system.customer"><%= t('system.customer') %></label>
+                <div class="controls customerTreeAssign">
+                    <ul id="dCustomerTreeAssign" class="ztree">
+                        <p style="text-align: center; padding-top: 5px">
+                            <img style='width:16px;height:16px' src='/img/waiting.gif'/>
+                        </p>
+                    </ul>
+                </div>
+            </div>
+            <div class="control-group">
+                <!-- Text input-->
+                <label class="control-label" for="csvfileAssign" data-i18n="system.select_file"><%= t('system.select_file') %></label>
+                <div class="controls">
+                    <span style="position: relative" class="btn btn-primary input-group-addon">Browse<input id="csvfileAssign" name="csvfileAssign" style="width: 60px;height:40px; position: absolute;top:-6px;left: -4px;opacity: 0; filter:alpha(opacity=0)" class="form-control" type="file"></span>
+                </div>
+            </div>
+            <div class="control-group">
+                <!-- Text input-->
+                <label class="control-label" for="assginDevices" data-i18n="device.assign_device"><%= t('device.assign_device') %></label>
+                <div class="controls">
+                    <textarea rows="5" cols="20" class="input-xlarge" id="assginDevices" name="assginDevices"></textarea>
+                    <p id="countAssign"></p>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

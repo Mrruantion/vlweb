@@ -1,0 +1,42 @@
+<div id="divDeviceEdit" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" title="<%= t('device.edit_device') %>" data-i18n="[title]device.edit_device">
+    <form id="frmDeviceEdit" class="form-horizontal">
+        <div class="modal-body form-horizontal">
+            <div class="control-group">
+                <!-- Text input-->
+                <label class="control-label" for="editDid" data-i18n="device.id"><%= t('device.id') %></label>
+                <div class="controls">
+                    <input id="editDid" name="editDid" type="text" placeholder="<%= t('device.id') %>" class="input-xlarge" readonly data-i18n="[placeholder]device.id">
+                </div>
+            </div>
+            <div class="control-group">
+                <!-- Text input-->
+                <label class="control-label" for="editModel" data-i18n="device.model"><%= t('device.model') %></label>
+
+                <div class="controls">
+                    <input id="editModel" name="editModel" type="text" placeholder="<%= t('device.model') %>" class="input-xlarge" data-i18n="[placeholder]device.model">
+                </div>
+            </div>
+            <div class="control-group">
+                <!-- Text input-->
+                <label class="control-label" for="editWorkType" data-i18n="device.work_type"><%= t('device.work_type') %></label>
+
+                <div class="controls">
+                    <select class="input-xlarge" id="editWorkType" name="editWorkType">
+                        <option value="0" data-i18n="device.wired_device"><%= t('device.wired_device') %></option>
+                        <option value="1" data-i18n="device.wireless_device"><%= t('device.wireless_device') %></option>
+                    </select>
+                </div>
+            </div>
+            <div class="control-group">
+                <!-- Text input-->
+                <label class="control-label" for="editVehicleName" data-i18n="vehicle.name"><%= t('vehicle.name') %></label>
+
+                <div class="controls">
+                    <input type="hidden" id="vehicleId">
+                    <input type="text" placeholder="" class="input-large" id="editVehicleName" name="editVehicleName" readonly>
+                    &nbsp;&nbsp;<button type="button" class="btn" id="unbind" data-i18n="device.unbind"><%= t('device.unbind') %></button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

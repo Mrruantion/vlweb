@@ -1,0 +1,8 @@
+{
+  "employee": {
+    "depart": "employee.depart"
+  },
+  "system": {
+    "depart": "system.depart"
+  }
+}

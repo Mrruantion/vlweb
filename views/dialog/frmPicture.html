@@ -1,0 +1,78 @@
+<div id="divPicture" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" title="" class="idle-ui-dialog">
+    <form id="frmPicture" class="">
+        <div class="idle-modal">
+            <div class="picture-form-horizontal">
+                <label id="pictureLabel" class="control-label" for="chanelPanel" data-i18n="picture.gather_param"><%= t('picture.gather_param') %></label>
+                <!-- Text input-->
+                <div id="chanelPanel" class="controls" style="float: left; padding-right: 10px;">
+                    <select class="input-small" id="channel" name="channel">
+                        <option value="1" selected data-i18n="picture.channel1"><%= t('picture.channel1') %></option>
+                        <option value="2" data-i18n="picture.channel2"><%= t('picture.channel2') %></option>
+                        <option value="3" data-i18n="picture.channel3"><%= t('picture.channel3') %></option>
+                        <option value="4" data-i18n="picture.channel4"><%= t('picture.channel4') %></option>
+                    </select>
+                </div>
+                <div id="typePanel" class="controls" style="float: left; padding-right: 10px;">
+                    <select class="input-small" id="take_type" name="take_type">
+                        <option value="0" data-i18n="picture.stop"><%= t('picture.stop') %></option>
+                        <option value="1" selected data-i18n="picture.take1"><%= t('picture.take1') %></option>
+                        <option value="2" data-i18n="picture.take2"><%= t('picture.take2') %></option>
+                        <option value="3" data-i18n="picture.take3"><%= t('picture.take3') %></option>
+                        <option value="4" data-i18n="picture.take4"><%= t('picture.take4') %></option>
+                        <option value="5" data-i18n="picture.take5"><%= t('picture.take5') %></option>
+                    </select>
+                </div>
+                <div id="resolutionPanel" class="controls" style="float: left; padding-right: 10px;">
+                    <select class="input-small" id="resolution" name="resolution">
+                        <option value="1" selected>320*240</option>
+                        <option value="2">640*480</option>
+                    </select>
+                </div>
+                <div id="qualityPanel" class="controls" style="float: left; padding-right: 10px;">
+                    <select class="input-small" id="quality" name="quality">
+                        <option value="1" selected data-i18n="picture.quality_normal"><%= t('picture.quality_normal') %></option>
+                        <option value="5" data-i18n="picture.quality_better"><%= t('picture.quality_better') %></option>
+                        <option value="10" data-i18n="picture.quality_best"><%= t('picture.quality_best') %></option>
+                    </select>
+                </div>
+                <button type="button" class="btn" id="takePicture" data-i18n="picture.gather"><%= t('picture.gather') %></button>
+            </div>
+            <div class="picture-form-horizontal">
+                <label class="control-label" for="startTime" data-i18n="picture.start_time"><%= t('picture.start_time') %></label>
+                <!-- Text input-->
+                <div class="controls" style="float: left; padding-right: 10px">
+                    <div class="controls input-append date startTime" data-date-format="yyyy-mm-dd hh:ii:ss" data-link-field="dtp_input1">
+                        <input id="startTime" class="date-input" size="12" type="text" value="">
+                        <!--<span class="add-on"><i class="icon-remove"></i></span>-->
+                        <span class="add-on"><i class="icon-th"></i></span>
+                    </div>
+                </div>
+                <label class="control-label" for="endTime" data-i18n="picture.end_time"><%= t('picture.end_time') %></label>
+                <!-- Text input-->
+                <div class="controls" style="float: left; padding-right: 10px">
+                    <div class="controls input-append date endTime" data-date-format="yyyy-mm-dd hh:ii:ss" data-link-field="dtp_input1">
+                        <input id="endTime" class="date-input" size="12" type="text" value="">
+                        <!--<span class="add-on"><i class="icon-remove"></i></span>-->
+                        <span class="add-on"><i class="icon-th"></i></span>
+                    </div>
+                </div>
+                <button type="button" class="btn" id="query" data-i18n="picture.query"><%= t('picture.query') %></button>
+            </div>
+
+            <div class="picture-wrapper" autofocus>
+                <!-- Text input-->
+                <ul id="PictureList" class="docs-pictures clearfix">
+                    <!--<li><img data-original="js/viewer/img/tibet-1.jpg" src="js/viewer/img/thumbnails/tibet-1.jpg" alt="Cuo Na Lake"></li>-->
+                    <!--<li><img data-original="js/viewer/img/tibet-2.jpg" src="js/viewer/img/thumbnails/tibet-2.jpg" alt="Tibetan Plateau"></li>-->
+                    <!--<li><img data-original="js/viewer/img/tibet-3.jpg" src="js/viewer/img/thumbnails/tibet-3.jpg" alt="Jokhang Temple"></li>-->
+                    <!--<li><img data-original="js/viewer/img/tibet-4.jpg" src="js/viewer/img/thumbnails/tibet-4.jpg" alt="Potala Palace 1"></li>-->
+                    <!--<li><img data-original="js/viewer/img/tibet-5.jpg" src="js/viewer/img/thumbnails/tibet-5.jpg" alt="Potala Palace 2"></li>-->
+                    <!--<li><img data-original="js/viewer/img/tibet-6.jpg" src="js/viewer/img/thumbnails/tibet-6.jpg" alt="Potala Palace 3"></li>-->
+                    <!--<li><img data-original="js/viewer/img/tibet-7.jpg" src="js/viewer/img/thumbnails/tibet-7.jpg" alt="Lhasa River"></li>-->
+                    <!--<li><img data-original="js/viewer/img/tibet-8.jpg" src="js/viewer/img/thumbnails/tibet-8.jpg" alt="Namtso 1"></li>-->
+                    <!--<li><img data-original="js/viewer/img/tibet-9.jpg" src="js/viewer/img/thumbnails/tibet-9.jpg" alt="Namtso 2"></li>-->
+                </ul>
+            </div>
+        </div>
+    </form>
+</div>

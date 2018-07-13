@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>
+<html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>
+<html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>
+<html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js"> <!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    <title><%= opt.title %></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- Le styles -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/bootstrap-datetimepicker.min.css" rel="stylesheet">
+    <link href="css/datatable.css" rel="stylesheet">
+    <link href="css/demo_table_jui.css" rel="stylesheet">
+    <link href="css/jquery.contextMenu.css" rel="stylesheet">
+    <link href="css/jquery-ui-1.10.0.custom.css" rel="stylesheet">
+    <link href="css/font-awesome.min.css" rel="stylesheet">
+    <!--[if IE 7]>
+    <link href="css/font-awesome-ie7.min.css" rel="stylesheet">
+    <![endif]-->
+    <!--[if lt IE 9]>
+    <link href="/css/jquery.ui.1.10.0.ie.css" rel="stylesheet">
+    <![endif]-->
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/index.css" rel="stylesheet">
+    <link href="css/Icon/iconfont.css" rel="stylesheet">
+    <link href="css/bootstrap-responsive.min.css" rel="stylesheet">
+
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv.js"></script>
+    <![endif]-->
+
+    <!-- Fav and touch icons -->
+    <!--<link rel="apple-touch-icon-precomposed" sizes="144x144" href="../assets/ico/apple-touch-icon-144-precomposed.png">-->
+    <!--<link rel="apple-touch-icon-precomposed" sizes="114x114" href="../assets/ico/apple-touch-icon-114-precomposed.png">-->
+    <!--<link rel="apple-touch-icon-precomposed" sizes="72x72" href="../assets/ico/apple-touch-icon-72-precomposed.png">-->
+    <!--<link rel="apple-touch-icon-precomposed" href="../assets/ico/apple-touch-icon-57-precomposed.png">-->
+    <!--<link rel="shortcut icon" href="../assets/ico/favicon.png">-->
+</head>
+
+<body>
+
+<!-- 头部 -->
+<% include html/header.html %>
+
+<div class="container-fluid">
+    <div id="alert" class="alert alert-block alert-error fade in">
+        <!--<button type="button" class="close" data-dismiss="alert">&times;</button>-->
+        <span id="err_msg">您输入的帐号或密码不正确，请重新输入。</span>
+    </div>
+    <div class="row-fluid">
+        <!--/span-->
+        <div class="span12">
+            <form id="frmSearchLog" class="form-horizontal">
+            <div class="control-group">
+                <label class="control-label" style="width:70px; padding-right: 10px" for="deviceID">设备编号: </label><div clas="controls" style="float: left"><input id="device_id" class="input-medium" type="text" data-provide="typeahead" data-items="5" autocomplete="off" data-source="" placeholder="" value="<%= device_id %>"></div>
+                <label class="control-label" style="width:70px; padding-right: 10px" for="startTime">开始时间: </label><div clas="controls"  style="float: left"><input id="startTime" class="input-medium" type="text" value="2015-08-01 00:00"></div>
+                <label class="control-label" style="width:70px; padding-right: 10px" for="endTime">结束时间: </label><div clas="controls" style="float: left"><input id="endTime" class="input-medium" type="text" value="2015-08-31 23:59"></div>
+                <button class="btn btn-primary" style="margin-left: 10px" type="button" id="searchLog">查询日志</button>
+            </div>
+            </form>
+            <div id="datalog_panel">
+                <table class="table table-hover table-striped table-bordered" width="100%" cellpadding="0"
+                       cellspacing="0" border="0" id="datalog_list">
+                    <thead>
+                        <tr class="tops">
+                            <th width="100px">终端识别号</th>
+                            <th width="170px">接收时间</th>
+                            <th width="">接收内容</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!--/span-->
+    </div>
+    <!--/row-->
+
+    <!-- 新增或者修改目标 -->
+    <% include dialog/frmVehicle.html %>
+
+    <!-- 新增或者修改用户 -->
+    <% include dialog/frmCustomer.html %>
+
+    <!-- 新增或者修改账户 -->
+    <% include dialog/frmAccount.html %>
+
+    <!-- 版本信息 -->
+    <% include html/footer.html %>
+
+</div>
+<!--/.fluid-container-->
+
+<!-- Le javascript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="js/jquery-1.10.2.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/bootstrap-datetimepicker.min.js"></script>
+<script src="js/jquery-ui-1.10.0.custom.min.js"></script>
+<script src='js/jquery.cookie.js'></script>
+<script src="js/jquery.dataTables.js"></script>
+<script src="js/jquery.contextmenu.r2.js"></script>
+<script src="js/jquery.placeholder.1.3.min.js"></script>
+<script src="js/jquery.validate.min.js"></script>
+<script src="js/bootstrap.dataTable.js"></script>
+<script src='js/md5.js'></script>
+<script src="js/system.js"></script>
+<script src="js/json.js"></script>
+<script src="js/datalog.js"></script>
+<script src="js/account.js"></script>
+
+</body>
+</html>

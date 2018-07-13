@@ -1,0 +1,25 @@
+<div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container-fluid">
+            <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="brand" href="#"><%= opt.title %></a>
+
+            <div class="nav-collapse collapse">
+                <p class="navbar-text pull-right">
+                    <!-- <span></span> -->
+                    <span id="warnVoice"></span>
+                    <i class="icon iconfont icon-voiceon" id="voice" style="position:relative;top:2px;cursor:pointer"></i>
+                    <a id="notify" class="icon-bell" href="/alert"><span id="alertBadge" class="badge badge-important">..</span></a>
+                    <!-- <a id="message" class="icon-envelope" href="/alert"></a> -->
+                    <a id="dealer_name" href="#" class="navbar-link"></a>
+                    <a id="btnExit" href="#" class="navbar-link" data-i18n="header.exit"><%= t('header.exit') %></a>
+                </p>
+                <% include menu.html %>
+            </div>
+        </div>
+    </div>
+</div>

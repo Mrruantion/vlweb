@@ -1,0 +1,62 @@
+<div id="divBooking" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" title="处理预约">
+    <form id="frmBooking" class="form-horizontal">
+        <div class="modal-body form-horizontal">
+            <div class="control-group" style="">
+                <!-- Text input-->
+                <label class="control-label" for="name">姓名</label>
+                <div class="controls">
+                    <input type="text" placeholder="" class="input-xlarge" id="name" name="name" readonly>
+                </div>
+            </div>
+            <div class="control-group" style="">
+                <!-- Text input-->
+                <label class="control-label" for="mobile">手机</label>
+                <div class="controls">
+                    <input type="text" placeholder="" class="input-xlarge" id="mobile" name="mobile" readonly>
+                </div>
+            </div>
+            <div class="control-group" style="">
+                <!-- Text input-->
+                <label class="control-label" for="city">城市</label>
+                <div class="controls">
+                    <input type="text" placeholder="" class="input-xlarge" id="city" name="city" readonly>
+                </div>
+            </div>
+            <div class="control-group">
+                <!-- Select Basic -->
+                <label class="control-label" for="status">状态</label>
+
+                <div class="controls">
+                    <select class="input-xlarge" id="status" name="status">
+                        <option value="0">未处理</option>
+                        <option value="1">已确认</option>
+                        <option value="2">已取消</option>
+                    </select>
+                </div>
+            </div>
+            <div class="control-group">
+                <!-- Text input-->
+                <label class="control-label" for="remark">备注</label>
+                <div class="controls">
+                    <input type="text" placeholder="比如：输入处理内容" class="input-xlarge" id="remark" name="remark">
+                </div>
+            </div>
+            <div class="control-group">
+                <!-- Text input-->
+                <label class="control-label" for="updatedAt">处理日期</label>
+
+                <div class="controls">
+                    <input type="text" placeholder="" class="input-xlarge" id="updatedAt" name="updatedAt" readonly>
+                </div>
+            </div>
+            <div class="control-group" id="pnlDate" style="display:none">
+                <!-- Text input-->
+                <label class="control-label" for="createdAt">预约日期</label>
+
+                <div class="controls">
+                    <input type="text" placeholder="" class="input-xlarge" id="createdAt" name="createdAt">
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

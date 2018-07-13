@@ -1,0 +1,105 @@
+<div id="divCustomer" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" title="">
+    <form id="frmCustomer" class="form-horizontal">
+        <div class="modal-body form-horizontal">
+            <div class="control-group">
+                <!-- Text input-->
+                <label class="control-label" for="username" data-i18n="customer.login_username"><%= t('customer.login_username') %></label>
+
+                <div class="controls">
+                    <input id="username" name="username" type="text" placeholder="<%= t('customer.login_username') %>"
+                           class="input-xlarge" data-i18n="[placeholder]customer.login_username">
+                </div>
+            </div>
+            <div class="control-group" id="password_bar">
+                <!-- Text input-->
+                <label class="control-label" for="password" data-i18n="customer.login_passsword"><%= t('customer.login_passsword') %></label>
+
+                <div class="controls">
+                    <input id="password" name="password" type="password" placeholder="<%= t('customer.login_passsword') %>"
+                           class="input-xlarge" data-i18n="[placeholder]customer.login_passsword">&nbsp;&nbsp;<button type="button" class="btn" id="resetPassword" data-i18n="customer.reset"><%= t('customer.reset') %></button>
+                </div>
+            </div>
+            <div class="control-group" id="password_bar2">
+                <!-- Text input-->
+                <label class="control-label" for="password2" data-i18n="customer.password_again"><%= t('customer.password_again') %></label>
+
+                <div class="controls">
+                    <input id="password2" name="password2" type="password" placeholder="<%= t('customer.password_again') %>"
+                           class="input-xlarge" data-i18n="[placeholder]customer.password_again">
+                </div>
+            </div>
+            <!--<div class="control-group">-->
+                <!--&lt;!&ndash; Select Basic &ndash;&gt;-->
+                <!--<label class="control-label" for="parent_cust_id">上级用户</label>-->
+
+                <!--<div class="controls">-->
+                    <!--<select id="parent_cust_id" class="input-xlarge">-->
+                        <!--<option value="1">无</option>-->
+                    <!--</select>-->
+                <!--</div>-->
+            <!--</div>-->
+            <div class="control-group">
+                <!-- Select Basic -->
+                <label class="control-label" for="cust_type" data-i18n="customer.cust_type"><%= t('customer.cust_type') %></label>
+
+                <div class="controls">
+                    <select id="cust_type" class="input-xlarge">
+                        <% if(user.user_type == 1 || user.user_type == 11 || user.user_type == 2) { %>
+                        <option value="2" data-i18n="system.dealer"><%= t('system.dealer') %></option>
+                        <option value="8" data-i18n="system.company"><%= t('system.company') %></option>
+                        <option value="7" data-i18n="system.personal"><%= t('system.personal') %></option>
+                        <% } else if(user.user_type == 8) { %>
+                        <option value="8" data-i18n="system.company"><%= t('system.company') %></option>
+                        <option value="7" data-i18n="system.personal"><%= t('system.personal') %></option>
+                        <% } else if(user.user_type == 7) { %>
+                        <option value="7" data-i18n="system.personal"><%= t('system.personal') %></option>
+                        <% } %>
+                    </select>
+                </div>
+            </div>
+            <div class="control-group">
+                <!-- Select Basic -->
+                <label class="control-label" for="roleId" data-i18n="customer.role"><%= t('customer.role') %></label>
+
+                <div class="controls">
+                    <select id="roleId" name="roleId" class="input-xlarge">
+                    </select>
+                    <button type="button" class="btn" id="addRole" data-i18n="customer.add_role"><%= t('customer.add_role') %></button>
+                </div>
+            </div>
+            <div class="control-group">
+                <!-- Text input-->
+                <label class="control-label" for="cust_name" data-i18n="customer.name"><%= t('customer.name') %></label>
+
+                <div class="controls">
+                    <input id="cust_name" name="cust_name" type="text" placeholder="<%= t('customer.name') %>" class="input-xlarge" data-i18n="[placeholder]customer.name">
+                </div>
+            </div>
+            <div class="control-group">
+                <!-- Text input-->
+                <label class="control-label" for="contacter" data-i18n="customer.contact"><%= t('customer.contact') %></label>
+
+                <div class="controls">
+                    <input id="contacter" name="contacter" type="text" placeholder="<%= t('customer.contact') %>" class="input-xlarge" data-i18n="[placeholder]customer.contact">
+                </div>
+            </div>
+            <div class="control-group">
+                <!-- Search input-->
+                <label class="control-label" for="contacter_tel" data-i18n="customer.tel"><%= t('customer.tel') %></label>
+
+                <div class="controls">
+                    <input id="contacter_tel" name="contacter_tel" type="text" placeholder="<%= t('customer.tel') %>"
+                           class="input-xlarge" data-i18n="[placeholder]customer.tel">
+                </div>
+            </div>
+            <div class="control-group" id="create_time_bar">
+                <!-- Search input-->
+                <label class="control-label" for="create_time" data-i18n="customer.create_date"><%= t('customer.create_date') %></label>
+
+                <div class="controls">
+                    <input id="create_time" name="create_time" type="text" class="input-xlarge" disabled>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

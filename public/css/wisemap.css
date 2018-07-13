@@ -1,0 +1,157 @@
+﻿@-ms-viewport {
+    width: device-width;
+}
+
+ #map_canvas { margin: 0; padding: 0; height: 100%; font-size: 12px; }
+ #panorama { margin: 0; padding: 0; height: 100%; width: 50%; font-size: 12px; }
+ #r-result { font-size: 12px; overflow-x: hidden; overflow-y: auto }
+      .labels {
+      color: black;
+      background-color: transparent;
+      font-size: 12px;
+      font-weight: bold;
+      text-align: center;
+      width: 100px;
+      border: 0;
+      overflow:hidden;
+      text-shadow: 1px 0px 0px #ffffff,-1px 0px 0px #ffffff,0px 1px 0px #ffffff,0px -1px 0px #ffffff;          
+      filter: Dropshadow(offx=1,offy=0,color=#ffffff) Dropshadow(offx=0,offy=1,color=#ffffff) Dropshadow(offx=-1,offy=0,color=#ffffff) Dropshadow(offx=0,offy=-1,color=#ffffff);
+      }
+	  
+.zhishichuang{ width:385px !important; border:none !important; position:static !important; left:auto !important; top:auto !important;overflow-x:hidden;overflow-y:hidden; font-size: 12px!important;}
+.zhishichuang .wind{background:#fff; min-height:240px; height: auto; float:left; width:350px; padding:0; overflow:hidden}
+.zhishichuang .wind2{background:#fff; height:80px; float:left; width:340px; padding:5px 0 0; overflow:hidden}
+.zhishichuang .wind .vehicle{width:100%; line-height: 22px; padding: 5px; height: 220px;}
+.zhishichuang .wind .vehicle tr{height: 26px}
+.zhishichuang .wind .vehicle td.info_label{width: 45px}
+.zhishichuang .wind .vehicle td.content{min-width: 110px}
+.zhishichuang .wind .vehicle .button{height: auto;  vertical-align: bottom}
+.zhishichuang .wind p{ padding-left:0px; line-height:25px; font-size:12px; margin: 0px}
+.zhishichuang .wind_bg{ float:left; width:214px; height:11px; background:url(../images/zhishichuang_btm.png) no-repeat;overflow:hidden}
+.zhishichuang .wind_rt{ float:right; width:1px; height:128px; background:url(../images/zhishichuang_right.png) 0 -2px;overflow:hidden}
+.zhishichuang .wind p span{ width:60px; text-align:right}
+
+@media screen and (max-width: 1366px) {
+    .zhishichuang{ width:385px !important; border:none !important; position:static !important; left:auto !important; top:auto !important;overflow-x:hidden;overflow-y:hidden; font-size: 12px!important;}
+    .zhishichuang .wind{background:#fff; min-height:240px; height: auto; float:left; width:385px; padding:0; overflow:hidden}
+    .zhishichuang .wind .vehicle{width:100%; line-height: 21px; padding: 5px}
+}
+
+ .route-search-box{
+     position: relative;
+ }
+
+ .route-search-box form {
+     position: relative;
+     font-size: 13px;
+     border-bottom: 1px solid #dee1e3;
+ }
+
+ .route-search-box .route-switch {
+     display: inline-block;
+     vertical-align: middle;
+     width: 48px;
+     text-align: center;
+ }
+
+ .route-search-box .route-switch a {
+     display: block;
+     text-decoration: none;
+     width: 17px;
+     height: 14px;
+     background: url(http://webmap1.map.bdstatic.com/wolfman/static/common/images/ui3/mo_banner_6e016e9.png) no-repeat -36px -224px;
+     cursor: pointer;
+     margin: 0 auto;
+ }
+
+ .route-search-box .route-input-box {
+     display: inline-block;
+     vertical-align: middle;
+     width: 211px;
+     position: relative;
+ }
+
+ .route-search-box .route-input-box input {
+     width: 176px;
+     height: 30px;
+     line-height: 26px;
+     display: inline-block;
+     border: 0;
+     border-bottom: 1px solid #eaebed;
+     font-size: 13px;
+     color: #333;
+     padding: 5px 0 5px 5px;
+     vertical-align: middle;
+     webkit-box-shadow: inset 0 0px 0px rgba(0, 0, 0, 0.075);
+     -moz-box-shadow: inset 0 0px 0px rgba(0, 0, 0, 0.075);
+     box-shadow: inset 0 0px 0px rgba(0, 0, 0, 0.075);
+ }
+
+ .route-search-box p {
+     position: relative;
+ }
+
+ .route-search-box .route-input-box .start i.search, .route-search-box .route-input-box .through i.search {
+     background: url(http://webmap1.map.bdstatic.com/wolfman/static/common/images/ui3/mo_banner_6e016e9.png) no-repeat -44px -210px;
+ }
+
+ .route-search-box .route-input-box .end i.search {
+     background: url(http://webmap1.map.bdstatic.com/wolfman/static/common/images/ui3/mo_banner_6e016e9.png) no-repeat -57px -210px;
+ }
+
+ .route-search-box .route-input-box i.search {
+     display: inline-block;
+     width: 11px;
+     height: 11px;
+     position: relative;
+     top: 3px;
+ }
+
+ .route-submit {
+     background: #F5F7FA;
+     border: 1px solid #f2f2f2;
+     text-align: center;
+     cursor: pointer;
+     font-size: 13px;
+     color: #999;
+     position: absolute;
+     top: 1px;
+     bottom: 1px;
+     right: 1px;
+     width: 54px!important;
+ }
+
+ .strategy-list {
+     border: 1px solid #e4e6e7;
+     color: #666;
+     overflow: hidden;
+     margin: 10px 0;
+ }
+
+ .strategy-item.active {
+     color: #333;
+     background: #f5f7f7;
+ }
+ .strategy-item {
+     float: left;
+     border-right: 1px solid #e4e6e7;
+     line-height: 32px;
+     width: 33.3%;
+     text-align: center;
+     cursor: pointer;
+ }
+
+ .strategy-item.last {
+     border: 0;
+     width: 98px;
+ }
+
+ .clear-item {
+     float: left;
+     border-right: 1px solid #e4e6e7;
+     line-height: 32px;
+     width: 100%;
+     text-align: center;
+     cursor: pointer;
+     display: none;
+ }

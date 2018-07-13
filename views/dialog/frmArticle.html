@@ -1,0 +1,75 @@
+<div id="divArticle" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" title="新增文章">
+    <form id="frmArticle" class="form-horizontal">
+        <div class="modal-body form-horizontal">
+            <div class="control-group">
+                <!-- Select Basic -->
+                <label class="control-label" for="type">文章类型</label>
+
+                <div class="controls">
+                    <select class="input-xlarge" id="type" name="type">
+                        <option value="0">最新活动</option>
+                        <option value="1">公司新闻</option>
+                        <option value="2">消息公告</option>
+                        <option value="3">常见问题</option>
+                        <option value="9">首页广告</option>
+                    </select>
+                </div>
+            </div>
+            <div class="control-group">
+                <!-- Text input-->
+                <label class="control-label" for="title">文章标题</label>
+                <div class="controls">
+                    <input type="text" placeholder="比如：驾驶电动车须知" class="input-xlarge" id="title" name="title">
+                </div>
+            </div>
+            <div class="control-group">
+                <!-- Text input-->
+                <label class="control-label" for="summary">文章概要</label>
+
+                <div class="controls">
+                    <input type="text" placeholder="比如：东风" class="input-xlarge" id="summary" name="summary">
+                </div>
+            </div>
+            <div class="control-group">
+                <!-- Text input-->
+                <label class="control-label" for="image">预览图片<br>(500*333)</label>
+                <div class="controls">
+                    <input type="file" id="image" name="image" style="display: none"/>
+                    <a id="btnUpload" href="#" title="点击更换图片"><img id="imgShow" src="/img/no_photo.png"/></a>
+                </div>
+            </div>
+            <div class="control-group">
+                <!-- Text input-->
+                <label class="control-label" for="img">图片路径<br>(可手动输入)</label>
+                <div class="controls">
+                    <input type="text" class="input-xlarge" id="img" name="img">
+                </div>
+            </div>
+            <div class="control-group">
+                <!-- Search input-->
+                <label class="control-label" for="author">文章作者</label>
+
+                <div class="controls">
+                    <input type="text" placeholder="请输入作者名称" class="input-xlarge" id="author" name="author">
+                </div>
+            </div>
+            <div class="control-group">
+                <!-- Text input-->
+                <label class="control-label" for="content">文章内容</label>
+
+                <div class="controls">
+                    <!--<input type="text" placeholder="请输入文章内容" class="input-xlarge" id="content" name="content">-->
+                    <textarea id="content" placeholder="" autofocus></textarea>
+                </div>
+            </div>
+            <div class="control-group" id="pnlDate" style="display:none">
+                <!-- Text input-->
+                <label class="control-label" for="createdAt">发表日期</label>
+
+                <div class="controls">
+                    <input type="text" placeholder="" class="input-xlarge" id="createdAt" name="createdAt">
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

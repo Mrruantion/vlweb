@@ -1,0 +1,62 @@
+<div id="divRenew" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" title="<%= t('device.assign_device') %>"
+    data-i18n="[title]device.assign_device">
+    <form id="frmRenew" class="form-horizontal">
+        <div class="modal-body form-horizontal">
+            <div class="control-group">
+                <label class="control-label" for="feeType" data-i18n="">续费类型</label>
+                <div class="controls">
+                    <select class="input-xlarge" id="feeType">
+                        <option value="1">
+                            年付
+                        </option>
+                        <option value="2">
+                            月付
+                        </option>
+                    </select>
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="feeNum" data-i18n="">续费数量</label>
+                <div class="controls">
+                    <input type="text" placeholder="" id="feeNum" class="input-xlarge">
+                    <!-- <p id="countAssign"></p> -->
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="csvfile" data-i18n="system.select_file">
+                    <%= t('system.select_file') %>
+                </label>
+                <div class="controls">
+                    <span id="scan" style="position: relative" class="btn btn-primary input-group-addon">Browser
+                        <input id="csvfile" name="csvfile" style="width: 60px;height:40px; position: absolute;top:-6px;left: -4px;opacity: 0; filter:alpha(opacity=0)"
+                            class="form-control" type="file">
+                    </span>
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="feeDevice" data-i18n="">续费终端</label>
+                <div class="controls">
+                    <textarea rows="5" cols="20" class="input-xlarge" id="feeDevice" name="feeDevice"></textarea>
+                    <p id="feeCount"></p>
+                    <p style="margin: 0;">
+                        费用
+                        <span id="feeNeed" style="position: relative;top: 1px;left: 3px;font-size: 16px;color: red;">0</span>
+                        元
+                    </p>
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="feeRemark" data-i18n="">备注</label>
+                <div class="controls">
+                    <textarea rows="5" cols="20" class="input-xlarge" id="feeRemark" name="feeRemark"></textarea>
+                </div>
+            </div>
+            <!-- <div class="control-group">
+                <label class="control-label" for="feeNeed" data-i18n="">费用</label>
+                <div class="controls">
+                    
+                </div>
+            </div> -->
+        </div>
+    </form>
+</div>

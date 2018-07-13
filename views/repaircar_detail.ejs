@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>车修详情</title>
+    <script src="js/merge/js/assets/jquery-3.2.1.min.js"></script>
+    <script src="js/merge/js/assets/bootstrap/js/bootstrap.js"></script>
+    <link rel="stylesheet" href="js/merge/js/assets/bootstrap/css/bootstrap.css" />
+    <link rel="stylesheet" href="js/merge/css/main.css" />
+    <link rel="stylesheet" href="js/merge/css/weui.css" />
+    <link rel="stylesheet" href="js/merge/css/example.css" />
+    <link rel="stylesheet" href="js/merge/js/assets/bootstrap-datetimepicker/bootstrap-datetimepicker.min.css">
+    <script type="text/javascript" src="js/merge/js/assets/bootstrap-datetimepicker/bootstrap-datetimepicker.min.js"></script>
+    <script type="text/javascript" src="js/merge/js/assets/bootstrap-datetimepicker/bootstrap-datetimepicker.zh-CN.js"></script>
+    <link rel="stylesheet" type="text/css" href="js/merge/stylesheets/my_icon/iconfont.css">
+</head>
+<style media="print">
+    @page {
+        size: auto;
+        /* auto is the initial value */
+        margin: 5mm;
+        /* this affects the margin in the printer settings */
+    }
+</style>
+
+<body>
+    <div class="container container_1" style="overflow-y:auto;padding:0 10px">
+        <div id="dvData">
+            <div class="row clearfix">
+                <div class="col-md-12 column">
+                    <h3>
+                        维修信息
+                    </h3>
+                </div>
+            </div>
+            <div style="border:1px solid #ccc;">
+                <div class="weui-flex">
+                    <div class="weui-flex__item">
+                        <div class="weui-flex">
+                            <div class="flex4 column apply2_detail">
+                                号码号牌：
+                            </div>
+                            <div class="flex8 column apply2_detail1" id="HPHM">
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="weui-flex__item">
+                        <div class="weui-flex">
+                            <div class="flex4 column apply2_detail">
+                                号牌种类：
+                            </div>
+                            <div class="flex8 column apply2_detail1" id="HPZL">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="weui-flex">
+                    <div class="weui-flex__item">
+                        <div class="weui-flex">
+                            <div class="flex4 column apply2_detail">
+                                预计金额：
+                            </div>
+                            <div class="flex8 column apply2_detail1" id="YJJED">
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="weui-flex__item">
+                        <div class="weui-flex">
+                            <div class="flex4 column apply2_detail">
+                                维修类型：
+                            </div>
+                            <div class="flex8 column apply2_detail1" id="WXLX">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="weui-flex">
+                    <div class="weui-flex__item">
+                        <div class="weui-flex">
+                            <div class="flex4 column apply2_detail">
+                                申请人：
+                            </div>
+                            <div class="flex8 column apply2_detail1" id="SQR">
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="weui-flex__item">
+                        <div class="weui-flex">
+                            <div class="flex4 column apply2_detail">
+                                申请部门：
+                            </div>
+                            <div class="flex8 column apply2_detail1" id="DEPT">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="weui-flex">
+                    <div class="weui-flex__item">
+                        <div class="weui-flex">
+                            <div class="flex4 column apply2_detail">
+                                申请时间：
+                            </div>
+                            <div class="flex8 column apply2_detail1" id="SQSJ">
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="weui-flex__item">
+                        <div class="weui-flex">
+                            <div class="flex4 column apply2_detail">
+                                状态：
+                            </div>
+                            <div class="flex8 column apply2_detail1" id="STATE">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="weui-flex">
+                    <div class="weui-flex__item">
+                        <div class="weui-flex">
+                            <div class="flex4 column apply2_detail">
+                                当前流程：
+                            </div>
+                            <div class="flex8 column apply2_detail1" id="DQLC">
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="weui-flex__item">
+                        <div class="weui-flex">
+                            <div class="flex4 column apply2_detail">
+                                下个流程：
+                            </div>
+                            <div class="flex8 column apply2_detail1" id="XGLC">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="weui-flex">
+                    <div class="weui-flex__item">
+                        <div class="weui-flex">
+                            <div class="flex4 column apply2_detail">
+                                维修单位：
+                            </div>
+                            <div class="flex8 column apply2_detail1" id="WXDW">
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="weui-flex__item">
+                        <div class="weui-flex">
+                            <div class="flex4 column apply2_detail">
+                                维修总金额：
+                            </div>
+                            <div class="flex8 column apply2_detail1" id="ZJE">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="weui-flex">
+                    <div class="weui-flex__item">
+                        <div class="weui-flex">
+                            <div class="flex4 column apply2_detail">
+                                进厂日期：
+                            </div>
+                            <div class="flex8 column apply2_detail1" id="JCRQ">
+                                <input id="jcrq" type="text" class="datepicker" placeholder="请选择日期" style="width:120px;display:none;height:76%" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="weui-flex__item">
+                        <div class="weui-flex">
+                            <div class="flex4 column apply2_detail">
+                                出厂日期：
+                            </div>
+                            <div class="flex8 column apply2_detail1" id="CCRQ">
+                                <input id="ccsj" type="text" class="datepicker" placeholder="请选择日期" style="width:120px;display:none;height:76%" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="weui-flex">
+                    <div class="weui-flex__item">
+                        <div class="weui-flex">
+                            <div class="flex4 column apply2_detail">
+                                维修厂电话：
+                            </div>
+                            <div class="flex8 column apply2_detail1" id="WXDWLXDH">
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="weui-flex__item">
+                        <div class="weui-flex">
+                            <div class="flex4 column apply2_detail">
+                                记账人：
+                            </div>
+                            <div class="flex8 column apply2_detail1" id="JZR">
+                                <input type="text" id='zjr' style="width:120px;height:76%;display:none" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="weui-flex" id="zgy" style="display:none">
+                    <div class="weui-flex__item">
+                        <div class="weui-flex">
+                            <div class="flex4 column apply2_detail" style="text-align:center">
+                                <input type="checkbox" name="zgy1"> 交专管员审核
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row clearfix">
+                <div class="col-md-12 column">
+                    <h3>
+                        审批信息
+                    </h3>
+                </div>
+            </div>
+            <div class="row clearfix">
+                <div class="col-md-12 column">
+                    <table class="table">
+                        <thead>
+                            <tr class="tr_b_b">
+                                <th>审批流程</th>
+                                <th>审批结果</th>
+                                <th>审批人 </th>
+                                <th>审批意见</th>
+                                <th>审批时间</th>
+                            </tr>
+                        </thead>
+                        <tbody id="auditer">
+                            <!-- <tr class="success">
+                                        <th>科所队审批</th>
+                                        <th>同意</th>
+                                        <th>审批人 </th>
+                                        <th>同意</th>
+                                        <th>审批时间</th>
+                                    </tr>
+                                    <tr class="error">
+                                        <th>科所队审批</th>
+                                        <th>同意</th>
+                                        <th>审批人 </th>
+                                        <th>同意</th>
+                                        <th>审批时间</th>
+                                    </tr> -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="row clearfix">
+                <div class="col-md-12 column">
+                    <h3>
+                        维修明细清单
+                    </h3>
+                </div>
+            </div>
+            <div class="row clearfix">
+                <div class="col-md-12 column">
+                    <table class="table">
+                        <thead>
+                            <tr class="tr_b_b">
+                                <th>类别</th>
+                                <th>项目（材料）编号</th>
+                                <th>项目名称 </th>
+                                <th>历史记录 </th>
+                                <th>数量</th>
+                                <th>单价</th>
+                                <th>金额</th>
+                            </tr>
+                        </thead>
+                        <tbody id="repair_info">
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="row clearfix" style="margin-bottom:20px;display:none" id="print_1button">
+            <div class="col-md-12 column" style="text-align:center">
+                <!-- <div class="btn-group"> -->
+                <button class="btn btn-default" type="button" id="print">
+                    打印
+                </button>
+                <button class="btn btn-default" type="button" id="goback">
+                    返回
+                </button>
+            </div>
+        </div>
+        <div class="row clearfix" style="margin-bottom:20px;display:none" id="other_button">
+            <div class="col-md-12 column" style="text-align:center">
+                <!-- <div class="btn-group"> -->
+                <span style="margin-right:40px;display:none" id="istakezgy">
+                    <label>
+                        <input name="istake" type="checkbox" style="position:relative;top:2px" />专管员
+                    </label>
+                </span>
+
+                <button class="btn btn-default" type="button" id="agree">
+                    同意
+                </button>
+                <button class="btn btn-default" type="button" id="reject">
+                    驳回
+                </button>
+            </div>
+        </div>
+        <div class="row clearfix" style="margin-bottom:20px;display:none" id="my_button">
+            <div class="col-md-12 column" style="text-align:center">
+                <!-- <div class="btn-group"> -->
+                <button class="btn btn-default" type="button" id="backout">
+                    撤销
+                </button>
+                <!-- <button class="btn btn-default" type="button" id="submitAndaudit">
+                    确认并提交审核
+                </button> -->
+            </div>
+        </div>
+        <div class="row clearfix" style="margin-bottom:20px;display:none" id="reimburse_button">
+            <div class="col-md-12 column" style="text-align:center">
+                <!-- <div class="btn-group"> -->
+                <button class="btn btn-default" type="button" id="reimburse">
+                    报销审批
+                </button>
+            </div>
+        </div>
+        <div class="row clearfix" style="margin-bottom:20px;display:none" id="delete_button">
+            <div class="col-md-12 column" style="text-align:center">
+                <!-- <div class="btn-group"> -->
+                <button class="btn btn-default" type="button" id="reimburse">
+                    删除
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="js_dialog" id="androidDialog1" style="opacity: 1; display: none;">
+        <div class="weui-mask"></div>
+        <div class="weui-dialog weui-skin_android">
+            <div class="weui-dialog__hd">
+                <strong class="weui-dialog__title">同意并选择下一级审核人</strong>
+            </div>
+            <div class="weui-dialog__bd" style="max-height: 250px; overflow-y: auto;" id="nextAuditer">
+               
+            <div class="weui-dialog__ft">
+                <a href="javascript:;" class="weui-dialog__btn weui-dialog__btn_primary " id="audit_commit">确定</a>
+                <a href="javascript:;" class="weui-dialog__btn weui-dialog__btn_default" id="audit_cancle">取消</a>
+            </div>
+        </div>
+    </div>
+    <script src="js/merge/js/zepto.min.js"></script>
+    <script src="js/merge/js/weui.js"></script>
+    <script src="js/jquery.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/merge/js/assets/paging.js"></script>
+    <script src="js/jquery-ui-1.10.0.custom.min.js"></script>
+    <script src='js/jquery.cookie.js'></script>
+    <script src='js/md5.js'></script>
+    <script src="js/system.js"></script>
+    <script src="js/wistorm/md5.js"></script>
+    <script src="js/wistorm/define.js"></script>
+    <script src="js/wistorm/wistorm.js"></script>
+    <script src="js/json.js"></script>
+    <script src="js/locales.js"></script>
+    <script src="js/merge/js/public.js"></script>
+    <script src="js/merge/js/pc/repair_detail.js"></script>
+    <script src="js/merge/js/config.js"></script>
+</body>
+
+</html>

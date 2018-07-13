@@ -1,0 +1,164 @@
+<div id="divCustomerFee" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" title="">
+    <form id="frmCustomerFee" class="form-horizontal">
+        <ul id="vehicleTab" class="nav nav-tabs">
+            <li class="active">
+                <a href="#__customerPanel" data-toggle="tab" value="1" data-i18n="vehicle.base_info">
+                    服务费
+                </a>
+            </li>
+            <li>
+                <a href="#__cardPanel" data-toggle="tab" value="5" data-i18n="vehicle.maintenance">
+                    <!-- <%= t('vehicle.maintenance') %> -->
+                    流量费
+                </a>
+            </li>
+            <% if(user.user_type == 1) { %>
+                <li>
+                    <a href="#__comboPanel" data-toggle="tab" value="6" data-i18n="">
+                        <!-- <%= t('vehicle.maintenance') %> -->
+                        服务套餐
+                    </a>
+                </li>
+            <%} %>
+        </ul>
+        <!-- <div class="modal-body form-horizontal">
+            <div class="control-group">
+                <label class="control-label" for="_current_month_fee" data-i18n="customer.fee_month">
+                    <%= t('customer.fee_month') %>
+                </label>
+
+                <div class="controls">
+                    <input id="_current_month_fee" name="_current_month_fee" type="text" placeholder="0.00" class="input-mini" data-i18n="[placeholder]customer.fee_month">元
+                    <span class="_parent-fee"><%= t('account.benchmarkMonthFee') %>：
+                        <span id="_parent_month_fee">0.00</span>元</span>
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="_current_year_fee" data-i18n="customer.fee_year">
+                    <%= t('customer.fee_year') %>
+                </label>
+
+                <div class="controls">
+                    <input id="_current_year_fee" name="_current_year_fee" type="text" placeholder="0.00" class="input-mini" data-i18n="[placeholder]customer.fee_year">元
+                    <span class="_parent-fee"><%= t('account.benchmarkYearFee') %>：
+                        <span id="_parent_year_fee">0.00</span>元</span>
+                </div>
+            </div>
+        </div> -->
+        <div class="tab-content">
+            <div class="tab-pane active row-fluid" id="__customerPanel">
+                <div class="control-group">
+                    <label class="control-label" for="_current_month_fee" data-i18n="customer.fee_month">
+                        <%= t('customer.fee_month') %>
+                    </label>
+
+                    <div class="controls">
+                        <input id="_current_month_fee" name="_current_month_fee" type="text" placeholder="0.00" class="input-mini" data-i18n="[placeholder]customer.fee_month">元
+                        <span class="_parent-fee">
+                            <%= t('account.benchmarkMonthFee') %>：
+                                <span id="_parent_month_fee">0.00</span>元</span>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label" for="_current_year_fee" data-i18n="customer.fee_year">
+                        <%= t('customer.fee_year') %>
+                    </label>
+
+                    <div class="controls">
+                        <input id="_current_year_fee" name="_current_year_fee" type="text" placeholder="0.00" class="input-mini" data-i18n="[placeholder]customer.fee_year">元
+                        <span class="_parent-fee">
+                            <%= t('account.benchmarkYearFee') %>：
+                                <span id="_parent_year_fee">0.00</span>元</span>
+                    </div>
+                </div>
+            </div>
+            <!-- 流量费 -->
+            <div class="tab-pane row-fluid" id="__cardPanel">
+                <div class="control-group">
+                    <label class="control-label" for="_2m_year_fee" data-i18n="customer.fee_year">
+                        <span style="margin-right: 5px;">2M</span>
+                        <%= t('customer.fee_year') %>
+                    </label>
+                    <div class="controls">
+                        <input id="_2m_year_fee" name="_2m_year_fee" type="text" placeholder="0.00" class="input-mini" data-i18n="[placeholder]customer.fee_month">元
+                        <span class="_parent-fee">
+                            <%= t('account.benchmarkYearFee') %>：
+                                <span id="_2mparent_year_fee">0.00</span>元</span>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label" for="_5m_year_fee" data-i18n="customer.fee_year">
+                        <span style="margin-right: 5px;">5M</span>
+                        <%= t('customer.fee_year') %>
+                    </label>
+
+                    <div class="controls">
+                        <input id="_5m_year_fee" name="_5m_year_fee" type="text" placeholder="0.00" class="input-mini" data-i18n="[placeholder]customer.fee_year">元
+                        <span class="_parent-fee">
+                            <%= t('account.benchmarkYearFee') %>：
+                                <span id="_5mparent_year_fee">0.00</span>元</span>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label" for="_30m_year_fee" data-i18n="customer.fee_month">
+                        <span style="margin-right: 5px;">30M</span>
+                        <%= t('customer.fee_year') %>
+                    </label>
+
+                    <div class="controls">
+                        <input id="_30m_year_fee" name="_30m_year_fee" type="text" placeholder="0.00" class="input-mini" data-i18n="[placeholder]customer.fee_month">元
+                        <span class="_parent-fee">
+                            <%= t('account.benchmarkYearFee') %>：
+                                <span id="_30mparent_year_fee">0.00</span>元</span>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label" for="_100m_year_fee" data-i18n="customer.fee_year">
+                        <span style="margin-right: 5px;">100M</span>
+                        <%= t('customer.fee_year') %>
+                    </label>
+
+                    <div class="controls">
+                        <input id="_100m_year_fee" name="_100m_year_fee" type="text" placeholder="0.00" class="input-mini" data-i18n="[placeholder]customer.fee_year">元
+                        <span class="_parent-fee">
+                            <%= t('account.benchmarkYearFee') %>：
+                                <span id="_100mparent_year_fee">0.00</span>元</span>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane row-fluid" id="__comboPanel">
+                <div class="control-group" style="padding-left: 40px">
+                    <select id="hasCard" style="width: 20%;">
+                        <option value="0">请选择</option>
+                        <option value="1">带卡</option>
+                        <option value="2">不带卡</option>
+                    </select>
+                    <select id="cardPackage" style="width: 20%;display: none">
+                        <option value="0">请选择</option>
+                        <option value="2">2M</option>
+                        <option value="10">10M</option>
+                        <option value="30">30M</option>
+                        <option value="100">100M</option>
+                    </select>
+                    <input id="price" type="text" placeholder="0.00" class="input-mini">
+                    <input id="giftTime" type="text" placeholder="时长" class="input-mini">
+                    <input id="limit" type="text" placeholder="最大购买量" class="input-mini">
+                    <i id="plus" class="icon-plus-sign" title="plus" style="font-size: 22px;color: #08c; position: relative;top: 5px;cursor: pointer;"></i>
+                </div>
+                <div id="combo" style="padding-left: 40px">
+                    <!-- <div class="control-group">
+                        <span>带卡30M服务套餐 </span>
+                        <span>10元</span>
+                        <i id="comboRemove" class=" icon-remove-sign" title="comboRemove" style="font-size: 16px;color: red; position: relative;top: 1px;cursor: pointer;"></i>
+                    </div>
+                    <div class="control-group">
+                        <span>不带卡终身服务套餐 </span>
+                        <span>5元</span>
+                        <i id="comboRemove" class=" icon-remove-sign" title="comboRemove" style="font-size: 16px;color: red; position: relative;top: 1px;cursor: pointer;"></i>
+                    </div> -->
+                </div>
+
+            </div>
+        </div>
+    </form>
+</div>

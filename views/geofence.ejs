@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>
+<html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>
+<html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>
+<html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js"> <!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    <title><%= opt.title %></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- Le styles -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <!--<link href="js/dataTable/css/jquery.dataTables.css" rel="stylesheet">-->
+    <link href="css/datatable.css" rel="stylesheet">
+    <link href="css/wisemap.css" rel="stylesheet">
+    <!--<link href="css/demo_table_jui.css" rel="stylesheet">-->
+    <link href="css/jquery.contextMenu.css" rel="stylesheet">
+    <link href="css/jquery-ui-1.10.0.custom.css" rel="stylesheet">
+    <link href="css/font-awesome.min.css" rel="stylesheet">
+    <link href="js/jqTree/jqtree.css" rel="stylesheet">
+    <link href="js/zTree/css/metroStyle/metroStyle.css" rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" href="http://api.map.baidu.com/library/DrawingManager/1.4/src/DrawingManager_min.css" />
+    <link href="css/amapCircle.css" rel="stylesheet">
+    <!--[if IE 7]>
+    <link href="css/font-awesome-ie7.min.css" rel="stylesheet">
+    <![endif]-->
+    <!--[if lt IE 9]>
+    <link href="/css/jquery.ui.1.10.0.ie.css" rel="stylesheet">
+    <![endif]-->
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/index.css" rel="stylesheet">
+    <link href="css/Icon/iconfont.css" rel="stylesheet">
+    <link href="css/branch.css" rel="stylesheet">
+    <link href="css/bootstrap-responsive.min.css" rel="stylesheet">
+    
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv.js"></script>
+    <![endif]-->
+
+    <!-- Fav and touch icons -->
+    <!--<link rel="apple-touch-icon-precomposed" sizes="144x144" href="../assets/ico/apple-touch-icon-144-precomposed.png">-->
+    <!--<link rel="apple-touch-icon-precomposed" sizes="114x114" href="../assets/ico/apple-touch-icon-114-precomposed.png">-->
+    <!--<link rel="apple-touch-icon-precomposed" sizes="72x72" href="../assets/ico/apple-touch-icon-72-precomposed.png">-->
+    <!--<link rel="apple-touch-icon-precomposed" href="../assets/ico/apple-touch-icon-57-precomposed.png">-->
+    <!--<link rel="shortcut icon" href="../assets/ico/favicon.png">-->
+    <style>
+        .accordion-inner {
+            padding: 0px;
+        }
+
+        .accordion {
+            margin-bottom: 0px;
+            background-color: #eee;
+        }
+
+        .sidebar-nav {
+            padding-bottom: 3000px;
+            margin-bottom: -3000px;
+            overflow: hidden;
+            background-color: #fff;
+            border-right: solid 1px #eee;
+        }
+
+        /*.nav {*/
+            /*background-color: #eee;*/
+            /*margin-bottom: 0px;*/
+        /*}*/
+        .vehicleNav {
+            background-color: #eee;
+            margin-bottom: 0px;
+            margin-left: 0px!important;
+        }
+
+        .accordion-group {
+            margin-bottom: 0px;
+        }
+
+        .accordion-body {
+            background-color: #fff;
+            max-height:120px;
+            overflow-x: hidden;
+            overflow-y: auto;
+        }
+
+        #vehicle-status.nav-tabs>li {
+            margin-bottom: 0px;
+            font-size: 12px;
+        }
+
+        #vehicle-status.nav-tabs {
+            border-bottom: 0px solid #ddd;
+        }
+
+        #vehicle-status>li>a {
+            color: #777;
+            padding-top: 5px;
+            padding-bottom: 5px;
+        }
+
+        #vehicle-status>li.active>a {
+            color: #333;
+        }
+
+        #vehicle_list {
+            /*margin: 0px;*/
+            /*margin-bottom: 10px;*/
+            /*font-size: 12px;*/
+        }
+
+        #vehicle_list.table-bordered {
+            border: 0px solid #ddd;
+            border-collapse: separate;
+            border-left: 0;
+            -webkit-border-radius: 0px;
+            -moz-border-radius: 0px;
+            border-radius: 0px;
+        }
+
+        #vehicle_list th {
+            border-left: 0px solid #ddd;
+            background-color: #f5f5f5;
+        }
+
+        #vehicle_list td {
+            border-left: 0px solid #ddd;
+        }
+
+        #vehicle_list tr._run {
+            color: #00a349;
+        }
+
+        #vehicle_list tr._alert {
+            color: #ee2a30;
+        }
+
+        #vehicle_list tr._offline {
+            color: #a0a0a0;
+        }
+
+        table.dataTable tbody td {
+            border-top: 0px;
+        }
+
+        .pagination {
+            margin-right: 5px!important;
+        }
+
+        .did {
+
+        }
+
+        #refreshText {
+            position: absolute;
+            top: 50px;
+            left: 28%;
+            background-color: rgba(255, 255, 255, 0.70);
+            padding: 5px;
+            font-size: 12px;
+            color: #333333;
+            display: none;
+        }
+
+        #refreshText .interval {
+            color: red;
+        }
+
+        #searchVehicle{
+            width: 45%;
+            border: 0px;
+            padding: 5px;
+            font-size: 12px;
+            -webkit-box-shadow: inset 0 0px 0px rgba(0, 0, 0, 0.1);
+            -moz-box-shadow: inset 0 0px 0px rgba(0, 0, 0, 0.1);
+            box-shadow: inset 0 0px 0px rgba(0, 0, 0, 0.1);
+        }
+
+        #searchGeofence, #searchPoi, #searchCheckPoint, #searchRoute {
+            width: 40%;
+            border: 0px;
+            padding: 7px;
+            font-size: 12px;
+            -webkit-box-shadow: inset 0 0px 0px rgba(0, 0, 0, 0.1);
+            -moz-box-shadow: inset 0 0px 0px rgba(0, 0, 0, 0.1);
+             box-shadow: inset 0 0px 0px rgba(0, 0, 0, 0.1);
+        }
+
+        .infowin-button {
+            padding-top: 5px;
+            font-size: 12px;
+        }
+
+        .infowin-button .btn {
+            font-size: 12px;
+            padding: 2px 7px 2px 7px;
+            margin-right: 5px;
+        }
+
+        .btn {
+            font-size: 12px;
+            padding: 2px 7px 2px 7px;
+            margin-right: 5px;
+        }
+
+        /*.dataTables_scrollBody {*/
+            /*height: 370px;*/
+            /*overflow-y: auto;*/
+        /*}*/
+
+        .BMapLib_Drawing_panel {
+            display: none;
+        }
+
+        /*.dataTables_scrollHeadInner {*/
+            /*width: 331px!important;*/
+        /*}*/
+
+        /*.dataTables_scroll .dataTables_scrollHead table {*/
+            /*width: 331px!important;*/
+        /*}*/
+
+        /*.table {*/
+            /*width: 100%!important;*/
+        /*}*/
+
+        #vehiclePanel {
+            display: none;
+        }
+
+        #accordion-icon {
+            padding: 14px 10px 10px 10px;
+            color: #08c;
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        #deviceListClose {
+            padding: 10px;
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        .dataTables_scrollHeadInner, .table {
+            width: 100%!important;
+        }
+
+        #city_list {
+            position: fixed;
+            left: 610px;
+            top: 52px;
+            background-color: #22222247;
+            padding: 7px;
+            border-radius: 3px;
+            color: white;
+            display: none;
+        }
+        #panorama {
+            float: left;
+            width: 35%;
+            position: relative;
+            z-index: 0;
+            height: 210px;
+            display: none;
+        }
+        .otherControl {
+            position: absolute;
+            top: 50px;
+            right: 164px;
+            /* display: none; */
+        }
+        #map_type {
+            margin: 0;
+            padding: 0;
+            width: 102px;
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- 头部 -->
+<% include html/header.html %>
+
+<div class="container-fluid container-fluid2">
+    <div id="alert" class="alert alert-block alert-error fade in">
+        <!--<button type="button" class="close" data-dismiss="alert">&times;</button>-->
+        <span id="err_msg"></span>
+    </div>
+    <div class="row-fluid">
+        <div class="span3">
+            <div class="sidebar-nav">
+                <ul id="geofenceType" class="nav nav-tabs vehicleNav">
+                    <li id="poi" class="active" type="1">
+                        <a href="#poiPanel" title="<%= t('geofence.poi') %>"><img src="img/flag.png"></a>
+                    </li>
+                    <li id="geofence" type="2|4">
+                        <a href="#geofenePanel" title="<%= t('geofence.geofence') %>"><img src="img/geofence.png"></a>
+                    </li>
+                    <li id="checkpoint" type="5">
+                        <a href="#checkPointPanel" title="<%= t('geofence.checkpoint') %>"><img src="img/checkpoint.png"></a>
+                    </li>
+                    <li id="route" type="3">
+                        <a href="#routePanel" title="<%= t('geofence.route') %>"><img src="img/route.png"></a>
+                    </li>
+                    <i id="accordion-icon" class="icon-th-list pull-right" title="<%= t('geofence.show_hide') %>" data-i18n="[title]geofence.show_hide"></i>
+                </ul>
+                <div class="tab-content">
+                    <div class="tab-pane active" id="poiPanel">
+                        <div>
+                            <input id="searchPoi" type="input" placeholder="<%= t('geofence.search_poi') %>" data-i18n="[placeholder]geofence.search_poi">
+                            <button type="button" class="btn" id="addPoi" data-i18n="geofence.add"><%= t('geofence.add') %></button>
+                            <button type="button" class="btn" id="editPoi" data-i18n="geofence.edit"><%= t('geofence.edit') %></button>
+                            <button type="button" class="btn" id="delPoi" data-i18n="geofence.delete"><%= t('geofence.delete') %></button>
+                        </div>
+                        <table class="table table-hover" cellpadding="0" cellspacing="0" border="0" id="poiList">
+                            <thead>
+                            <tr class="tops">
+                                <th width="20px" style="text-align: center !important;"><input id="checkAllPoi" type="checkbox" title='<%= t('geofence.check_all') %>' data-i18n="geofence.check_all"></th>
+                                <th style="width: 120px; text-align: center !important" data-i18n="geofence.name"><%= t('geofence.name') %></th>
+                                <!--<th style="width: 50px; text-align: center !important" data-i18n="geofence.type"><%= t('geofence.type') %></th>-->
+                                <th style="width: 90px; text-align: center !important" data-i18n="geofence.create_date"><%= t('geofence.create_date') %></th>
+                                <!--<th style="width: 40px; text-align: center !important" data-i18n="geofence.bind"><%= t('geofence.bind') %></th>-->
+                            </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="tab-pane" id="geofenePanel">
+                        <div>
+                            <input id="searchGeofence" type="input" placeholder="<%= t('geofence.search') %>" data-i18n="[placeholder]geofence.search">
+                            <button type="button" class="btn" id="addGeofence" data-i18n="geofence.add"><%= t('geofence.add') %></button>
+                            <button type="button" class="btn" id="editGeofence" data-i18n="geofence.edit"><%= t('geofence.edit') %></button>
+                            <button type="button" class="btn" id="delGeofence" data-i18n="geofence.delete"><%= t('geofence.delete') %></button>
+                        </div>
+                        <table class="table table-hover" cellpadding="0" cellspacing="0" border="0" id="geofenceList">
+                            <thead>
+                            <tr class="tops">
+                                <th width="20px" style="text-align: center !important;"><input id="checkAllGeofence" type="checkbox" title='<%= t('geofence.check_all') %>' data-i18n="geofence.check_all"></th>
+                                <th style="text-align: center !important" data-i18n="geofence.name"><%= t('geofence.name') %></th>
+                                <th style="width: 45px; text-align: center !important" data-i18n="geofence.type"><%= t('geofence.type') %></th>
+                                <th style="width: 90px; text-align: center !important" data-i18n="geofence.create_date"><%= t('geofence.create_date') %></th>
+                                <th style="width: 35px; text-align: center !important" data-i18n="geofence.bind"><%= t('geofence.bind') %></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="tab-pane" id="checkPointPanel">
+                        <div>
+                            <input id="searchCheckPoint" type="input" placeholder="<%= t('geofence.search_checkpoint') %>" data-i18n="[placeholder]geofence.search_checkpoint">
+                            <button type="button" class="btn" id="addCheckPoint" data-i18n="geofence.add"><%= t('geofence.add') %></button>
+                            <button type="button" class="btn" id="editCheckPoint" data-i18n="geofence.edit"><%= t('geofence.edit') %></button>
+                            <button type="button" class="btn" id="delCheckPoint" data-i18n="geofence.delete"><%= t('geofence.delete') %></button>
+                        </div>
+                        <table class="table table-hover" cellpadding="0" cellspacing="0" border="0" id="checkPointList">
+                            <thead>
+                            <tr class="tops">
+                                <th width="20px" style="text-align: center !important;"><input id="checkAllCheckPoint" type="checkbox" title='<%= t('geofence.check_all') %>' data-i18n="geofence.check_all"></th>
+                                <th style="width: 120px; text-align: center !important" data-i18n="geofence.name"><%= t('geofence.name') %></th>
+                                <!--<th style="width: 50px; text-align: center !important" data-i18n="geofence.type"><%= t('geofence.type') %></th>-->
+                                <th style="width: 90px; text-align: center !important" data-i18n="geofence.create_date"><%= t('geofence.create_date') %></th>
+                                <th style="width: 40px; text-align: center !important" data-i18n="geofence.bind"><%= t('geofence.bind') %></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="tab-pane" id="routePanel">
+                        <div>
+                            <input id="searchRoute" type="input" placeholder="<%= t('geofence.search_route') %>" data-i18n="[placeholder]geofence.search_route">
+                            <button type="button" class="btn" id="addRoute" data-i18n="geofence.add"><%= t('geofence.add') %></button>
+                            <button type="button" class="btn" id="editRoute" data-i18n="geofence.edit"><%= t('geofence.edit') %></button>
+                            <button type="button" class="btn" id="delRoute" data-i18n="geofence.delete"><%= t('geofence.delete') %></button>
+                        </div>
+                        <table class="table table-hover" width="100%" cellpadding="0" cellspacing="0" border="0" id="routeList">
+                            <thead>
+                            <tr class="tops">
+                                <th width="20px" style="text-align: center !important;"><input id="checkAllRoute" type="checkbox" title='<%= t('geofence.check_all') %>' data-i18n="geofence.check_all"></th>
+                                <th style="width: 120px; text-align: center !important" data-i18n="geofence.name"><%= t('geofence.name') %></th>
+                                <!--<th style="width: 50px; text-align: center !important" data-i18n="geofence.type"><%= t('geofence.type') %></th>-->
+                                <th style="width: 90px; text-align: center !important" data-i18n="geofence.create_date"><%= t('geofence.create_date') %></th>
+                                <th style="width: 40px; text-align: center !important" data-i18n="geofence.bind"><%= t('geofence.bind') %></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <!--/.well -->
+        </div>
+        <div class="span3 vehicleNav" id="vehiclePanel">
+            <div class="sidebar-nav">
+                <div style="line-height: 34px">
+                    <input id="searchVehicle" type="input" placeholder="<%= t('vehicle.search') %>" data-i18n="[placeholder]vehicle.search">
+                    <input type="checkbox" id="binded" style="vertical-align: middle; padding: 0px 2px"><span style="vertical-align: middle; padding: 0px 5px" data-i18n="geofence.binded"><%= t('geofence.binded') %></span>
+                    <button type="button" class="btn" id="assignDevices" data-i18n="geofence.save_bind"><%= t('geofence.save_bind') %></button>
+                    <!--<i id="deviceListClose" class="icon-remove pull-right" title="关闭终端列表"></i>-->
+                </div>
+                <table class="table table-hover" width="100%" cellpadding="0" cellspacing="0" border="0"
+                       id="vehicleList">
+                    <thead>
+                    <tr class="tops">
+                        <th style="width:20px; text-align: center !important;"><input id="checkAll2" type="checkbox" title='<%= t('geofence.check_all') %>' data-i18n="geofence.check_all"></th>
+                        <th style="text-align: center !important" data-i18n="geofence.name"><%= t('geofence.name') %></th>
+                        <th style="width:60px; text-align: center !important" data-i18n="geofence.type"><%= t('geofence.type') %></th>
+                        <th style="width:40px; text-align: center !important" data-i18n="geofence.bind"><%= t('geofence.bind') %></th>
+                        <th style="width:40px; text-align: center !important" data-i18n="geofence.delete"><%= t('geofence.delete') %></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!--/span-->
+        <div id="panorama" class="panorama"></div>
+        <div id="map_canvas">
+        </div>
+        <div id="city_list">
+        </div>
+        <!-- <div class="AMapLib_Drawing_panel" style="display: block;">
+            <a class="AMapLib_box AMapLib_hander" drawingtype="hander" href="javascript:void(0)" title="拖动地图" onfocus="this.blur()"></a>
+            <a class="AMapLib_box AMapLib_circle" drawingtype="circle" href="javascript:void(0)" title="画圆" onfocus="this.blur()"></a>
+            <a class="AMapLib_box AMapLib_polygon AMapLib_last" drawingtype="polygon" href="javascript:void(0)" title="画多边形" onfocus="this.blur()"></a>
+        </div> -->
+        <div class="otherControl">
+            <!-- <input id="lose_addr" class="input-medium" type="text" style="margin-bottom:0px;font-size:12px" data-provide="typeahead" data-items="5" autocomplete="off" data-source=""
+                placeholder="搜地点" data-i18n="[placeholder]customer.search">
+            
+            
+            <button class="btn" type="button" id="nodeSearch" >节点查询</button>
+            <button class="btn" type="button" id="distanceTool" >测距</button> -->
+            <select id="map_type">
+                <option value="1"><%= t('map.baidu_map')%></option>
+                <option value="2"><%= t('map.google_map')%></option>
+                <option value="3"><%= t('map.gaode_map')%></option>
+            </select>
+        </div>
+        <!--/span-->
+    </div>
+    <!--/row-->
+
+
+    <!-- 新增或者修改账户 -->
+    <% include dialog/frmAccount.html %>
+
+    <!-- 围栏管理 -->
+    <% include dialog/frmGeofence.html %>
+
+    <!-- 围栏关联 -->
+    <% include dialog/frmGeofenceAssign.html %>
+
+</div>
+<!--/.fluid-container-->
+<!-- 版本信息 -->
+<% include html/footer.html %>
+
+<!-- Le javascript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<!--<script src="js/jquery.js"></script>-->
+<script src="js/dataTable/js/jquery.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/jquery-ui-1.10.0.custom.min.js"></script>
+<script src='js/jquery.cookie.js'></script>
+<script src="js/dataTable/js/jquery.dataTables.js"></script>
+<!--<script src="js/dataTable/js/dataTables.bootstrap.js"></script>-->
+<script src="js/jquery.contextmenu.r2.js"></script>
+<script src="js/jquery.placeholder.1.3.min.js"></script>
+<script src="js/jquery.validate.min.js"></script>
+<script src="js/bootstrap.dataTable.js"></script>
+<!--<script src="js/jqTree/tree.jquery.js"></script>-->
+<script type="text/javascript" src="js/zTree/js/jquery.ztree.core-3.4.js"></script>
+<script type="text/javascript" src="js/zTree/js/jquery.ztree.excheck-3.4.min.js"></script>
+<script src="js/json.js"></script>
+<script src="js/locales.js"></script>
+<script src='js/md5.js'></script>
+<script src="js/system.js"></script>
+<script src="js/wistorm/md5.js"></script>
+<script src="js/wistorm/define.js"></script>
+<script src="js/wistorm/wistorm.js"></script>
+<!--<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=B40b712d90ffc5e40854d259b2e627cd"></script>-->
+<!--<script type="text/javascript" src="http://api.map.baidu.com/library/DrawingManager/1.4/src/DrawingManager_min.js"></script>-->
+<script src="js/MapJs/global.js"></script>
+<script src="js/MapJs/define.js"></script>
+<script src="js/MapJs/convertor.js"></script>
+<!--<script src='js/MapJs/bmap.js'></script>-->
+<script src="js/MapJs/wisemap.js"></script>
+<script src="js/geofence.js"></script>
+<script src="js/account.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,33 @@
+<div id="divGeofenceAssign" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" title="">
+    <form id="frmGeofenceAssign" class="form-horizontal">
+        <div class="modal-body form-horizontal">
+            <div class="control-group">
+                <!-- Text input-->
+                <label class="control-label" for="overlayName" data-i18n="geofence.select_geofence" id="lblSelect"><%= t('geofence.select_geofence') %></label>
+
+                <div class="controls">
+                    <input id="overlayName" name="overlayName" type="text" placeholder="" class="input-xlarge" readonly>
+                </div>
+            </div>
+            <div class="control-group">
+                <!-- Text input-->
+                <label class="control-label" for="assginDevices" data-i18n="geofence.assign_geofence"><%= t('geofence.assign_geofence') %></label>
+                <div class="controls">
+                    <textarea rows="5" cols="20" class="input-xlarge" id="assginDevices" name="assginDevices" readonly></textarea>
+                    <p id="countAssign"></p>
+                </div>
+            </div>
+            <div class="control-group">
+                <!-- Text input-->
+                <label class="control-label" for="actionType" data-i18n="geofence.alert_type"><%= t('geofence.alert_type') %></label>
+                <div class="controls">
+                    <select id="actionType" class="input-xlarge">
+                        <option value="0" data-i18n="geofence.in_out"><%= t('geofence.in_out') %></option>
+                        <option value="1" data-i18n="geofence.in"><%= t('geofence.in') %></option>
+                        <option value="2" data-i18n="geofence.out"><%= t('geofence.out') %></option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,133 @@
+<div id="divEmployee" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" title="">
+    <form id="frmEmployee" class="form-horizontal">
+        <div class="modal-body form-horizontal">
+            <div class="control-group">
+                <!-- Text input-->
+                <label class="control-label" for="username" data-i18n="employee.login_username"><%= t('employee.login_username') %></label>
+
+                <div class="controls">
+                    <input id="username" name="username" type="text" placeholder="<%= t('employee.login_username') %>"
+                           class="input-xlarge" data-i18n="[placeholder]employee.login_username">
+                </div>
+            </div>
+            <div class="control-group" id="password_bar">
+                <!-- Text input-->
+                <label class="control-label" for="password" data-i18n="employee.login_passsword"><%= t('employee.login_passsword') %></label>
+
+                <div class="controls">
+                    <input id="password" name="password" type="password" placeholder="<%= t('employee.login_passsword') %>"
+                           class="input-xlarge" data-i18n="[placeholder]employee.login_passsword">&nbsp;&nbsp;<button type="button" class="btn" id="resetPassword" data-i18n="employee.reset"><%= t('employee.reset') %></button>
+                </div>
+            </div>
+            <div class="control-group" id="password_bar2">
+                <!-- Text input-->
+                <label class="control-label" for="password2" data-i18n="employee.password_again"><%= t('employee.password_again') %></label>
+
+                <div class="controls">
+                    <input id="password2" name="password2" type="password" placeholder="<%= t('employee.password_again') %>"
+                           class="input-xlarge" data-i18n="[placeholder]employee.password_again">
+                </div>
+            </div>
+            <div class="control-group">
+                <!-- Text input-->
+                <label class="control-label" for="employee_name" data-i18n="employee.name"><%= t('employee.name') %></label>
+
+                <div class="controls">
+                    <input id="employee_name" name="employee_name" type="text" placeholder="<%= t('employee.name') %>" class="input-xlarge" data-i18n="[placeholder]employee.name">
+                </div>
+            </div>
+            <div class="control-group">
+                <!-- Text input-->
+                <label class="control-label" for="sex" data-i18n="employee.sex"><%= t('employee.sex') %></label>
+
+                <div class="controls">
+                    <select id="sex" name="sex" class="input-xlarge">
+                        <option value="1">男</option>
+                        <option value="2">女</option>
+                    </select>
+                </div>
+            </div>
+            <div class="control-group">
+                <!-- Search input-->
+                <label class="control-label" for="tel" data-i18n="employee.tel"><%= t('employee.tel') %></label>
+
+                <div class="controls">
+                    <input id="tel" name="tel" type="text" placeholder="<%= t('employee.tel') %>"
+                           class="input-xlarge" data-i18n="[placeholder]employee.tel">
+                </div>
+            </div>
+            <div class="control-group">
+                <!-- Search input-->
+                <label class="control-label" for="email" data-i18n="employee.email"><%= t('employee.email') %></label>
+
+                <div class="controls">
+                    <input id="email" name="email" type="text" placeholder="<%= t('employee.email') %>"
+                           class="input-xlarge" data-i18n="[placeholder]employee.email">
+                </div>
+            </div>
+            <div class="control-group">
+                <!-- Search input-->
+                <label class="control-label" for="cardno" data-i18n="employee.cardno"><%= t('employee.cardno') %></label>
+
+                <div class="controls">
+                    <input id="cardno" name="cardno" type="text" placeholder="<%= t('employee.cardno') %>"
+                           class="input-xlarge" data-i18n="[placeholder]employee.cardno">
+                </div>
+            </div>
+            <div class="control-group">
+                <!-- Select Basic -->
+                <label class="control-label" for="identity" data-i18n="employee.identity"><%= t('employee.identity') %></label>
+
+                <div class="controls">
+                    <select id="identity" class="input-xlarge">
+                        <option value="9" data-i18n="employee.staff_member"><%= t('employee.staff_member') %></option>
+                        <option value="12" data-i18n="employee.depart_leader"><%= t('employee.depart_leader') %></option>
+                        <option value="13" data-i18n="employee.company_leader"><%= t('employee.company_leader') %></option>
+                    </select>
+                </div>
+            </div>
+            <div class="control-group">
+                <!-- Select Basic -->
+                <label class="control-label" for="roleId" data-i18n="employee.role"><%= t('employee.role') %></label>
+
+                <div class="controls">
+                    <select id="roleId" name="roleId" class="input-xlarge">
+                    </select>
+                    <button type="button" class="btn" id="addRole" data-i18n="employee.add_role"><%= t('employee.add_role') %></button>
+                </div>
+            </div>
+            <div class="control-group">
+                <!-- Text input-->
+                <label class="control-label"><%= t('employee.responsibility') %></label>
+
+                <div class="controls" style="padding-top: 5px">
+                    <input id="use_vehicle" name="use_vehicle" type="checkbox" class="input-xlarge" style="margin: 0px">
+                    <span data-i18n="employee.use_vehicle"><%= t('employee.use_vehicle') %></span>
+                    <input id="manage_vehicle" name="manage_vehicle" type="checkbox" class="input-xlarge" style="margin: 0px; margin-left: 10px">
+                    <span data-i18n="employee.manage_vehicle"><%= t('employee.manage_vehicle') %></span>
+                    <input id="dispatch_vehicle" name="dispatch_vehicle" type="checkbox" class="input-xlarge" style="margin: 0px; margin-left: 10px">
+                    <span data-i18n="employee.dispatch_vehicle"><%= t('employee.dispatch_vehicle') %></span>
+                </div>
+            </div>
+            <div class="control-group">
+                <!-- Text input-->
+                <label class="control-label"></label>
+
+                <div class="controls">
+                    <input id="is_driver" name="is_driver" type="checkbox" class="input-xlarge" style="margin: 0px">
+                    <span data-i18n="employee.is_driver"><%= t('employee.is_driver') %></span>
+                    <input id="is_in_charge" name="is_in_charge" type="checkbox" class="input-xlarge" style="margin: 0px; margin-left: 10px">
+                    <span data-i18n="employee.is_in_charge"><%= t('employee.is_in_charge') %></span>
+                </div>
+            </div>
+            <div class="control-group" id="create_time_bar">
+                <!-- Search input-->
+                <label class="control-label" for="create_time" data-i18n="customer.create_date"><%= t('employee.create_date') %></label>
+
+                <div class="controls">
+                    <input id="create_time" name="create_time" type="text" class="input-xlarge" disabled>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

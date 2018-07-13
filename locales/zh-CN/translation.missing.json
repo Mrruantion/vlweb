@@ -1,0 +1,20 @@
+{
+  "acount": {
+    "base_info": "acount.base_info"
+  },
+  "customer": {
+    "fee_month": "customer.fee_month",
+    "fee_year": "customer.fee_year"
+  },
+  "report": {
+    "tag_report": "report.tag_report",
+    "gps_report": "report.gps_report"
+  },
+  "map": {
+    "filter_point": "map.filter_point"
+  },
+  "vehicle": {
+    "fuel_tank": "vehicle.fuel_tank",
+    "device_info": "vehicle.device_info"
+  }
+}

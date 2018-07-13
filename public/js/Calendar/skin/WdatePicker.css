@@ -1,0 +1,38 @@
+.Wdate{
+	background:#fff url(datePicker.gif) no-repeat right;
+	border: 1px solid #BBBBBB;
+    height: 20px;
+    line-height: 20px;
+    text-indent: 5px;
+    width: 208px;	
+}
+
+.WdateFmtErr{
+	font-weight:bold;
+	color:red;
+}
+.Wdate1{
+	background:#fff url(datePicker.gif) no-repeat right;
+    border: 1px solid #BBBBBB;
+    height: 20px;
+    line-height: 20px;
+    text-indent: 5px;
+    width: 158px;
+}
+
+.RCWdate{
+	background:#fff url(datePicker.gif) no-repeat right;
+    border: 1px solid #BBB;
+    height: 22px;
+    line-height: 24px;
+    text-indent: 5px;
+    width: 218px;
+    color: #4D4C4C;
+}
+
+
+
+
+
+
+

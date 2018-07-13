@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>用车详情</title>
+    <script src="js/merge/js/assets/jquery-3.2.1.min.js"></script>
+    <script src="js/merge/js/assets/bootstrap/js/bootstrap.js"></script>
+    <link rel="stylesheet" href="js/merge/js/assets/bootstrap/css/bootstrap.css" />
+    <link rel="stylesheet" href="js/merge/css/main.css" />
+    <link rel="stylesheet" href="js/merge/css/weui.css" />
+    <link rel="stylesheet" href="js/merge/css/example.css" />
+    <link rel="stylesheet" type="text/css" href="js/merge/stylesheets/my_icon/iconfont.css">
+</head>
+<style media="print">
+    @page {
+        size: auto;
+        /* auto is the initial value */
+        margin: 5mm;
+        /* this affects the margin in the printer settings */
+    }
+</style>
+
+<body>
+    <div class="container container_1" style="overflow-y:auto;padding:0 10px">
+        <div id="dvData">
+            <div class="row clearfix">
+                <div class="col-md-12 column">
+                    <h3>
+                        用车信息
+                    </h3>
+                </div>
+            </div>
+            <div style="border:1px solid #ccc">
+                <div class="weui-flex">
+                    <div class="weui-flex__item">
+                        <div class="weui-flex">
+                            <div class="flex4 column apply2_detail">
+                                目标：
+                            </div>
+                            <div class="flex8 column apply2_detail1" id="cl">
+                                <select class="selectpicker" id="select_car" style="display:none">
+                                    <!-- <option>Mustard</option>
+                                            <option>Ketchup</option>
+                                            <option>Relish</option> -->
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="weui-flex__item">
+                        <div class="weui-flex">
+                            <div class="flex4 column apply2_detail">
+                                驾驶员：
+                            </div>
+                            <div class="flex8 column apply2_detail1" id="jsy">
+                                <select class="selectpicker" id="select_driver" style="display:none">
+                                    <!-- <option>Mustard</option>
+                                            <option>Ketchup</option>
+                                            <option>Relish</option> -->
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="weui-flex">
+                    <div class="weui-flex__item">
+                        <div class="weui-flex">
+                            <div class="flex4 column apply2_detail">
+                                当前流程：
+                            </div>
+                            <div class="flex8 column apply2_detail1" id="dqlc">
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="weui-flex__item">
+                        <div class="weui-flex">
+                            <!-- <div class="flex4 column apply2_detail">
+                                同行：
+                            </div>
+                            <div class="flex8 column apply2_detail1" id="peer">
+
+                            </div> -->
+                        </div>
+                    </div>
+                </div>
+                <div class="weui-flex">
+                    <div class="weui-flex__item">
+                        <div class="weui-flex">
+                            <div class="flex4 column apply2_detail">
+                                事由：
+                            </div>
+                            <div class="flex8 column apply2_detail1" id="days">
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="weui-flex__item">
+                        <div class="weui-flex">
+                            <div class="flex4 column apply2_detail">
+                                同行：
+                            </div>
+                            <div class="flex8 column apply2_detail1" id="peer">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="weui-flex">
+                    <div class="weui-flex__item">
+                        <div class="weui-flex">
+                            <div class="flex4 column apply2_detail">
+                                申请人：
+                            </div>
+                            <div class="flex8 column apply2_detail1" id="sqr">
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="weui-flex__item">
+                        <div class="weui-flex">
+                            <div class="flex4 column apply2_detail">
+                                申请部门：
+                            </div>
+                            <div class="flex8 column apply2_detail1" id="sqbm">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="weui-flex">
+                    <div class="weui-flex__item">
+                        <div class="weui-flex">
+                            <div class="flex4 column apply2_detail">
+                                申请时间：
+                            </div>
+                            <div class="flex8 column apply2_detail1" id="sqsj">
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="weui-flex__item">
+                        <div class="weui-flex">
+                            <div class="flex4 column apply2_detail">
+                                过夜：
+                            </div>
+                            <div class="flex8 column apply2_detail1" id="night">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="weui-flex">
+                    <div class="weui-flex__item">
+                        <div class="weui-flex">
+                            <div class="flex4 column apply2_detail">
+                                地址：
+                            </div>
+                            <div class="flex8 column apply2_detail1" id="dz">
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="weui-flex__item">
+                        <div class="weui-flex">
+                            <div class="flex4 column apply2_detail">
+                                详细地址：
+                            </div>
+                            <div class="flex8 column apply2_detail1" id="address">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row clearfix">
+                <div class="col-md-12 column">
+                    <h3>
+                        审批信息
+                    </h3>
+                </div>
+            </div>
+            <div class="row clearfix">
+                <div class="col-md-12 column">
+                    <table class="table">
+                        <thead>
+                            <tr class="tr_b_b">
+                                <th>审批流程</th>
+                                <th>审批结果</th>
+                                <th>审批人 </th>
+                                <th>审批意见</th>
+                                <th>审批时间</th>
+                            </tr>
+                        </thead>
+                        <tbody id="auditer">
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+
+        <div class="row clearfix" style="margin-bottom:20px;display:none" id="print_button">
+            <div class="col-md-12 column" style="text-align:center">
+                <button class="btn btn-default" type="button" id="print">
+                    打印
+                </button>
+                <button class="btn btn-default" type="button" id="goback">
+                    返回
+                </button>
+            </div>
+        </div>
+
+        <div class="row clearfix" style="margin-bottom:20px;display:none" id="other_button">
+            <div class="col-md-12 column" style="text-align:center">
+                <button class="btn btn-default" type="button" id="agree">
+                    同意
+                </button>
+                <button class="btn btn-default" type="button" id="reject">
+                    驳回
+                </button>
+            </div>
+        </div>
+        <div class="row clearfix" style="margin-bottom:20px;display:none" id="my_button">
+            <div class="col-md-12 column" style="text-align:center">
+                <button class="btn btn-default" type="button" id="urge">
+                    催办
+                </button>
+                <button class="btn btn-default" type="button" id="backout">
+                    撤销
+                </button>
+            </div>
+        </div>
+
+      
+        <div class="row clearfix" style="margin-bottom:20px;display:none" id="call_vechicle_back">
+            <div class="col-md-12 column" style="text-align:center">
+                <button class="btn btn-default" type="button" id="carlist_back1">
+                    通知车队还车
+                </button>
+            </div>
+        </div>
+
+        
+        <div class="row clearfix" style="margin-bottom:20px;display:none" id="other_vehicle_send">
+            <div class="col-md-12 column" style="text-align:center">
+                
+                <button class="btn btn-default" type="button" id="pcar_dd">
+                    派车
+                </button>
+            </div>
+        </div>
+        <!-- 我还车 -->
+        <div class="row clearfix" style="margin-bottom:20px;display:none" id="my_back_car">
+            <div class="col-md-12 column" style="text-align:center">
+                <button class="btn btn-default" type="button" id="back_car1">
+                    归还目标
+                </button>
+            </div>
+        </div>
+
+        <!-- 车队还车 -->
+        <div class="row clearfix" style="margin-bottom:20px;display:none" id="vehicle_back">
+            <div class="col-md-12 column" style="text-align:center">
+                <button class="btn btn-default" type="button" id="back_carlist1">
+                    归还目标
+                </button>
+            </div>
+        </div>
+
+        <div class="row clearfix" style="margin-bottom:20px;display:none" id="delete_button">
+            <div class="col-md-12 column" style="text-align:center">
+                <button class="btn btn-default" type="button" id="">
+                    删除
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="js_dialog" id="androidDialog1" style="opacity: 1; display: none;">
+        <div class="weui-mask"></div>
+        <div class="weui-dialog weui-skin_android">
+            <div class="weui-dialog__hd">
+                <strong class="weui-dialog__title">同意并选择下一级审核人</strong>
+            </div>
+            <div class="weui-dialog__bd" style="max-height: 250px; overflow-y: auto;" id="nextAuditer">
+                <label>
+                    <div class="weui-cell weui-cell_access" id="` + str + `">
+                        <input type="radio" style="margin-right:5px" name='auditer' checked/>
+                        <div class="weui-cell__hd" style="position: relative;margin-right: 10px;">
+                            <img src="js/merge/img/1.png" style="width: 50px;display: block">
+                        </div>
+                        <div class="weui-cell__bd">
+                            <p>xxx</p>
+                            <p style="font-size: 13px;color: #888888;">公司领导</p>
+                        </div>
+                    </div>
+                </label>
+            </div>
+            <div class="weui-dialog__ft">
+                <a href="javascript:;" class="weui-dialog__btn weui-dialog__btn_primary " id="audit_commit">确定</a>
+                <a href="javascript:;" class="weui-dialog__btn weui-dialog__btn_default" id="audit_cancle">取消</a>
+            </div>
+        </div>
+    </div>
+    <script src="js/merge/js/zepto.min.js"></script>
+    <script type="text/javascript" src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+    <script src="js/merge/js/weui.js"></script>
+    <script src="js/jquery.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/merge/js/assets/paging.js"></script>
+    <script src="js/jquery-ui-1.10.0.custom.min.js"></script>
+    <script src='js/jquery.cookie.js'></script>
+    <script src='js/md5.js'></script>
+    <script src="js/system.js"></script>
+    <script src="js/wistorm/md5.js"></script>
+    <script src="js/wistorm/define.js"></script>
+    <script src="js/wistorm/wistorm.js"></script>
+    <script src="js/json.js"></script>
+    <script src="js/locales.js"></script>
+    <script src="js/merge/js/public.js"></script>
+    <script src="js/merge/js/pc/car_detail.js"></script>
+    <script src="js/merge/js/config.js"></script>
+</body>
+
+</html>

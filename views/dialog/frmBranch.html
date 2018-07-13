@@ -1,0 +1,63 @@
+<div id="divBranch" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" title="新增网点">
+    <form id="frmBranch" class="form-horizontal">
+        <div class="modal-body form-horizontal">
+            <div class="control-group">
+                <!-- Text input-->
+                <label class="control-label" for="name">网点名称</label>
+                <div class="controls">
+                    <input type="text" placeholder="比如：电动车销售部" class="input-xlarge" id="name" name="name">
+                </div>
+            </div>
+            <div class="control-group">
+                <!-- Text input-->
+                <label class="control-label" for="contact">联系人</label>
+
+                <div class="controls">
+                    <input type="text" placeholder="比如：张三" class="input-xlarge" id="contact" name="contact">
+                </div>
+            </div>
+            <div class="control-group">
+                <!-- Search input-->
+                <label class="control-label" for="tel">固定电话</label>
+
+                <div class="controls">
+                    <input type="text" placeholder="请输入固定电话" class="input-xlarge" id="tel" name="tel">
+                </div>
+            </div>
+            <div class="control-group">
+                <!-- Text input-->
+                <label class="control-label" for="city">城市</label>
+
+                <div class="controls">
+                    <input type="text" placeholder="请输入城市" class="input-xlarge" id="city" name="city">
+                </div>
+            </div>
+            <div class="control-group">
+                <!-- Text input-->
+                <label class="control-label" for="address">地址</label>
+
+                <div class="controls">
+                    <textarea placeholder="请选择或输入详细地址" class="input-xlarge" id="address" name="address"></textarea>
+                    <a id="setLocation" href='#' title='点击在地图中选择位置'><i class='icon-map-marker'></i></a><br>
+                    经纬度：<span id="lonAndLat"></span>
+                </div>
+            </div>
+            <div class="control-group">
+                <!-- Search input-->
+                <label class="control-label" for="mobile">手机</label>
+
+                <div class="controls">
+                    <input type="text" placeholder="请输入手机" class="input-xlarge" id="mobile" name="mobile">
+                </div>
+            </div>
+            <div class="control-group" id="pnlDate" style="display:none">
+                <!-- Text input-->
+                <label class="control-label" for="createdAt">创建日期</label>
+
+                <div class="controls">
+                    <input type="text" placeholder="" class="input-xlarge" id="createdAt" name="createdAt">
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

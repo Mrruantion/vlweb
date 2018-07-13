@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>
+<html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>
+<html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>
+<html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js"> <!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    <title><%= opt.title %></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- Le styles -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <!--<link href="js/dataTable/css/jquery.dataTables.css" rel="stylesheet">-->
+    <link href="css/datatable.css" rel="stylesheet">
+    <!--<link href="css/demo_table_jui.css" rel="stylesheet">-->
+    <link href="css/wisemap.css" rel="stylesheet">
+    <!--<link href="css/demo_table_jui.css" rel="stylesheet">-->
+    <link href="css/jquery.contextMenu.css" rel="stylesheet">
+    <link href="css/jquery-ui-1.10.0.custom.css" rel="stylesheet">
+    <link href="css/font-awesome.min.css" rel="stylesheet">
+    <link href="js/jqTree/jqtree.css" rel="stylesheet">
+    <link href="js/zTree/css/metroStyle/metroStyle.css" rel="stylesheet" type="text/css"/>
+    <!--[if IE 7]>
+    <link href="css/font-awesome-ie7.min.css" rel="stylesheet">
+    <![endif]-->
+    <!--[if lt IE 9]>
+    <link href="/css/jquery.ui.1.10.0.ie.css" rel="stylesheet">
+    <![endif]-->
+    <link href="js/dateTimePicker/bootstrap-datetimepicker.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/index.css" rel="stylesheet">
+    <link href="css/Icon/iconfont.css" rel="stylesheet">
+    <link href="css/main.css" rel="stylesheet">
+    <link href="css/viewer.min.css" rel="stylesheet">
+    <link href="css/bootstrap-responsive.min.css" rel="stylesheet">
+    <link href="css/customerSelector.css" rel="stylesheet">
+    <link href="http://api.map.baidu.com/library/TrafficControl/1.4/src/TrafficControl_min.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="http://api.map.baidu.com/library/SearchInfoWindow/1.5/src/SearchInfoWindow_min.css" />
+
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv.js"></script>
+    <![endif]-->
+
+    <!-- Fav and touch icons -->
+    <!--<link rel="apple-touch-icon-precomposed" sizes="144x144" href="../assets/ico/apple-touch-icon-144-precomposed.png">-->
+    <!--<link rel="apple-touch-icon-precomposed" sizes="114x114" href="../assets/ico/apple-touch-icon-114-precomposed.png">-->
+    <!--<link rel="apple-touch-icon-precomposed" sizes="72x72" href="../assets/ico/apple-touch-icon-72-precomposed.png">-->
+    <!--<link rel="apple-touch-icon-precomposed" href="../assets/ico/apple-touch-icon-57-precomposed.png">-->
+    <!--<link rel="shortcut icon" href="../assets/ico/favicon.png">-->
+    <style>
+        .accordion-inner {
+            padding: 0px;
+        }
+
+        .accordion {
+            margin-bottom: 0px;
+            background-color: #eee;
+        }
+
+        .sidebar-nav {
+            padding-bottom: 3000px;
+            margin-bottom: -3000px;
+            overflow: hidden;
+            background-color: #fff;
+            border-right: solid 1px #eee;
+        }
+
+        /*.nav {*/
+            /*background-color: #eee;*/
+            /*margin-bottom: 0px;*/
+        /*}*/
+        .vehicleNav {
+            background-color: #eee;
+            margin-bottom: 0px;
+        }
+
+        .accordion-group {
+            margin-bottom: 0px;
+        }
+
+        .accordion-body {
+            background-color: #fff;
+            max-height: 150px;
+            overflow-x: hidden;
+            overflow-y: auto;
+            /*border-top: 1px solid #e5e5e5;*/
+        }
+
+        .collapse.in {
+            height: 150px!important;
+        }
+
+        /*.accordion-inner {*/
+            /*!*padding: 9px 15px;*!*/
+             /*border-top: 0px solid #e5e5e5;*/
+        /*}*/
+
+        #vehicle-status.nav-tabs>li {
+            margin-bottom: 0px;
+            font-size: 12px;
+        }
+
+        #vehicle-status.nav-tabs {
+            border-bottom: 0px solid #ddd;
+        }
+
+        #vehicle-status>li>a {
+            color: #777;
+            padding-left: 7px;
+            padding-right: 7px;
+            padding-top: 5px;
+            padding-bottom: 5px;
+        }
+
+        #vehicle-status>li.active>a {
+            color: #333;
+        }
+
+        #vehicle_list {
+            margin: 0px;
+            margin-bottom: 10px;
+            font-size: 12px;
+        }
+
+        #vehicle_list.table-bordered {
+            border: 0px solid #ddd;
+            border-collapse: separate;
+            border-left: 0;
+            -webkit-border-radius: 0px;
+            -moz-border-radius: 0px;
+            border-radius: 0px;
+        }
+
+        #vehicle_list th {
+            border-left: 0px solid #ddd;
+            background-color: #f5f5f5;
+        }
+
+        #vehicle_list td {
+            border-left: 0px solid #ddd;
+        }
+
+        #vehicle_list tr._run {
+            color: #00a349;
+        }
+
+        #vehicle_list tr._alert {
+            color: #ee2a30;
+        }
+
+        #vehicle_list tr._offline {
+            color: #a0a0a0;
+        }
+
+        table.dataTable tbody td {
+            border-top: 0px;
+        }
+
+        .pagination {
+            margin-right: 5px!important;
+        }
+
+        .did {
+
+        }
+
+        #refreshText {
+            position: absolute;
+            top: 50px;
+            left: 28%;
+            background-color: rgba(255, 255, 255, 0.70);
+            padding: 5px;
+            font-size: 12px;
+            color: #333333;
+            display: none;
+        }
+
+        #refreshText .interval {
+            color: red;
+        }
+
+        #searchKey {
+            /*width: 100%;*/
+            border: 1px;
+            padding: 5px 10px 5px 5px;
+            font-size: 12px;
+            -webkit-box-shadow: inset 0 0px 0px rgba(0, 0, 0, 0.1);
+            -moz-box-shadow: inset 0 0px 0px rgba(0, 0, 0, 0.1);
+             box-shadow: inset 0 0px 0px rgba(0, 0, 0, 0.1);
+        }
+
+        #customerKey {
+            width: 86%;
+            border: 1px;
+            padding: 5px;
+            font-size: 12px;
+            -webkit-box-shadow: inset 0 0px 0px rgba(0, 0, 0, 0.1);
+            -moz-box-shadow: inset 0 0px 0px rgba(0, 0, 0, 0.1);
+            box-shadow: inset 0 0px 0px rgba(0, 0, 0, 0.1);
+        }
+
+        /*#vehicle_list.table-striped tbody>tr:nth-child(odd)>td, .table-striped tbody>tr:nth-child(odd)>th {*/
+            /*background-color: #fff;*/
+        /*}*/
+        /*tr.odd td{*/
+            /*background-color: white;*/
+        /*}*/
+
+        /*tr.odd td:hover{*/
+            /*background-color: #f9f9f9;*/
+        /*}*/
+
+        /*tr.even td{*/
+            /*background-color: white;*/
+        /*}*/
+
+        /*tr.even td:hover{*/
+            /*background-color: #f9f9f9;*/
+        /*}*/
+        .infowin-button {
+            padding-top: 5px;
+            font-size: 12px;
+        }
+
+        .infowin-button .btn {
+            font-size: 12px;
+            padding: 2px 7px 2px 7px;
+            margin-right: 5px;
+        }
+
+        .dataTables_scrollBody {
+            height: 370px;
+            overflow-y: auto;
+        }
+
+        /*#vehicleBody {*/
+            /*height: 360px;*/
+        /*}*/
+        .tabs-left>.nav-tabs .active>a, .tabs-left>.nav-tabs .active>a:hover, .tabs-left>.nav-tabs .active>a:focus {
+            border-color: #fff #ddd #fff #fff;
+        }
+        .tabs-left>.nav-tabs>.active>a, .tabs-left>.nav-tabs>.active>a:hover, .tabs-left>.nav-tabs>.active>a:focus {
+            background-color: #f7f7f7;
+        }
+
+        .work-type {
+            float: left;
+            padding-left: 23px;
+            width: 60px;
+            word-break: break-all;
+        }
+
+        select {
+            /*margin-top: 5px;*/
+            margin-bottom: 5px;
+        }
+
+        .longMode {
+            padding-top: 0px!important;
+            text-align: left!important;
+            width: 150px!important;
+        }
+
+        form {
+            margin: 0 0 0px;
+        }
+
+        .ui-widget-content {
+            background: #ffffff repeat-x;
+        }
+        /* #address {
+            position: fixed;
+            left: 585px;
+            top: 49px;
+            border-radius: 3px;
+            color: white;
+            display: block;
+        } */
+        /* #nodeSearch {
+            position: absolute;
+            top: 49px;
+            right: 178px;
+        }
+        #distanceTool {
+            position: absolute;
+            top: 49px;
+            right: 124px;
+        } */
+        .otherControl {
+            position: absolute;
+            top: 50px;
+            right: 164px;
+            display: none;
+        }
+        .br6 {
+            border-radius: 6px;
+        }
+        #map_type {
+            margin: 0;
+            padding: 0;
+            width: 102px;
+        }
+        .ulClass li {
+            list-style: none;
+            float: left;
+            margin-right: 20px;
+            margin-top: 10px;
+            width: 110px;
+        }
+        .ulClass label {
+            display: inline;
+            padding-left: 2px;
+        }
+        .ulClass input {
+            margin-top: 0px;
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- 头部 -->
+<% include html/header.html %>
+
+<div class="container-fluid container-fluid2">
+    <div id="alert" class="alert alert-block alert-error fade in">
+        <!--<button type="button" class="close" data-dismiss="alert">&times;</button>-->
+        <span id="err_msg"></span>
+    </div>
+    <div class="row-fluid">
+        <div class="span3">
+            <div class="sidebar-nav">
+                <div class="accordion" id="accordion2">
+                    <div class="accordion-group">
+                        <div class="accordion-heading">
+                            <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#">
+                                <input id="customerKey" type="input" placeholder="<%= t('customer.search') %>" data-i18n="[placeholder]customer.search">
+                                <i id="accordion-icon" class="icon-arrow-up pull-right" style="padding-top: 8px;"></i>
+                            </a>
+                        </div>
+                        <div id="collapseOne" class="accordion-body collapse in">
+                            <div class="accordion-inner">
+                                <ul id="customerTree" class="ztree">
+                                    <p style="text-align: center; padding-top: 5px; padding-bottom: 5px">
+                                        <img style='width:16px;height:16px' src='/img/waiting.gif'/>
+                                    </p>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <ul id="vehicle-status" class="nav nav-tabs vehicleNav">
+                    <li id="allStatus" class="active" flag="">
+                        <a href="#" data-i18n="monitor.all_status"><%= t('monitor.all_status') %></a>
+                    </li>
+                    <li id="onlineStatus" flag="1">
+                        <a href="#" data-i18n="monitor.online_status"><%= t('monitor.online_status') %></a>
+                    </li>
+                    <li id="offlineStatus" flag="2">
+                        <a href="#" data-i18n="monitor.offline_status"><%= t('monitor.offline_status') %></a>
+                    </li>
+                    <li id="alertStatus" flag="3">
+                        <a href="#" data-i18n="monitor.alert_status"><%= t('monitor.alert_status') %></a>
+                    </li>
+                </ul>
+                <div>
+                    <input id="searchKey" type="input" placeholder="<%= t('vehicle.search') %>" data-i18n="[placeholder]vehicle.search">
+                    <!--<input id="allNode" type="checkbox" style="vertical-align: middle"><span style="vertical-align: middle; padding: 5px 5px 5px 5px">包含下级用户</span>-->
+                </div>
+                <div id="vehicle_panel">
+                    <table class="table table-hover" width="100%" cellpadding="0"
+                           cellspacing="0" border="0" id="vehicle_list">
+                        <thead>
+                            <tr class="tops">
+                                <th width="20px" style="text-align: center !important;"><input id="checkAll" type="checkbox" title='<%= t('monitor.check_all_refresh') %>' data-i18n="[title]monitor.check_all_refresh"></th>
+                                <th style="width: auto; text-align: center !important" data-i18n="monitor.name"><%= t('monitor.name') %></th>
+                                <!--<th style="width: 40px; text-align: center !important">ACC</th>-->
+                                <!--<th style="width: 40px; text-align: center !important">时速</th>-->
+                                <th style="width: 80px; text-align: center !important" data-i18n="monitor.status"><%= t('monitor.status') %></th>
+                            </tr>
+                        </thead>
+                        <tbody id="vehicleBody">
+                            <tr>
+                                <td colspan="3">
+                                    <p style="text-align: center; padding-top: 5px; padding-bottom: 5px">
+                                        <img style='width:16px;height:16px' src='/img/waiting.gif'/>
+                                    </p>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <!--<ul class="nav nav-list vehicle-list">-->
+                    <!--<li class="nav-header">-->
+                            <!--<span style="width: 80px">名称</span>-->
+                            <!--<span>ACC</span>-->
+                            <!--<span>状态</span>-->
+                            <!--<span>速度</span>-->
+                    <!--</li>-->
+                    <!--<li id="2" class="custType"><a href="#">代理商</a></li>-->
+                    <!--<li id="8" class="custType"><a href="#">集团客户</a></li>-->
+                    <!--<li id="7" class="custType"><a href="#">个人客户</a></li>-->
+                <!--</ul>-->
+                <!--<form class="myform">-->
+                    <!--<div id="customer-tool" class="customer-tool input-append" style="line-height: 40px">-->
+                        <!--<input class="input-xsmall" id="customerKey" type="text" data-provide="typeahead" data-items="5" autocomplete="off" data-source="" placeholder="搜索用户">-->
+                        <!--<button type="button" class="btn btn-primary" id="searchCustomer" display="none">搜索</button>-->
+                        <!--&lt;!&ndash;<button type="button" class="btn btn-primary" id="addCustomer">新增</button>&ndash;&gt;-->
+                        <!--&lt;!&ndash; <a href="#frmCustomer" role="button" class="btn" data-toggle="modal" title="新增用户"><i class="icon-plus"></i></a> &ndash;&gt;-->
+                    <!--</div>-->
+                <!--</form>-->
+                <!--<ul id="customer_list" class="nav nav-list customer-list">-->
+                <!--</ul>-->
+
+            </div>
+            <!--/.well -->
+        </div>
+        <div id="panorama" class="panorama" style="float:left;display:none;width:35%"></div>
+        <!--/span-->
+        <div id="map_canvas">
+        </div>
+        <div id="refreshText"></div>
+        <div class="otherControl">
+            <!-- <div id="address"> -->
+            
+            <input id="lose_addr" class="input-medium" type="text" style="margin-bottom:0px;font-size:12px;display: none" data-provide="typeahead" data-items="5" autocomplete="off" data-source=""
+                placeholder="搜地点" data-i18n="[placeholder]customer.search">
+            <!-- </div> -->
+            
+            <button class="btn hide" type="button" id="nodeSearch" > <%= t('map.node_search')%></button>
+            <button class="btn hide" type="button" id="distanceTool" ><%= t('map.ranging')%></button>
+            <select id="map_type">
+                <option value="1"><%= t('map.baidu_map')%></option>
+                <option value="2"><%= t('map.google_map')%></option>
+                <option value="3"><%= t('map.gaode_map')%></option>
+            </select>
+        </div>
+        
+        <!-- <input id="distanceTool" type='button' class='btn' value='测距'/> -->
+        
+        <!--/span-->
+    </div>
+    <!--/row-->
+
+    <!-- 新增或者修改账户 -->
+    <% include dialog/frmAccount.html %>
+
+    <!-- 终端设置 -->
+    <% include dialog/frmDeviceSet.html %>
+
+    <!-- 停留分布 -->
+    <% include dialog/frmIdle.html %>
+
+    <!-- 图像管理 -->
+    <% include dialog/frmPicture.html %>
+
+    <% include dialog/frmMonitorLose.html %>
+    <% include dialog/frmMonitorLoseList.html %>
+    <% include dialog/frmVehicle.html %>
+
+</div>
+<!--/.fluid-container-->
+<!-- 版本信息 -->
+<% include html/footer.html %>
+
+<!-- Le javascript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<!--<script src="js/jquery.js"></script>-->
+<script src="js/dataTable/js/jquery.js"></script>
+<script src="js/locales.js"></script>
+<script src='js/jquery.cookie.js'></script>
+<script src="js/MapJs/wisemap.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/jquery-ui-1.10.0.custom.min.js"></script>
+<script src="js/dataTable/js/jquery.dataTables.min.js"></script>
+<!--<script src="js/dataTable/js/dataTables.bootstrap.js"></script>-->
+<script src="js/jquery.placeholder.1.3.min.js"></script>
+<script src="js/jquery.validate.min.js"></script>
+<script src="js/bootstrap.dataTable.js"></script>
+<!--<script src="js/jqTree/tree.jquery.js"></script>-->
+<script type="text/javascript" src="js/zTree/js/jquery.ztree.core-3.4.js"></script>
+<script type="text/javascript" src="js/zTree/js/jquery.ztree.excheck-3.4.min.js"></script>
+<script src='js/md5.js'></script>
+<script src="js/system.js"></script>
+<script src="js/wistorm/md5.js"></script>
+<script src="js/wistorm/define.js"></script>
+<script src="js/wistorm/wistorm.js"></script>
+<script src="js/json.js"></script>
+<script src="js/account.js"></script>
+<!--<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=B40b712d90ffc5e40854d259b2e627cd"></script>-->
+<script src="js/MapJs/global.js"></script>
+<script src="js/MapJs/define.js"></script>
+<script src="js/MapJs/convertor.js"></script>
+<!--<script src='js/MapJs/bmap.js'></script>-->
+<script type="text/javascript" src="js/dateTimePicker/bootstrap-datetimepicker.min.js" charset="UTF-8"></script>
+<script type="text/javascript" src="js/dateTimePicker/locales/bootstrap-datetimepicker.zh-CN.js" charset="UTF-8"></script>
+<script src="js/viewer.min.js"></script>
+<script src="js/vehicleSelector.js"></script>
+<script src="js/monitor.js"></script>
+<script src="js/deviceSet.js"></script>
+<script src="js/idle.js"></script>
+<script src="js/picture.js"></script>
+
+
+</body>
+</html>

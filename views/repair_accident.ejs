@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0,viewport-fit=cover">
+    <title>用车</title>
+    <link rel="stylesheet" href="js/merge/css/weui.css" />
+    <link rel="stylesheet" href="js/merge/css/example.css" />
+    <link rel="stylesheet" href="js/merge/css/main.css" />
+</head>
+
+<body ontouchstart>
+    <div class="container f12 o_auto" id="container">
+        <div>
+            <!-- 使用人 -->
+            <!-- <div class="weui-cells tip">
+                <div class="weui-cell f12">
+                    <div class="weui-cell__hd">
+                        <label class="weui-label">使用人</label>
+                    </div>
+                    <div class="weui-cell__bd">
+                        <input class="weui-input t_a_r" placeholder="请输入" id="user">
+                    </div>
+                </div>
+            </div> -->
+            <!-- <div class="weui-cells tip">
+                <div class="weui-cell f12">
+                    <div class="weui-cell__hd">
+                        <label class="weui-label">同行人</label>
+                    </div>
+                    <div class="weui-cell__bd">
+                        <input class="weui-input t_a_r" placeholder="请输入" id="peer">
+                    </div>
+                </div>
+            </div> -->
+
+            <!-- 所属部门 -->
+            <!-- <div class="weui-cells tip">
+                <div class="weui-cell weui-cell_access f12" id="depart">
+                    <div class="weui-cell__bd">
+                        <span style="vertical-align: middle">部门</span>
+                    </div>
+                    <div class="weui-cell__ft">请选择</div>
+                </div>
+            </div> -->
+
+            <!-- 用车 -->
+            <!-- <div class="weui-cells tip" style="display:none">
+                <div class="weui-cell weui-cell_access f12" id="borrow">
+                    <div class="weui-cell__bd">
+                        <span style="vertical-align: middle">用车</span>
+                    </div>
+                    <div class="weui-cell__ft">请选择</div>
+                </div>
+            </div> -->
+
+            <!-- 借车部门 -->
+            <div class="weui-cells tip" id="borrow_depart1" style="">
+                <div class="weui-cell weui-cell_access f12" id="depart">
+                    <div class="weui-cell__bd">
+                        <span style="vertical-align: middle">部门
+                            <span style="color:red;position:relative;top:2px">*</span>
+                        </span>
+                    </div>
+                    <div class="weui-cell__ft">请选择</div>
+                </div>
+            </div>
+
+            <!-- 选择目标和驾驶员 -->
+            <div id="car_driver" style="display:block">
+                <div class="weui-cells tip">
+                    <div class="weui-cell weui-cell_access f12" id="vehicle">
+                        <div class="weui-cell__bd">
+                            <span style="vertical-align: middle">号牌号码
+                                <span style="color:red;position:relative;top:2px">*</span>
+                            </span>
+                        </div>
+                        <div class="weui-cell__ft">请选择</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 地址 -->
+            <div class="weui-cells tip">
+                <div class="weui-cell weui-cell_access f12" id="hpzl">
+                    <div class="weui-cell__bd">
+                        <span style="vertical-align: middle">号牌种类</span>
+                    </div>
+                    <div class="hpzltext"></div>
+                </div>
+            </div>
+            <div class="weui-cells tip">
+                <div class="weui-cell weui-cell_access f12" id="clxh">
+                    <div class="weui-cell__bd">
+                        <span style="vertical-align: middle">目标型号</span>
+                    </div>
+                    <div class="clxhtext"></div>
+                </div>
+            </div>
+            <div class="weui-cells tip">
+                <div class="weui-cell weui-cell_access f12" id="gmrq">
+                    <div class="weui-cell__bd">
+                        <span style="vertical-align: middle">购买日期</span>
+                    </div>
+                    <div class="gmrqtext"></div>
+                </div>
+            </div>
+            <div class="weui-cells tip">
+                <div class="weui-cell weui-cell_access f12" id="syr">
+                    <div class="weui-cell__bd">
+                        <span style="vertical-align: middle">使用人</span>
+                    </div>
+                    <div class="syrtext"></div>
+                </div>
+            </div>
+
+            <!-- 详细地址 -->
+            <div class="weui-cells tip">
+                <div class="weui-cell weui-cell_access f12" id="cxsj">
+                    <div class="weui-cell__bd">
+                        <span style="vertical-align: middle">出险时间
+                            <span style="color:red;position:relative;top:2px">*</span>
+                        </span>
+                    </div>
+                    <div class="weui-cell__ft">请选择</div>
+                </div>
+            </div>
+            <!-- 详细地址 -->
+            <div class="weui-cells tip">
+                <div class="weui-cell f12">
+                    <div class="weui-cell__hd">
+                        <label class="weui-label">
+                            出险地点
+                            <span style="color:red;position:relative;top:2px">*</span>
+                        </label>
+                    </div>
+                    <div class="weui-cell__bd">
+                        <input class="weui-input t_a_r" placeholder="请输入" id="cxdd">
+                    </div>
+                </div>
+            </div>
+            <!-- 详细地址 -->
+            <div class="weui-cells tip">
+                <div class="weui-cell f12">
+                    <div class="weui-cell__hd">
+                        <label class="weui-label">责任人
+                            <span style="color:red;position:relative;top:2px">*</span>
+                        </label>
+                    </div>
+                    <div class="weui-cell__bd">
+                        <input class="weui-input t_a_r" placeholder="请输入" id="zrr">
+                    </div>
+                </div>
+            </div>
+            <!-- 详细地址 -->
+            <div class="weui-cells tip">
+                <div class="weui-cell f12">
+                    <div class="weui-cell__hd">
+                        <label class="weui-label">
+                            责任分成
+                            <span style="color:red;position:relative;top:2px">*</span>
+                        </label>
+                    </div>
+                    <div class="weui-cell__bd">
+                        <input class="weui-input t_a_r" placeholder="请输入" id="zrfc">
+                    </div>
+                </div>
+            </div>
+            <!-- 详细地址 -->
+            <div class="weui-cells tip">
+                <div class="weui-cell f12">
+                    <div class="weui-cell__hd">
+                        <label class="weui-label">
+                            赔偿金额
+                            <span style="color:red;position:relative;top:2px">*</span>
+                        </label>
+                    </div>
+                    <div class="weui-cell__bd">
+                        <input class="weui-input t_a_r" placeholder="请输入" id="pcje">
+                    </div>
+                </div>
+            </div>
+            <!-- 详细地址 -->
+            <div class="weui-cells tip">
+                <div class="weui-cell f12">
+                    <div class="weui-cell__hd">
+                        <label class="weui-label">人员赔偿费</label>
+                    </div>
+                    <div class="weui-cell__bd">
+                        <input class="weui-input t_a_r" placeholder="请输入" id="rypc">
+                    </div>
+                </div>
+            </div>
+            <div class="weui-cells tip">
+                <div class="weui-cell f12">
+                    <div class="weui-cell__hd">
+                        <label class="weui-label">备注</label>
+                    </div>
+                    <div class="weui-cell__bd">
+                        <input class="weui-input t_a_r" placeholder="请输入" id="bz">
+                    </div>
+                </div>
+            </div>
+            <div class="m_15">
+                <a href="javascript:;" class="weui-btn weui-btn_primary f12" id="toastBtn">提交</a>
+            </div>
+
+        </div>
+
+    </div>
+    <script src="js/merge/js/zepto.min.js"></script>
+    <script src="js/merge/js/weui.js"></script>
+    <script src="js/jquery.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/merge/js/assets/paging.js"></script>
+    <script src="js/jquery-ui-1.10.0.custom.min.js"></script>
+    <script src='js/jquery.cookie.js'></script>
+    <script src='js/md5.js'></script>
+    <script src="js/system.js"></script>
+    <script src="js/wistorm/md5.js"></script>
+    <script src="js/wistorm/define.js"></script>
+    <script src="js/wistorm/wistorm.js"></script>
+    <script src="js/json.js"></script>
+    <script src="js/locales.js"></script>
+    <script src="js/merge/js/public.js"></script>
+    <script type="text/javascript" src="js/repair_accident.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,22 @@
+{
+	"app": {
+		"name": "SPY"
+	},
+	"input": {
+		"placeholder": "A translated placeholder"
+	},
+	"nav": {
+		"home": "Home",
+		"page1": "Page One",
+		"page2": "Page Two"
+	},
+	"key": {
+		"title": "Title translated"
+	},
+	"alert": {
+		"type1": "alert1",
+		"type2": "alert2",
+		"type3": "alert3",
+		"type4": "alert4"
+	}
+}

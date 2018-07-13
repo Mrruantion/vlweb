@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0,viewport-fit=cover">
+    <title>车修</title>
+    <link rel="stylesheet" href="js/merge/css/weui.css" />
+    <link rel="stylesheet" href="js/merge/css/example.css" />
+    <link rel="stylesheet" href="js/merge/css/main.css" />
+</head>
+
+<body ontouchstart>
+    <!-- <div class="container f12 o_auto" id="container">
+        <div class="weui-cells tip">
+            <div class="weui-cell f12">
+                <div class="weui-cell__hd">
+                    <label class="weui-label">申请人
+                        <span style="color:red;position:relative;top:2px">*</span>
+                    </label>
+                </div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input t_a_r" placeholder="请输入" id="applyer">
+                </div>
+            </div>
+        </div>
+        <div class="weui-cells tip">
+            <div class="weui-cell f12">
+                <div class="weui-cell__hd" style="flex:1">
+                    <label class="weui-label" style="width:100%">号牌号码
+                        <span style="color:red;position:relative;top:2px">*</span>
+                    </label>
+                </div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input t_a_r" placeholder="请输入" id="HPHM">
+                </div>
+            </div>
+           
+            <div style="display:none" id="show_carnumber">
+                <div class="weui-flex f12">
+                    <div class="weui-flex__item">
+                        <div class="weui-cell" style="padding-top:0px">
+                            <div class="weui-cell__hd" style="margin-right: 10px;">
+                                <p class="">种类和型号</p>
+                            </div>
+                            <div style="flex:2;text-align:right">
+                                <div class="weui-cell__hd" style="margin-right: 10px;display:inline-block">
+                                    <p class="" id="hmzl"></p>
+                                </div>
+                                <div class="weui-cell__hd" style="margin-right: 10px;display:inline-block">
+                                    <p class="" id="cpxh"></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="weui-flex f12">
+                    <div class="weui-flex__item">
+                        <div class="weui-cell" style="padding-top:0px">
+                            <div class="weui-cell__hd" style="margin-right: 10px;">
+                                <p class="">购买日期</p>
+                            </div>
+                            <div style="flex:2;text-align:right">
+                                <div class="weui-cell__hd" style="margin-right: 10px;display:inline-block">
+                                    <p class="" id="gmrq"></p>
+                                </div>
+                                <div class="weui-cell__hd" style="margin-right: 10px;display:inline-block;font-size:18px;color:aqua">
+                                    <p class="" id="synx"></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="weui-cells tip">
+            <div class="weui-cell f12">
+                <div class="weui-cell__hd" style="flex:1">
+                    <label class="weui-label" style="width:100%">部门
+                        <span style="color:red;position:relative;top:2px">*</span>
+                    </label>
+                </div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input t_a_r" placeholder="请输入" id="depart">
+                </div>
+            </div>
+        </div>
+        <div class="weui-cells tip">
+            <div class="weui-cell weui-cell_access f12" id="wxdw">
+                <div class="weui-cell__bd">
+                    <span style="vertical-align: middle">维修单位
+                        <span style="color:red;position:relative;top:2px">*</span>
+                    </span>
+                </div>
+                <div class="weui-cell__ft">请选择</div>
+            </div>
+        </div>
+        <div class="weui-cells tip">
+            <div class="weui-cell f12">
+                <div class="weui-cell__hd" style="flex:1">
+                    <label class="weui-label" style="width:100%">维修单位联系电话</label>
+                </div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input t_a_r" placeholder="请输入" id="wxdh">
+                </div>
+            </div>
+        </div>
+        <div class="weui-cells tip" style="display:block">
+            <div class="wxlx f12">
+                <div style="padding-bottom:5px">
+                    <label class="weui-label w_a">维修类型
+                        <span style="color:red;position:relative;top:2px">*</span>
+                    </label>
+                </div>
+                <div>
+                    <label for="fdj" style="margin-right:5px">
+                        <input type="checkbox" value="A" name="wxlx1" id="fdj" class="label_input" />发动机
+                    </label>
+                    <label for="dp" style="margin-right:5px">
+                        <input type="checkbox" value="B" name="wxlx1" id="dp" class="label_input" />地盘
+                    </label>
+
+                    <label for="dl" style="margin-right:5px">
+                        <input type="checkbox" value="C" name="wxlx1" id="dl" class="label_input" />电路
+                    </label>
+
+                    <label for="lt" style="margin-right:5px">
+                        <input type="checkbox" value="D" name="wxlx1" id="lt" class="label_input" />轮胎
+                    </label>
+
+                    <label for="wk" style="margin-right:5px">
+                        <input type="checkbox" value="E" name="wxlx1" id="wk" class="label_input" />外壳
+                    </label>
+
+                    <label for="qt" style="margin-right:5px">
+                        <input type="checkbox" value="Z" name="wxlx1" id="qt" class="label_input" />其他
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="weui-cells tip" style="display:block">
+            <div class="weui-cell f12">
+                <div class="weui-cell__hd weui-flex__item">
+                    <label class="weui-label w_a">预计金额
+                        <span style="color:red;position:relative;top:2px">*</span>
+                    </label>
+                </div>
+                <div class="weui-cell__bd t_a_r" style="flex:4">
+                    <label for="check2000" style="margin-right:5px">
+                        <input id="check2000" type="radio" value="0" name="price" checked class="label_input" />2000以内
+                    </label>
+                    <label for="check2500" style="margin-right:5px">
+                        <input id="check2500" type="radio" value="1" name="price" checked class="label_input" />2000--3000
+                    </label>
+                    <label for="check3000" style="margin-right:5px">
+                        <input id="check3000" type="radio" value="2" name="price" checked class="label_input" />3000以上
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="weui-cells tip">
+            <div class="weui-cell weui-cell_access f12" id="jcrq">
+                <div class="weui-cell__bd">
+                    <span style="vertical-align: middle">进厂日期
+                        <span style="color:red;position:relative;top:2px">*</span>
+                    </span>
+                </div>
+                <div class="weui-cell__ft">请选择</div>
+            </div>
+        </div>
+        <div class="weui-cells tip">
+            <div class="weui-cell weui-cell_access f12" id="ccrq">
+                <div class="weui-cell__bd">
+                    <span style="vertical-align: middle">出厂日期
+                        <span style="color:red;position:relative;top:2px">*</span>
+                    </span>
+                </div>
+                <div class="weui-cell__ft">请选择</div>
+            </div>
+        </div>
+        <div class="weui-cells tip">
+            <div class="weui-cell f12">
+                <div class="weui-cell__hd">
+                    <label class="weui-label">记账人</label>
+                </div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input t_a_r" placeholder="请输入" id="jzr">
+                </div>
+            </div>
+        </div>
+        <div class="weui-cells tip">
+            <div class="weui-cell f12">
+                <div class="weui-cell__hd">
+                    <label class="weui-label">结算人</label>
+                </div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input t_a_r" placeholder="请输入" id="jsr">
+                </div>
+            </div>
+        </div>
+        <div class="weui-cells tip">
+            <div class="weui-cell f12">
+                <div class="weui-cell__hd">
+                    <label class="weui-label">备注</label>
+                </div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input t_a_r" placeholder="请输入" id="bz">
+                </div>
+            </div>
+        </div>
+        <div class="weui-cells tip">
+            <div class="weui-cell f12">
+                <div class="weui-cell__hd">
+                    <label class="weui-label">总金额</label>
+                </div>
+                <div class="weui-cell__ft" style="width:100%;color:black" id="all_je">
+                    0
+                </div>
+            </div>
+        </div>
+
+
+        <div class="clli" id="show_clli" style="display:block">
+
+        </div>
+
+        <div>
+            <div class="m_15">
+                <a href="javascript:;" class="weui-btn weui-btn_primary f12" id="add_repairInfo">添加明细</a>
+            </div>
+            <div class="m_15">
+                <a href="javascript:;" class="weui-btn weui-btn_primary f12" id="submit">提交</a>
+            </div>
+        </div>
+    </div> -->
+    <!-- 维修明细 -->
+    <!-- <div class="container f12 o_auto" id="repair_info" style="display:none">
+        <div class="weui-cells tip" id="night" style="display:block">
+            <div class="weui-cell f12">
+                <div class="weui-cell__hd weui-flex__item">
+                    <label class="weui-label w_a">类型
+                        <span style="color:red;position:relative;top:2px">*</span>
+                    </label>
+                </div>
+                <div class="weui-cell__bd t_a_r" style="flex:4" id="lb">
+                    <label for="gsf" style="margin-right:5px">
+                        <input type="radio" value="1" name="lb" id="gsf" class="label_input" />工时费
+                    </label>
+                    <label id="clf" style="margin-right:5px">
+                        <input type="radio" value="2" name="lb" checked="checked" id="clf" class="label_input" />材料费
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div style="position:relative" id="clmc1">
+            <div class="weui-cells tip">
+                <div class="weui-cell f12">
+                    <div class="weui-cell__hd">
+                        <label class="weui-label">材料名称
+                            <span style="color:red;position:relative;top:2px">*</span>
+                        </label>
+                    </div>
+                    <div class="weui-cell__bd">
+                        <input class="weui-input t_a_r" placeholder="请输入" id="clmc">
+                    </div>
+                </div>
+            </div>
+            <div class="search_result" id="clmc_list" style="display:none">
+            
+            </div>
+        </div>
+
+        <div class="weui-cells tip" id="clsl1">
+            <div class="weui-cell f12">
+                <div class="weui-cell__hd">
+                    <label class="weui-label">数量
+                        <span style="color:red;position:relative;top:2px">*</span>
+                    </label>
+                </div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input t_a_r" placeholder="请输入" id="clsl" type="number">
+                </div>
+            </div>
+        </div>
+        <div class="weui-cells tip" id="cldj1">
+            <div class="weui-cell f12">
+                <div class="weui-cell__hd">
+                    <label class="weui-label">单价
+                        <span style="color:red;position:relative;top:2px">*</span>
+                    </label>
+                </div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input t_a_r" placeholder="请输入" id="cldj" type="number">
+                </div>
+            </div>
+        </div>
+        <div class="weui-cells tip">
+            <div class="weui-cell f12">
+                <div class="weui-cell__hd">
+                    <label class="weui-label">金额</label>
+                </div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input t_a_r" placeholder="0" id="clje" disabled="true">
+                </div>
+            </div>
+        </div>
+        <div class="weui-cells tip">
+            <div class="weui-cell weui-cell_access f12" id="bxq12">
+                <div class="weui-cell__bd">
+                    <span style="vertical-align: middle">保修期(月)
+                        <span style="color:red;position:relative;top:2px">*</span>
+                    </span>
+                </div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input t_a_r" placeholder="0" id="bxq1">
+                </div>
+            
+            </div>
+        </div>
+        <div class="weui-cells tip">
+            <div class="weui-cell f12">
+                <div class="weui-cell__hd">
+                    <label class="weui-label">备注</label>
+                </div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input t_a_r" placeholder="请输入" id="wxbz">
+                </div>
+            </div>
+        </div>
+        <div>
+            <div class="m_15">
+                <a href="javascript:;" class="weui-btn weui-btn_primary f12" id="clmx_save">保存</a>
+                <a href="javascript:;" class="weui-btn weui-btn_primary f12" id="clmx_delete" style="display:none">删除</a>
+                <a href="javascript:;" class="weui-btn weui-btn_primary f12" id="clmx_back" style="">返回</a>
+            </div>
+        </div>
+    </div> -->
+    <!-- <div class="container f12 o_auto" id="audit_list" style="display:none">
+
+    </div> -->
+
+    <div class="container f12 o_auto" id="container">
+        <div class="weui-cells tip">
+            <div class="weui-cell f12">
+                <div class="weui-cell__hd">
+                    <label class="weui-label">申请人
+                        <span style="color:red;position:relative;top:2px">*</span>
+                    </label>
+                </div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input t_a_r" placeholder="请输入" id="applyer">
+                </div>
+            </div>
+        </div>
+        <div class="weui-cells tip" id="type" style="">
+            <div class="weui-cell f12">
+                <div class="weui-cell__hd weui-flex__item">
+                    <label class="weui-label w_a">类型</label>
+                </div>
+                <div class="weui-cell__bd t_a_r">
+                    <input type="radio" value="0" name="order" checked/>维修
+                    <input type="radio" value="1" name="order" />保养
+                </div>
+            </div>
+        </div>
+        <div class="weui-cells tip">
+            <div class="weui-cell f12">
+                <div class="weui-cell__hd" style="flex:1">
+                    <label class="weui-label" style="width:100%">号牌号码
+                        <span style="color:red;position:relative;top:2px">*</span>
+                    </label>
+                </div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input t_a_r" placeholder="请输入" id="HPHM">
+                </div>
+            </div>
+
+            <div style="display:none" id="show_carnumber">
+                <div class="weui-flex f12">
+                    <div class="weui-flex__item">
+                        <div class="weui-cell" style="padding-top:0px">
+                            <div class="weui-cell__hd" style="margin-right: 10px;">
+                                <p class="">种类和型号</p>
+                            </div>
+                            <div style="flex:2;text-align:right">
+                                <div class="weui-cell__hd" style="margin-right: 10px;display:inline-block">
+                                    <p class="" id="hmzl"></p>
+                                </div>
+                                <div class="weui-cell__hd" style="margin-right: 10px;display:inline-block">
+                                    <p class="" id="cpxh"></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="weui-flex f12">
+                    <div class="weui-flex__item">
+                        <div class="weui-cell" style="padding-top:0px">
+                            <div class="weui-cell__hd" style="margin-right: 10px;">
+                                <p class="">购买日期</p>
+                            </div>
+                            <div style="flex:2;text-align:right">
+                                <div class="weui-cell__hd" style="margin-right: 10px;display:inline-block">
+                                    <p class="" id="gmrq"></p>
+                                </div>
+                                <div class="weui-cell__hd" style="margin-right: 10px;display:inline-block;font-size:18px;color:aqua">
+                                    <p class="" id="synx"></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="weui-cells tip">
+            <div class="weui-cell f12">
+                <div class="weui-cell__hd" style="flex:1">
+                    <label class="weui-label" style="width:100%">部门
+                        <span style="color:red;position:relative;top:2px">*</span>
+                    </label>
+                </div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input t_a_r" placeholder="请输入" id="depart">
+                </div>
+            </div>
+        </div>
+        <div class="weui-cells tip">
+            <div class="weui-cell weui-cell_access f12" id="wxdw">
+                <div class="weui-cell__bd">
+                    <span style="vertical-align: middle">维修单位
+                        <span style="color:red;position:relative;top:2px">*</span>
+                    </span>
+                </div>
+                <div class="weui-cell__ft">请选择</div>
+            </div>
+        </div>
+        <div class="weui-cells tip">
+            <div class="weui-cell f12">
+                <div class="weui-cell__hd" style="flex:1">
+                    <label class="weui-label" style="width:100%">维修单位联系电话</label>
+                </div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input t_a_r" placeholder="请输入" id="wxdh">
+                </div>
+            </div>
+        </div>
+        <div class="weui-cells tip" style="display:block">
+            <div class="wxlx f12">
+                <div style="padding-bottom:5px">
+                    <label class="weui-label w_a">维修类型
+                        <span style="color:red;position:relative;top:2px">*</span>
+                    </label>
+                </div>
+                <div>
+                    <label for="fdj" style="margin-right:5px">
+                        <input type="checkbox" value="A" name="wxlx1" id="fdj" class="label_input" />发动机
+                    </label>
+                    <label for="dp" style="margin-right:5px">
+                        <input type="checkbox" value="B" name="wxlx1" id="dp" class="label_input" />地盘
+                    </label>
+
+                    <label for="dl" style="margin-right:5px">
+                        <input type="checkbox" value="C" name="wxlx1" id="dl" class="label_input" />电路
+                    </label>
+
+                    <label for="lt" style="margin-right:5px">
+                        <input type="checkbox" value="D" name="wxlx1" id="lt" class="label_input" />轮胎
+                    </label>
+
+                    <label for="wk" style="margin-right:5px">
+                        <input type="checkbox" value="E" name="wxlx1" id="wk" class="label_input" />外壳
+                    </label>
+
+                    <label for="qt" style="margin-right:5px">
+                        <input type="checkbox" value="Z" name="wxlx1" id="qt" class="label_input" />其他
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="weui-cells tip" style="display:block">
+            <div class="weui-cell f12">
+                <div class="weui-cell__hd weui-flex__item">
+                    <label class="weui-label w_a">预计金额
+                        <span style="color:red;position:relative;top:2px">*</span>
+                    </label>
+                </div>
+                <div class="weui-cell__bd t_a_r" style="flex:4">
+                    <label for="check2000" style="margin-right:5px">
+                        <input id="check2000" type="radio" value="0" name="price" checked class="label_input" />2000以内
+                    </label>
+                    <label for="check2500" style="margin-right:5px">
+                        <input id="check2500" type="radio" value="1" name="price" checked class="label_input" />2000--3000
+                    </label>
+                    <label for="check3000" style="margin-right:5px">
+                        <input id="check3000" type="radio" value="2" name="price" checked class="label_input" />3000以上
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="weui-cells tip">
+            <div class="weui-cell weui-cell_access f12" id="jcrq">
+                <div class="weui-cell__bd">
+                    <span style="vertical-align: middle">进厂日期
+                        <span style="color:red;position:relative;top:2px">*</span>
+                    </span>
+                </div>
+                <div class="weui-cell__ft">请选择</div>
+            </div>
+        </div>
+        <div class="weui-cells tip">
+            <div class="weui-cell weui-cell_access f12" id="ccrq">
+                <div class="weui-cell__bd">
+                    <span style="vertical-align: middle">出厂日期
+                        <span style="color:red;position:relative;top:2px">*</span>
+                    </span>
+                </div>
+                <div class="weui-cell__ft">请选择</div>
+            </div>
+        </div>
+        <div class="weui-cells tip">
+            <div class="weui-cell f12">
+                <div class="weui-cell__hd">
+                    <label class="weui-label">记账人</label>
+                </div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input t_a_r" placeholder="请输入" id="jzr">
+                </div>
+            </div>
+        </div>
+        <div class="weui-cells tip">
+            <div class="weui-cell f12">
+                <div class="weui-cell__hd">
+                    <label class="weui-label">结算人</label>
+                </div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input t_a_r" placeholder="请输入" id="jsr">
+                </div>
+            </div>
+        </div>
+        <div class="weui-cells tip">
+            <div class="weui-cell f12">
+                <div class="weui-cell__hd">
+                    <label class="weui-label">备注</label>
+                </div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input t_a_r" placeholder="请输入" id="bz">
+                </div>
+            </div>
+        </div>
+        <div class="weui-cells tip">
+            <div class="weui-cell f12">
+                <div class="weui-cell__hd">
+                    <label class="weui-label">总金额</label>
+                </div>
+                <div class="weui-cell__ft" style="width:100%;color:black" id="all_je">
+                    0
+                </div>
+            </div>
+        </div>
+
+
+        <div class="clli" id="show_clli" style="display:block">
+
+        </div>
+
+        <div>
+            <div class="m_15">
+                <a href="javascript:;" class="weui-btn weui-btn_primary f12" id="add_repairInfo">添加明细</a>
+            </div>
+            <div class="m_15">
+                <a href="javascript:;" class="weui-btn weui-btn_primary f12" id="submit">提交</a>
+            </div>
+        </div>
+    </div>
+    <!-- 维修明细 -->
+    <div class="container f12 o_auto" id="repair_info" style="display:none">
+        <div class="weui-cells tip" id="night" style="display:block">
+            <div class="weui-cell f12">
+                <div class="weui-cell__hd weui-flex__item">
+                    <label class="weui-label w_a">类型
+                        <span style="color:red;position:relative;top:2px">*</span>
+                    </label>
+                </div>
+                <div class="weui-cell__bd t_a_r" style="flex:4" id="lb">
+                    <label for="gsf" style="margin-right:5px">
+                        <input type="radio" value="1" name="lb" id="gsf" class="label_input" />工时费
+                    </label>
+                    <label id="clf" style="margin-right:5px">
+                        <input type="radio" value="2" name="lb" checked="checked" id="clf" class="label_input" />材料费
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div style="position:relative;z-index:99" id="clmc1">
+            <div class="weui-cells tip">
+                <div class="weui-cell f12">
+                    <div class="weui-cell__hd">
+                        <label class="weui-label">材料名称
+                            <span style="color:red;position:relative;top:2px">*</span>
+                        </label>
+                    </div>
+                    <div class="weui-cell__bd">
+                        <input class="weui-input t_a_r" placeholder="请输入" id="clmc">
+                    </div>
+                </div>
+            </div>
+            <div class="search_result" id="clmc_list" style="display:none">
+
+            </div>
+        </div>
+
+        <div class="weui-cells tip" id="clsl1">
+            <div class="weui-cell f12">
+                <div class="weui-cell__hd">
+                    <label class="weui-label">数量
+                        <span style="color:red;position:relative;top:2px">*</span>
+                    </label>
+                </div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input t_a_r" placeholder="请输入" id="clsl" type="number">
+                </div>
+            </div>
+        </div>
+        <div class="weui-cells tip" id="cldj1">
+            <div class="weui-cell f12">
+                <div class="weui-cell__hd">
+                    <label class="weui-label">单价
+                        <span style="color:red;position:relative;top:2px">*</span>
+                    </label>
+                </div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input t_a_r" placeholder="请输入" id="cldj" type="number">
+                </div>
+            </div>
+        </div>
+        <div class="weui-cells tip">
+            <div class="weui-cell f12">
+                <div class="weui-cell__hd">
+                    <label class="weui-label">金额</label>
+                </div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input t_a_r" placeholder="0" id="clje" disabled="true">
+                </div>
+            </div>
+        </div>
+        <div class="weui-cells tip">
+            <div class="weui-cell weui-cell_access f12" id="bxq12">
+                <div class="weui-cell__bd">
+                    <span style="vertical-align: middle">保修期(月)
+                        <span style="color:red;position:relative;top:2px">*</span>
+                    </span>
+                </div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input t_a_r" placeholder="0" id="bxq1">
+                </div>
+            </div>
+        </div>
+        <div class="weui-cells tip">
+            <div class="weui-cell f12">
+                <div class="weui-cell__hd">
+                    <label class="weui-label">备注</label>
+                </div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input t_a_r" placeholder="请输入" id="wxbz">
+                </div>
+            </div>
+        </div>
+        <div>
+            <div class="m_15">
+                <a href="javascript:;" class="weui-btn weui-btn_primary f12" id="clmx_save">保存</a>
+                <a href="javascript:;" class="weui-btn weui-btn_primary f12" id="clmx_delete" style="display:none">删除</a>
+                <a href="javascript:;" class="weui-btn weui-btn_primary f12" id="clmx_back" style="">返回</a>
+            </div>
+        </div>
+    </div>
+    <div class="container f12 o_auto" id="audit_list" style="display:none">
+
+    </div>
+
+
+    <div class="js_dialog" id="androidDialog1" style="opacity: 1; display: none;">
+        <div class="weui-mask"></div>
+        <div class="weui-dialog weui-skin_android">
+            <div class="weui-dialog__hd">
+                <strong class="weui-dialog__title">提交并选项审核人</strong>
+            </div>
+            <div class="weui-dialog__bd" style="max-height: 250px; overflow-y: auto;" id="nextAuditer">
+
+            </div>
+            <div class="weui-dialog__ft">
+                <a href="javascript:;" class="weui-dialog__btn weui-dialog__btn_primary " id="audit_commit">确定</a>
+                <a href="javascript:;" class="weui-dialog__btn weui-dialog__btn_default" id="audit_cancle">取消</a>
+            </div>
+        </div>
+    </div>
+    <script src="js/merge/js/zepto.min.js"></script>
+    <script src="js/merge/js/weui.js"></script>
+    <script src="js/jquery.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/merge/js/assets/paging.js"></script>
+    <script src="js/jquery-ui-1.10.0.custom.min.js"></script>
+    <script src='js/jquery.cookie.js'></script>
+    <script src='js/md5.js'></script>
+    <script src="js/system.js"></script>
+    <script src="js/wistorm/md5.js"></script>
+    <script src="js/wistorm/define.js"></script>
+    <script src="js/wistorm/wistorm.js"></script>
+    <script src="js/json.js"></script>
+    <script src="js/locales.js"></script>
+    <script src="js/merge/js/public.js"></script>
+    <!-- <script type="text/javascript" src="js/merge/js/apply.js"></script> -->
+    <script src="js/merge/js/fix.js"></script>
+</body>
+
+</html>

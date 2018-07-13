@@ -1,0 +1,42 @@
+<ul class="nav">
+    <!--<li class="dropdown">-->
+        <!--<a href="#" class="dropdown-toggle" data-toggle="dropdown">目标监管 <b class="caret"></b></a>-->
+        <!--<ul class="dropdown-menu">-->
+            <!--<li><a href="/monitor">目标监控</a></li>-->
+            <!--<li><a href="/playback">轨迹回放</a></li>-->
+            <!--<li><a href="/alert">报警管理</a></li>-->
+            <!--<li><a href="/report">目标报表</a></li>-->
+        <!--</ul>-->
+    <!--</li>-->
+    <!--<li class="dropdown">-->
+        <!--<a href="#" class="dropdown-toggle" data-toggle="dropdown">运营管理 <b class="caret"></b></a>-->
+        <!--<ul class="dropdown-menu">-->
+            <!--<li><a href="/customer">用户管理</a></li>-->
+            <!--<li><a href="/index">目标管理</a></li>-->
+            <!--<li><a href="/device">终端管理</a></li>-->
+            <!--<li><a href="/booking">预约管理</a></li>-->
+            <!--<li><a href="/branch">服务网点</a></li>-->
+            <!--<li><a href="/article">内容管理</a></li>-->
+        <!--</ul>-->
+    <!--</li>-->
+    <!--<li class="dropdown">-->
+        <!--<a href="#" class="dropdown-toggle" data-toggle="dropdown">系统管理 <b class="caret"></b></a>-->
+        <!--<ul class="dropdown-menu">-->
+            <!--<li><a href="/role">角色管理</a></li>-->
+        <!--</ul>-->
+    <!--</li>-->
+    <% for (var i = 0; i < groups.length; i++) {
+        var group = groups[i];
+    %>
+    <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= group.name %> <b class="caret"></b></a>
+        <ul class="dropdown-menu">
+        <% for (var j = 0; j < group.pages.length; j++) {
+            var page = group.pages[j];
+        %>
+            <li><a id="<%= page.url.replace('/', '__') %>" href="<%= page.url %>"><%= page.name %></a></li>
+        <% } %>
+        </ul>
+    </li>
+    <% } %>
+</ul>

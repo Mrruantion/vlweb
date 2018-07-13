@@ -1,0 +1,31 @@
+<div id="divRole" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" title="">
+    <form id="frmRole" class="form-horizontal">
+        <div class="modal-body form-horizontal">
+            <div class="control-group">
+                <!-- Select Basic -->
+                <label class="control-label" for="name" data-i18n="role.role_name"><%= t('role.role_name') %></label>
+                <div class="controls">
+                    <input type="text" placeholder="<%= t('role.role_name') %>" class="input-xlarge" id="name" name="name" data-i18n="[placeholder]role.role_name">
+                </div>
+            </div>
+            <div class="control-group">
+                <!-- Text input-->
+                <label class="control-label" for="remark" data-i18n="role.remark"><%= t('role.remark') %></label>
+                <div class="controls">
+                    <input type="text" placeholder="<%= t('role.remark') %>" class="input-xlarge" id="remark" name="remark" data-i18n="[placeholder]role.remark">
+                </div>
+            </div>
+            <div class="control-group">
+                <!-- Text input-->
+                <label class="control-label" for="pageTree" data-i18n="role.priviledge"><%= t('role.priviledge') %></label>
+
+                <div class="controls">
+                    <!--<input type="text" placeholder="请输入文章内容" class="input-xlarge" id="content" name="content">-->
+                    <ul id="pageTree" class="ztree">
+                        <img style='width:16px;height:16px' src='/img/waiting.gif'/>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

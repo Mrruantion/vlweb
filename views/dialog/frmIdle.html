@@ -1,0 +1,332 @@
+<div id="divIdle" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" title="" class="idle-ui-dialog">
+    <form id="frmIdle" class="">
+        <div class="idle-modal">
+            <div class="control-group idle-form-horizontal">
+                <label id="dateLabel" class="control-label" for="idleDate" data-i18n="idle.idle_date"><%= t('idle.idle_date') %></label>
+                <!-- Text input-->
+                <div id="datePanel" class="controls" style="float: left; padding-right: 20px;">
+                    <div id="idleDate">
+                        <!--<input id="idleDate" size="16" type="text" value="">-->
+                        <!--&lt;!&ndash;<span class="add-on"><i class="icon-remove"></i></span>&ndash;&gt;-->
+                        <!--<span class="add-on"><i class="icon-th"></i></span>-->
+                        <input class="input-small" type="text" id="datepicker">
+                    </div>
+                </div>
+                <label class="control-label" for="idleDate" data-i18n="idle.idle_filter"><%= t('idle.idle_filter') %></label>
+                <!-- Text input-->
+                <div class="controls">
+                    <div>
+                        <!--<input id="idleDate" size="16" type="text" value="">-->
+                        <!--&lt;!&ndash;<span class="add-on"><i class="icon-remove"></i></span>&ndash;&gt;-->
+                        <!--<span class="add-on"><i class="icon-th"></i></span>-->
+                        <select class="input-small" type="text" id="duration">
+                            <option value=">=300" selected data-i18n="idle.5m"><%= t('idle.5m') %></option>
+                            <option value=">=900" data-i18n="idle.15m"><%= t('idle.15m') %></option>
+                            <option value=">=1800" data-i18n="idle.30m"><%= t('idle.30m') %></option>
+                            <option value=">=3600" data-i18n="idle.1h"><%= t('idle.1h') %></option>
+                            <option value=">=21600" data-i18n="idle.6h"><%= t('idle.6h') %></option>
+                            <option value=">=43200" data-i18n="idle.12h"><%= t('idle.12h') %></option>
+                            <option value=">=86400" data-i18n="idle.1d"><%= t('idle.1d') %></option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="control-group" autofocus>
+                <!-- Text input-->
+                <ul id="idleList">
+                    <p style="text-align: center; padding-top: 5px">
+                        <img style='width:16px;height:16px' src='/img/waiting.gif'/>
+                    </p>
+                    <!--<li>-->
+                        <!--<div class="block">-->
+                            <!--<div class="img">-->
+                                <!--<img src="images/location.png" align="absmiddle">-->
+                            <!--</div>-->
+                            <!--<div class="location">-->
+                                <!--龙珠大道俊峰丽舍12-->
+                            <!--</div>-->
+                        <!--</div>-->
+                        <!--<div class="block">-->
+                            <!--<div class="img">-->
+                                <!--<img src="images/location.png" align="absmiddle" style="visibility: hidden;">-->
+                            <!--</div>-->
+                            <!--<div class="left">-->
+                                <!--时间：-->
+                            <!--</div>-->
+                            <!--<div class="left">-->
+                                <!--2017-06-17 00:00:00-->
+                            <!--</div>-->
+                        <!--</div>-->
+                        <!--<div class="duration">-->
+                            <!--<div class="img">-->
+                                <!--<img src="images/location.png" align="absmiddle" style="visibility: hidden;">-->
+                            <!--</div>-->
+                            <!--<div class="left">-->
+                                <!--时长：-->
+                            <!--</div>-->
+                            <!--<div class="left">-->
+                                <!--1小时5分钟-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</li>-->
+                    <!--<li>-->
+                        <!--<div class="block">-->
+                            <!--<div class="img">-->
+                                <!--<img src="images/location.png" align="absmiddle">-->
+                            <!--</div>-->
+                            <!--<div class="location">-->
+                                <!--龙珠大道俊峰丽舍12-->
+                            <!--</div>-->
+                        <!--</div>-->
+                        <!--<div class="block">-->
+                            <!--<div class="img">-->
+                                <!--<img src="images/location.png" align="absmiddle" style="visibility: hidden;">-->
+                            <!--</div>-->
+                            <!--<div class="left">-->
+                                <!--时间：-->
+                            <!--</div>-->
+                            <!--<div class="left">-->
+                                <!--2017-06-17 00:00:00-->
+                            <!--</div>-->
+                        <!--</div>-->
+                        <!--<div class="duration">-->
+                            <!--<div class="img">-->
+                                <!--<img src="images/location.png" align="absmiddle" style="visibility: hidden;">-->
+                            <!--</div>-->
+                            <!--<div class="left">-->
+                                <!--时长：-->
+                            <!--</div>-->
+                            <!--<div class="left">-->
+                                <!--1小时5分钟-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</li>-->
+                    <!--<li>-->
+                        <!--<div class="block">-->
+                            <!--<div class="img">-->
+                                <!--<img src="images/location.png" align="absmiddle">-->
+                            <!--</div>-->
+                            <!--<div class="location">-->
+                                <!--龙珠大道俊峰丽舍12-->
+                            <!--</div>-->
+                        <!--</div>-->
+                        <!--<div class="block">-->
+                            <!--<div class="img">-->
+                                <!--<img src="images/location.png" align="absmiddle" style="visibility: hidden;">-->
+                            <!--</div>-->
+                            <!--<div class="left">-->
+                                <!--时间：-->
+                            <!--</div>-->
+                            <!--<div class="left">-->
+                                <!--2017-06-17 00:00:00-->
+                            <!--</div>-->
+                        <!--</div>-->
+                        <!--<div class="duration">-->
+                            <!--<div class="img">-->
+                                <!--<img src="images/location.png" align="absmiddle" style="visibility: hidden;">-->
+                            <!--</div>-->
+                            <!--<div class="left">-->
+                                <!--时长：-->
+                            <!--</div>-->
+                            <!--<div class="left">-->
+                                <!--1小时5分钟-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</li>-->
+                    <!--<li>-->
+                        <!--<div class="block">-->
+                            <!--<div class="img">-->
+                                <!--<img src="images/location.png" align="absmiddle">-->
+                            <!--</div>-->
+                            <!--<div class="location">-->
+                                <!--龙珠大道俊峰丽舍12-->
+                            <!--</div>-->
+                        <!--</div>-->
+                        <!--<div class="block">-->
+                            <!--<div class="img">-->
+                                <!--<img src="images/location.png" align="absmiddle" style="visibility: hidden;">-->
+                            <!--</div>-->
+                            <!--<div class="left">-->
+                                <!--时间：-->
+                            <!--</div>-->
+                            <!--<div class="left">-->
+                                <!--2017-06-17 00:00:00-->
+                            <!--</div>-->
+                        <!--</div>-->
+                        <!--<div class="duration">-->
+                            <!--<div class="img">-->
+                                <!--<img src="images/location.png" align="absmiddle" style="visibility: hidden;">-->
+                            <!--</div>-->
+                            <!--<div class="left">-->
+                                <!--时长：-->
+                            <!--</div>-->
+                            <!--<div class="left">-->
+                                <!--1小时5分钟-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</li>-->
+                    <!--<li>-->
+                        <!--<div class="block">-->
+                            <!--<div class="img">-->
+                                <!--<img src="images/location.png" align="absmiddle">-->
+                            <!--</div>-->
+                            <!--<div class="location">-->
+                                <!--龙珠大道俊峰丽舍12-->
+                            <!--</div>-->
+                        <!--</div>-->
+                        <!--<div class="block">-->
+                            <!--<div class="img">-->
+                                <!--<img src="images/location.png" align="absmiddle" style="visibility: hidden;">-->
+                            <!--</div>-->
+                            <!--<div class="left">-->
+                                <!--时间：-->
+                            <!--</div>-->
+                            <!--<div class="left">-->
+                                <!--2017-06-17 00:00:00-->
+                            <!--</div>-->
+                        <!--</div>-->
+                        <!--<div class="duration">-->
+                            <!--<div class="img">-->
+                                <!--<img src="images/location.png" align="absmiddle" style="visibility: hidden;">-->
+                            <!--</div>-->
+                            <!--<div class="left">-->
+                                <!--时长：-->
+                            <!--</div>-->
+                            <!--<div class="left">-->
+                                <!--1小时5分钟-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</li>-->
+                    <!--<li>-->
+                        <!--<div class="block">-->
+                            <!--<div class="img">-->
+                                <!--<img src="images/location.png" align="absmiddle">-->
+                            <!--</div>-->
+                            <!--<div class="location">-->
+                                <!--龙珠大道俊峰丽舍12-->
+                            <!--</div>-->
+                        <!--</div>-->
+                        <!--<div class="block">-->
+                            <!--<div class="img">-->
+                                <!--<img src="images/location.png" align="absmiddle" style="visibility: hidden;">-->
+                            <!--</div>-->
+                            <!--<div class="left">-->
+                                <!--时间：-->
+                            <!--</div>-->
+                            <!--<div class="left">-->
+                                <!--2017-06-17 00:00:00-->
+                            <!--</div>-->
+                        <!--</div>-->
+                        <!--<div class="duration">-->
+                            <!--<div class="img">-->
+                                <!--<img src="images/location.png" align="absmiddle" style="visibility: hidden;">-->
+                            <!--</div>-->
+                            <!--<div class="left">-->
+                                <!--时长：-->
+                            <!--</div>-->
+                            <!--<div class="left">-->
+                                <!--1小时5分钟-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</li>-->
+                    <!--<li>-->
+                        <!--<div class="block">-->
+                            <!--<div class="img">-->
+                                <!--<img src="images/location.png" align="absmiddle">-->
+                            <!--</div>-->
+                            <!--<div class="location">-->
+                                <!--龙珠大道俊峰丽舍12-->
+                            <!--</div>-->
+                        <!--</div>-->
+                        <!--<div class="block">-->
+                            <!--<div class="img">-->
+                                <!--<img src="images/location.png" align="absmiddle" style="visibility: hidden;">-->
+                            <!--</div>-->
+                            <!--<div class="left">-->
+                                <!--时间：-->
+                            <!--</div>-->
+                            <!--<div class="left">-->
+                                <!--2017-06-17 00:00:00-->
+                            <!--</div>-->
+                        <!--</div>-->
+                        <!--<div class="duration">-->
+                            <!--<div class="img">-->
+                                <!--<img src="images/location.png" align="absmiddle" style="visibility: hidden;">-->
+                            <!--</div>-->
+                            <!--<div class="left">-->
+                                <!--时长：-->
+                            <!--</div>-->
+                            <!--<div class="left">-->
+                                <!--1小时5分钟-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</li>-->
+                    <!--<li>-->
+                        <!--<div class="block">-->
+                            <!--<div class="img">-->
+                                <!--<img src="images/location.png" align="absmiddle">-->
+                            <!--</div>-->
+                            <!--<div class="location">-->
+                                <!--龙珠大道俊峰丽舍12-->
+                            <!--</div>-->
+                        <!--</div>-->
+                        <!--<div class="block">-->
+                            <!--<div class="img">-->
+                                <!--<img src="images/location.png" align="absmiddle" style="visibility: hidden;">-->
+                            <!--</div>-->
+                            <!--<div class="left">-->
+                                <!--时间：-->
+                            <!--</div>-->
+                            <!--<div class="left">-->
+                                <!--2017-06-17 00:00:00-->
+                            <!--</div>-->
+                        <!--</div>-->
+                        <!--<div class="duration">-->
+                            <!--<div class="img">-->
+                                <!--<img src="images/location.png" align="absmiddle" style="visibility: hidden;">-->
+                            <!--</div>-->
+                            <!--<div class="left">-->
+                                <!--时长：-->
+                            <!--</div>-->
+                            <!--<div class="left">-->
+                                <!--1小时5分钟-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</li>-->
+                    <!--<li>-->
+                        <!--<div class="block">-->
+                            <!--<div class="img">-->
+                                <!--<img src="images/location.png" align="absmiddle">-->
+                            <!--</div>-->
+                            <!--<div class="location">-->
+                                <!--龙珠大道俊峰丽舍12-->
+                            <!--</div>-->
+                        <!--</div>-->
+                        <!--<div class="block">-->
+                            <!--<div class="img">-->
+                                <!--<img src="images/location.png" align="absmiddle" style="visibility: hidden;">-->
+                            <!--</div>-->
+                            <!--<div class="left">-->
+                                <!--时间：-->
+                            <!--</div>-->
+                            <!--<div class="left">-->
+                                <!--2017-06-17 00:00:00-->
+                            <!--</div>-->
+                        <!--</div>-->
+                        <!--<div class="duration">-->
+                            <!--<div class="img">-->
+                                <!--<img src="images/location.png" align="absmiddle" style="visibility: hidden;">-->
+                            <!--</div>-->
+                            <!--<div class="left">-->
+                                <!--时长：-->
+                            <!--</div>-->
+                            <!--<div class="left">-->
+                                <!--1小时5分钟-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</li>-->
+                </ul>
+            </div>
+        </div>
+    </form>
+</div>

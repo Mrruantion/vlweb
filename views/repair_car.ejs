@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>车修</title>
+    <script src="js/merge/js/assets/jquery-3.2.1.min.js"></script>
+    <script src="js/merge/js/assets/paging.js"></script>
+    <!-- <script src="js/merge/js/assets/bootstrap/js/bootstrap.js"></script> -->
+    <!-- <link rel="stylesheet" href="js/merge/js/assets/bootstrap/css/bootstrap.css" /> -->
+
+    <link rel="stylesheet" href="js/merge/css/weui.css" />
+    <!-- <link rel="stylesheet" href="js/merge/css/example.css" /> -->
+    <link rel="stylesheet" type="text/css" href="js/merge/stylesheets/my_icon/iconfont.css">
+
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <!-- <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"> -->
+    <link href="css/datatable.css" rel="stylesheet">
+    <link href="css/demo_table_jui.css" rel="stylesheet">
+    <link href="css/jquery.contextMenu.css" rel="stylesheet">
+    <link href="css/jquery-ui-1.10.0.custom.css" rel="stylesheet">
+    <link href="css/font-awesome.min.css" rel="stylesheet">
+    <link href="js/zTree/css/metroStyle/metroStyle.css" rel="stylesheet" type="text/css" />
+    <link href="js/zTree/css/metroStyle/metroStyle.css" rel="stylesheet" type="text/css" />
+    <link href="js/dateTimePicker/bootstrap-datetimepicker.min.css" rel="stylesheet">
+    <!--[if IE 7]>
+    <link href="css/font-awesome-ie7.min.css" rel="stylesheet">
+    <![endif]-->
+    <!--[if lt IE 9]>
+    <link href="/css/jquery.ui.1.10.0.ie.css" rel="stylesheet">
+    <![endif]-->
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/index.css" rel="stylesheet">
+    <link href="css/bootstrap-responsive.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="js/merge/css/main.css" />
+</head>
+
+<body>
+    <% include html/header.html %>
+        <div class="container container_1 " style="position:relative" id="_main">
+            <div class=" clearfix">
+                <div class="col-md-12 column">
+                    <div class="navbar ">
+                        <div class="navbar-inner">
+                            <div class="container">
+                                <ul class="nav">
+                                    <li class="active">
+                                        <a class="brand" href="#">车修</a>
+                                    </li>
+                                    <li id="myRecord" style="display:none">
+                                        <a href="#"></a>
+                                    </li>
+                                </ul>
+                                <ul class="nav" id="fixFlow" style="display:none">
+                                    <li class="dropdown">
+                                        <a href="#" class="dropdown-toggle dropdown-toggle1" data-toggle="dropdown">
+                                            目标维修流程
+                                            <b class="caret"></b>
+                                        </a>
+                                        <ul class="dropdown-menu">
+                                            <li id="first_approval" style="display:none">
+                                                <a href="#"></a>
+                                            </li>
+                                            <li id="second_approval" style="display:none">
+                                                <a href="#"></a>
+                                            </li>
+                                            <li id="third_approval" style="display:none">
+                                                <a href="#"></a>
+                                            </li>
+                                            <li id="incharge_approval" style="display:none">
+                                                <a href="#"></a>
+                                            </li>
+                                            <li id="financial_approval" style="display:none">
+                                                <a href="#"></a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                                <ul class="nav" id="queryFlow" style="display:none">
+                                    <li class="dropdown">
+                                        <a href="#" class="dropdown-toggle dropdown-toggle1" data-toggle="dropdown">
+                                            查询统计
+                                            <b class="caret"></b>
+                                        </a>
+                                        <ul class="dropdown-menu">
+                                            <li id="repairRecordQuery" style="display:none">
+                                                <a href="#"></a>
+                                            </li>
+                                            <li id="accidentRecordQuery" style="display:none">
+                                                <a href="#"></a>
+                                            </li>
+                                            <li id="recordDelete" style="display:none">
+                                                <a href="#"></a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                                <div class="navbar-search pull-left">
+                                    <button type="button" class="btn btn-default" style="margin-top:0;display:none" id="repair_apply"><span></span></button>
+                                    <button type="button" class="btn btn-default" style="margin-top:0;display:none" id="accident_apply"><span></span></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="t_a_c m_b10" id="statastic_query" style="display:none">
+                        <div class="d_i_b m_r20">
+                            车牌号：
+                            <input type="text" class="input-medium search-query" id="cph">
+                            <button type="button" class="btn btn-default m_t0" id="add_j">加警</button>
+                        </div>
+                        <div class="d_i_b m_r20">
+                            部门：
+                            <select class="_select" id="select_depart">
+                                <option>所有</option>
+                                <option>政治处</option>
+                                <option>局领导</option>
+                            </select>
+                        </div>
+                        <div class="d_i_b" id="status">
+                            状态：
+                            <select class="_select" id="fix_status">
+                                <option value=">0|0">所有</option>
+                                <option value="0">撤销</option>
+                                <option value="1">审批中</option>
+                                <option value="4">审批驳回</option>
+                                <option value="5">待报销</option>
+                                <option value="6">已结束</option>
+                            </select>
+                        </div>
+                        <div class="d_i_b">
+                            <button type="button" class="btn btn-default m_t0" id="query_button">查询</button>
+                        </div>
+                    </div>
+
+                    <div id="table_scroll" style="overflow-y:auto;margin-left:10px">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>编号</th>
+                                    <th>类型</th>
+                                    <th>号码号牌</th>
+                                    <th>号牌种类</th>
+                                    <th>维修类型</th>
+                                    <th>预计金额</th>
+                                    <th>申请人</th>
+                                    <th>申请时间</th>
+                                    <th>状态</th>
+                                    <th>当前流程</th>
+                                    <th>下个流程</th>
+                                    <th>总金额</th>
+                                    <th>操作</th>
+                                </tr>
+                            </thead>
+                            <tbody id="repair_info">
+                                <tr>
+                                    <td colspan="13" style="text-align:center">没有数据！</td>
+                                </tr>
+                                <!-- <tr class="info">
+                                    <td> 1</td>
+                                    <td> 浙C0123警 </td>
+                                    <td>小型汽车</td>
+                                    <td>其他</td>
+                                    <td>3000以上</td>
+                                    <td>专管员</td>
+                                    <td>2017-12-04</td>
+                                    <td> 审批中</td>
+                                    <td>维修申请</td>
+                                    <td>科所队审批 </td>
+                                    <td>122 </td>
+                                    <td><a>详情</a></td>
+                                </tr> -->
+                            </tbody>
+                        </table>
+                    </div>
+                    <div id="table_scroll1" style="overflow-y:auto;margin-left:10px;display:none">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>编号</th>
+                                    <th>号码号牌</th>
+                                    <th>出险时间</th>
+                                    <th>出险地点</th>
+                                    <th>责任人</th>
+                                    <th>责任分成</th>
+                                    <th>赔偿金额</th>
+                                    <th>人员赔偿费</th>
+                                    <th>备注</th>
+                                </tr>
+                            </thead>
+                            <tbody id="repair_info1">
+                                <tr>
+                                    <td colspan="12" style="text-align:center">没有数据！</td>
+                                </tr>
+                                <!-- <tr class="info">
+                                        <td> 1</td>
+                                        <td> 浙C0123警 </td>
+                                        <td>小型汽车</td>
+                                        <td>其他</td>
+                                        <td>3000以上</td>
+                                        <td>专管员</td>
+                                        <td>2017-12-04</td>
+                                        <td> 审批中</td>
+                                        <td>维修申请</td>
+                                        <td>科所队审批 </td>
+                                        <td>122 </td>
+                                        <td><a>详情</a></td>
+                                    </tr> -->
+                            </tbody>
+                        </table>
+                    </div>
+                    <div id="page" class="page_div"></div>
+                    <div id="page1" class="page_div"></div>
+                </div>
+            </div>
+            <div style="position:absolute;top:0;right:0;width:360px;height:100%;border: 1px solid #CCC;display:none" id="pc_fix_apply">
+                <!-- <div> -->
+
+                <!-- </div> -->
+            </div>
+            <div style="position:absolute;top:0;right:0;width:360px;height:100%;border: 1px solid #CCC;display:none" id="accident">
+                <!-- <div> -->
+
+                <!-- </div> -->
+            </div>
+        </div>
+        <div class="js_dialog" id="androidDialog1" style="opacity: 1; display: none;">
+            <div class="weui-mask"></div>
+            <div class="weui-dialog weui-skin_android" style="max-width:700px">
+                <div class="weui-dialog__hd">
+                    <strong class="weui-dialog__title">下次保养时间及里程</strong>
+                </div>
+                <div class="modal-body form-horizontal">
+                    <div class="weui-dialog__bd" style="max-height: 250px; overflow-y: auto;" id="next_upkeep">
+                        <div class="control-group">
+                            <!-- Text input-->
+                            <label class="control-label" for="maintainExpireIn">
+                                保养到期日
+                            </label>
+
+                            <div class="controls">
+                                <div class="input-append date maintainExpireIn input-medium" data-date-format="yyyy-mm-dd" data-link-field="dtp_input1">
+                                    <input id="maintainExpireIn" class="input-medium" style="width:82%" type="text" value="">
+                                    <span class="add-on">
+                                        <i class="icon-th"></i>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="control-group" id="service_end_date_panel">
+                            <!-- Text input-->
+                            <label class="control-label" for="maintainMileage">
+                                保养里程
+                            </label>
+
+                            <div class="controls">
+                                <input type="text" class="input-medium" id="maintainMileage" name="maintainMileage">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+
+                <div class="weui-dialog__ft">
+                    <a href="javascript:;" class="weui-dialog__btn weui-dialog__btn_primary " id="audit_commit">确定</a>
+                    <a href="javascript:;" class="weui-dialog__btn weui-dialog__btn_default" id="audit_cancle">取消</a>
+                </div>
+            </div>
+        </div>
+        <% include html/footer.html %>
+            <% include dialog/frmAccount.html %>
+                <script src="js/merge/js/weui.js"></script>
+
+                <script src="js/jquery.js"></script>
+                <script src="js/bootstrap.min.js"></script>
+                <script src="js/merge/js/assets/paging.js"></script>
+                <!--<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>-->
+                <script src="js/jquery-ui-1.10.0.custom.min.js"></script>
+                <script src='js/jquery.cookie.js'></script>
+                <script src="js/jquery.dataTables.js"></script>
+                <script src="js/jquery.placeholder.1.3.min.js"></script>
+                <script src="js/jquery.validate.min.js"></script>
+                <script src="js/bootstrap.dataTable.js"></script>
+                <script type="text/javascript" src="js/dateTimePicker/bootstrap-datetimepicker.min.js" charset="UTF-8"></script>
+                <script type="text/javascript" src="js/bootstrapSlider/bootstrap-slider.min.js" charset="UTF-8"></script>
+                <script type="text/javascript" src="js/dateTimePicker/locales/bootstrap-datetimepicker.zh-CN.js" charset="UTF-8"></script>
+                <script type="text/javascript" src="js/zTree/js/jquery.ztree.core-3.4.min.js"></script>
+                <script type="text/javascript" src="js/zTree/js/jquery.ztree.excheck-3.4.min.js"></script>
+                <script src='js/md5.js'></script>
+                <script src="js/system.js"></script>
+                <script src="js/wistorm/md5.js"></script>
+                <script src="js/wistorm/define.js"></script>
+                <script src="js/wistorm/wistorm.js"></script>
+                <script src="js/json.js"></script>
+                <!-- <script src="js/index.js"></script> -->
+                <script src="js/locales.js"></script>
+                <!-- <script src="js/customer.js"></script> -->
+                <script src="js/account.js"></script>
+                <script src="js/merge/js/public.js"></script>
+                <script src="js/merge/js/pc/repair.js"></script>
+                <script src="js/merge/js/config.js"></script>
+                <script>
+                    $('#table_scroll')[0].style.height = window.innerHeight - 200 + 'px';
+                    $('#table_scroll1')[0].style.height = window.innerHeight - 200 + 'px';
+                    $('#_main')[0].style.height = window.innerHeight - 80 + 'px';
+                    window.onresize = function () {
+                        // $('#table_scroll')[0].style.height = window.innerHeight - 200 + 'px';
+                        // $('#table_scroll1')[0].style.height = window.innerHeight - 200 + 'px';
+                        $('#_main')[0].style.height = window.innerHeight - 80 + 'px';
+                        if ($('#statastic_query').css('display') == 'block') {
+                            $('#table_scroll')[0].style.height = window.innerHeight - 240 + 'px';
+                            $('#table_scroll1')[0].style.height = window.innerHeight - 240 + 'px';
+                        } else {
+                            $('#table_scroll')[0].style.height = window.innerHeight - 200 + 'px';
+                            $('#table_scroll1')[0].style.height = window.innerHeight - 200 + 'px';
+                        }
+                    }
+                    // $("#page").paging({
+                    //     pageNo: 1,
+                    //     totalPage: 10,
+                    //     totalSize: 10,
+                    //     callback: function (num) {
+                    //     }
+                    // })
+                    $("#dealer_name").html($.cookie('username'));
+                </script>
+</body>
+<script>
+
+</script>
+
+</html>

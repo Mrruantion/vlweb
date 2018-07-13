@@ -1,0 +1,44 @@
+<div id="divRenew" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" title="<%= t('device.assign_device') %>"
+    data-i18n="[title]device.assign_device">
+    <form id="frmRenew" class="form-horizontal">
+        <div class="modal-body form-horizontal">
+
+            <div class="control-group">
+                <label class="control-label" for="feeNum" data-i18n="">续费数量</label>
+                <div class="controls">
+                    <input type="text" placeholder="" id="feeNum" class="input-xlarge">
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="_firstCard" data-i18n="system.select_file">
+                    号段
+                </label>
+                <div class="controls">
+                    <input id="_firstCard" type="text" placeholder="起始号段" style="width: 100px;">
+                    <input id="_lastCard" type="text" placeholder="结束号段" style="width: 100px;">
+                    <button class="btn btn-primary" type="button" id="_cardSearch">
+                        查询
+                    </button>
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="feeCard" data-i18n="">续费卡</label>
+                <div class="controls">
+                    <textarea rows="5" cols="20" class="input-xlarge" id="feeCard" name="feeCard"></textarea>
+                    <p id="feeCount"></p>
+                    <p style="margin: 0;">
+                        费用
+                        <span id="feeNeed" style="position: relative;top: 1px;left: 3px;font-size: 16px;color: red;">0</span>
+                        元
+                    </p>
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="feeRemark" data-i18n="">备注</label>
+                <div class="controls">
+                    <textarea rows="5" cols="20" class="input-xlarge" id="feeRemark" name="feeRemark"></textarea>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

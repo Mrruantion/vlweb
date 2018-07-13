@@ -1,0 +1,344 @@
+<div id="divDeviceSet" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" title="">
+    <form id="frmDeviceSet" class="form-horizontal">
+        <div class="modal-body form-horizontal">
+            <div class="control-group">
+                <!-- Text input-->
+                <label class="control-label" for="name" data-i18n="vehicle.name"><%= t('vehicle.name') %></label>
+
+                <div class="controls">
+                    <input id="name" name="name" type="text" placeholder="<%= t('vehicle.select_vehicle') %>" class="input-xlarge" value="" style="width:260px" data-i18n="vehicle.select_vehicle">
+                    <input id="did" name="did" type="hidden" value="">
+                </div>
+            </div>
+            <div class="control-group">
+                <!-- Text input-->
+                <label class="control-label" for="name" data-i18n="setting.send_type"><%= t('setting.send_type') %></label>
+
+                <div class="controls">
+                    <select id="type" class="input-xlarge">
+                        <option value="0" data-i18n="setting.send_rightnow"><%= t('setting.send_rightnow') %></option>
+                        <option value="1" data-i18n="setting.send_offline"><%= t('setting.send_offline') %></option>
+                    </select>
+                </div>
+            </div>
+            <div class="tabbable tabs-left">
+                <ul id="cmdTypeTab" class="nav nav-tabs">
+                    <li class="active">
+                        <a href="#cutPowerPanel" data-toggle="tab" value="1" data-i18n="setting.engine_control"><%= t('setting.engine_control') %></a>
+                    </li>
+                    <li>
+                        <a href="#fortifyPanel" data-toggle="tab" value="2" data-i18n="setting.arming_control"><%= t('setting.arming_control') %></a>
+                    </li>
+                    <li>
+                        <a href="#intervalPanel" data-toggle="tab" value="3" data-i18n="setting.interval_setting"><%= t('setting.interval_setting') %></a>
+                    </li>
+                    <li>
+                        <a href="#overspeedPanel" data-toggle="tab" value="4" data-i18n="setting.overspeed_setting"><%= t('setting.overspeed_setting') %></a>
+                    </li>
+                    <li>
+                        <a href="#restartPanel" data-toggle="tab" value="5" data-i18n="setting.restart_device"><%= t('setting.restart_device') %></a>
+                    </li>
+                    <li>
+                        <a href="#longSetPanel" data-toggle="tab" value="6" data-i18n="setting.long_device_set"><%= t('setting.long_device_set') %></a>
+                    </li>
+                    <% if(user.user_type == 1 || user.user_type == 2) { %>
+                    <li>
+                        <a href="#upgradePanel" data-toggle="tab" value="7" data-i18n="setting.remote_upgrade"><%= t('setting.remote_upgrade') %></a>
+                    </li>
+                    <% } %>
+                </ul>
+                <div class="tab-content">
+                    <div class="tab-pane active" id="cutPowerPanel">
+                        <div class="control-group">
+                            <!-- Text input-->
+                            <label class="control-label" data-i18n="setting.op"><%= t('setting.op') %></label>
+                            <div class="controls">
+                                <label class="radio">
+                                    <input type="radio" name="engine" value="1" checked onclick="setEngineSwitch(this.value)">
+                                    <span data-i18n="setting.stop_engine"><%= t('setting.stop_engine') %></span>
+                                </label>
+                                <label class="radio">
+                                    <input type="radio" name="engine" value="0" onclick="setEngineSwitch(this.value)">
+                                    <span data-i18n="setting.retore_engine"><%= t('setting.retore_engine') %></span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <!-- Text input-->
+                            <label class="control-label" data-i18n="setting.login_password"><%= t('setting.login_password') %></label>
+                            <div class="controls">
+                                <input class="input-medium" type="password" id="passwordConfirm" value="">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane" id="fortifyPanel">
+                        <div class="control-group">
+                            <!-- Text input-->
+                            <label class="control-label" data-i18n="setting.op"><%= t('setting.op') %></label>
+                            <div class="controls">
+                                <label class="radio">
+                                    <input type="radio" name="stand" value="1" checked onclick="setStandSwitch(this.value)">
+                                    <span data-i18n="setting.set_arming"><%= t('setting.set_arming') %></span>
+                                </label>
+                                <label class="radio">
+                                    <input type="radio" name="stand" value="0" onclick="setStandSwitch(this.value)">
+                                    <span data-i18n="setting.set_disarming"><%= t('setting.set_disarming') %></span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane" id="intervalPanel">
+                        <div class="control-group">
+                            <!-- Text input-->
+                            <label class="control-label" for="interval" data-i18n="setting.interval"><%= t('setting.interval') %></label>
+                            <div class="controls">
+                                <input class="input-mini" type="number" name="interval" id="interval" value="30" min="5"> s
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane" id="overspeedPanel">
+                        <div class="control-group">
+                            <!-- Text input-->
+                            <label class="control-label" for="speedLimit" data-i18n="setting.overspeed_limit"><%= t('setting.overspeed_limit') %></label>
+                            <div class="controls">
+                                <input class="input-mini" type="number" name="speedLimit" id="speedLimit" value="80" min="40"> km/h
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane" id="restartPanel">
+                        <div class="control-group">
+                            <!-- Text input-->
+                        </div>
+                    </div>
+                    <div class="tab-pane" id="longSetPanel">
+                        <div class="control-group">
+                            <!-- Text input-->
+                            <label class="radio work-type" for="t1">
+                                <input type="radio" name="workType" value="1" checked onclick="setWorkType(this.value)">
+                                <span data-i18n="setting.mode_long"><%= t('setting.mode_long') %></span>
+                            </label>
+                            <div class="controls">
+                                <label class="control-label longMode" data-i18n="setting.send_day_interval">
+                                    <%= t('setting.send_day_interval') %>
+                                </label>
+                                <select id="dayInterval" class="input-medium">
+                                    <option value="1" data-i18n="setting.1day"><%= t('setting.1day') %></option>
+                                    <option value="2" data-i18n="setting.2day"><%= t('setting.2day') %></option>
+                                    <option value="3" data-i18n="setting.3day"><%= t('setting.3day') %></option>
+                                    <option value="7" data-i18n="setting.1week"><%= t('setting.1week') %></option>
+                                    <option value="15" data-i18n="setting.2week"><%= t('setting.2week') %></option>
+                                    <option value="30" data-i18n="setting.1month"><%= t('setting.1month') %></option>
+                                </select>
+                                <label class="control-label longMode" style="padding-top: 10px!important;" data-i18n="setting.send_time_point">
+                                    <%= t('setting.send_time_point') %>
+                                </label>
+                                <select id="t1" class="input-mini">
+                                    <option value="" data-i18n="setting.not_send"><%= t('setting.not_send') %></option>
+                                    <option value="0">0:00</option>
+                                    <option value="1">1:00</option>
+                                    <option value="2">2:00</option>
+                                    <option value="3">3:00</option>
+                                    <option value="4">4:00</option>
+                                    <option value="5">5:00</option>
+                                    <option value="6">6:00</option>
+                                    <option value="7">7:00</option>
+                                    <option value="8">8:00</option>
+                                    <option value="9">9:00</option>
+                                    <option value="10">10:00</option>
+                                    <option value="11">11:00</option>
+                                    <option value="12">12:00</option>
+                                    <option value="13">13:00</option>
+                                    <option value="14">14:00</option>
+                                    <option value="15">15:00</option>
+                                    <option value="16">16:00</option>
+                                    <option value="17">17:00</option>
+                                    <option value="18">18:00</option>
+                                    <option value="19">19:00</option>
+                                    <option value="20">20:00</option>
+                                    <option value="21">21:00</option>
+                                    <option value="22">22:00</option>
+                                    <option value="23">23:00</option>
+                                </select>
+                                <select id="t2" class="input-mini">
+                                    <option value="" data-i18n="setting.not_send"><%= t('setting.not_send') %></option>
+                                    <option value="0">0:00</option>
+                                    <option value="1">1:00</option>
+                                    <option value="2">2:00</option>
+                                    <option value="3">3:00</option>
+                                    <option value="4">4:00</option>
+                                    <option value="5">5:00</option>
+                                    <option value="6">6:00</option>
+                                    <option value="7">7:00</option>
+                                    <option value="8">8:00</option>
+                                    <option value="9">9:00</option>
+                                    <option value="10">10:00</option>
+                                    <option value="11">11:00</option>
+                                    <option value="12">12:00</option>
+                                    <option value="13">13:00</option>
+                                    <option value="14">14:00</option>
+                                    <option value="15">15:00</option>
+                                    <option value="16">16:00</option>
+                                    <option value="17">17:00</option>
+                                    <option value="18">18:00</option>
+                                    <option value="19">19:00</option>
+                                    <option value="20">20:00</option>
+                                    <option value="21">21:00</option>
+                                    <option value="22">22:00</option>
+                                    <option value="23">23:00</option>
+                                </select>
+                                <select id="t3" class="input-mini">
+                                    <option value="" data-i18n="setting.not_send"><%= t('setting.not_send') %></option>
+                                    <option value="0">0:00</option>
+                                    <option value="1">1:00</option>
+                                    <option value="2">2:00</option>
+                                    <option value="3">3:00</option>
+                                    <option value="4">4:00</option>
+                                    <option value="5">5:00</option>
+                                    <option value="6">6:00</option>
+                                    <option value="7">7:00</option>
+                                    <option value="8">8:00</option>
+                                    <option value="9">9:00</option>
+                                    <option value="10">10:00</option>
+                                    <option value="11">11:00</option>
+                                    <option value="12">12:00</option>
+                                    <option value="13">13:00</option>
+                                    <option value="14">14:00</option>
+                                    <option value="15">15:00</option>
+                                    <option value="16">16:00</option>
+                                    <option value="17">17:00</option>
+                                    <option value="18">18:00</option>
+                                    <option value="19">19:00</option>
+                                    <option value="20">20:00</option>
+                                    <option value="21">21:00</option>
+                                    <option value="22">22:00</option>
+                                    <option value="23">23:00</option>
+                                </select>
+                                <select id="t4" class="input-mini">
+                                    <option value="" data-i18n="setting.not_send"><%= t('setting.not_send') %></option>
+                                    <option value="0">0:00</option>
+                                    <option value="1">1:00</option>
+                                    <option value="2">2:00</option>
+                                    <option value="3">3:00</option>
+                                    <option value="4">4:00</option>
+                                    <option value="5">5:00</option>
+                                    <option value="6">6:00</option>
+                                    <option value="7">7:00</option>
+                                    <option value="8">8:00</option>
+                                    <option value="9">9:00</option>
+                                    <option value="10">10:00</option>
+                                    <option value="11">11:00</option>
+                                    <option value="12">12:00</option>
+                                    <option value="13">13:00</option>
+                                    <option value="14">14:00</option>
+                                    <option value="15">15:00</option>
+                                    <option value="16">16:00</option>
+                                    <option value="17">17:00</option>
+                                    <option value="18">18:00</option>
+                                    <option value="19">19:00</option>
+                                    <option value="20">20:00</option>
+                                    <option value="21">21:00</option>
+                                    <option value="22">22:00</option>
+                                    <option value="23">23:00</option>
+                                </select>
+                                <select id="t5" class="input-mini">
+                                    <option value="" data-i18n="setting.not_send"><%= t('setting.not_send') %></option>
+                                    <option value="0">0:00</option>
+                                    <option value="1">1:00</option>
+                                    <option value="2">2:00</option>
+                                    <option value="3">3:00</option>
+                                    <option value="4">4:00</option>
+                                    <option value="5">5:00</option>
+                                    <option value="6">6:00</option>
+                                    <option value="7">7:00</option>
+                                    <option value="8">8:00</option>
+                                    <option value="9">9:00</option>
+                                    <option value="10">10:00</option>
+                                    <option value="11">11:00</option>
+                                    <option value="12">12:00</option>
+                                    <option value="13">13:00</option>
+                                    <option value="14">14:00</option>
+                                    <option value="15">15:00</option>
+                                    <option value="16">16:00</option>
+                                    <option value="17">17:00</option>
+                                    <option value="18">18:00</option>
+                                    <option value="19">19:00</option>
+                                    <option value="20">20:00</option>
+                                    <option value="21">21:00</option>
+                                    <option value="22">22:00</option>
+                                    <option value="23">23:00</option>
+                                </select>
+                                <select id="t6" class="input-mini">
+                                    <option value="" data-i18n="setting.not_send"><%= t('setting.not_send') %></option>
+                                    <option value="0">0:00</option>
+                                    <option value="1">1:00</option>
+                                    <option value="2">2:00</option>
+                                    <option value="3">3:00</option>
+                                    <option value="4">4:00</option>
+                                    <option value="5">5:00</option>
+                                    <option value="6">6:00</option>
+                                    <option value="7">7:00</option>
+                                    <option value="8">8:00</option>
+                                    <option value="9">9:00</option>
+                                    <option value="10">10:00</option>
+                                    <option value="11">11:00</option>
+                                    <option value="12">12:00</option>
+                                    <option value="13">13:00</option>
+                                    <option value="14">14:00</option>
+                                    <option value="15">15:00</option>
+                                    <option value="16">16:00</option>
+                                    <option value="17">17:00</option>
+                                    <option value="18">18:00</option>
+                                    <option value="19">19:00</option>
+                                    <option value="20">20:00</option>
+                                    <option value="21">21:00</option>
+                                    <option value="22">22:00</option>
+                                    <option value="23">23:00</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <!-- Text input-->
+                            <label class="radio work-type" for="minInterval">
+                                <input type="radio" name="workType" value="2" onclick="setWorkType(this.value)">
+                                <span data-i18n="setting.mode_time"><%= t('setting.mode_time') %></span>
+                            </label>
+                            <div class="controls">
+                                <select id="minInterval" class="input-mini">
+                                    <option value="720">2</option>
+                                    <option value="360">4</option>
+                                    <option value="180">8</option>
+                                    <option value="120">12</option>
+                                    <option value="60">24</option>
+                                    <option value="30">48</option>
+                                    <option value="20">72</option>
+                                    <option value="10">144</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <!-- Text input-->
+                            <label class="radio work-type" for="trackInterval">
+                                <input type="radio" name="workType" value="0" onclick="setWorkType(this.value)">
+                                <span data-i18n="setting.mode_trace"><%= t('setting.mode_trace') %></span>
+                            </label>
+                            <div class="controls">
+                                <input class="input-mini" type="number" name="trackInterval" id="trackInterval" value="30" min="5" max="60">
+                            </div>
+                        </div>
+                    </div>
+                    <% if(user.user_type == 1 || user.user_type == 2) { %>
+                    <div class="tab-pane" id="upgradePanel">
+                        <div class="control-group">
+                            <!-- Text input-->
+                            <label class="control-label" for="interval" data-i18n="setting.upgrade_version"><%= t('setting.upgrade_version') %></label>
+                            <div class="controls">
+                                <input class="input-medium" type="text" name="version" id="version" value="">
+                            </div>
+                        </div>
+                    </div>
+                    <% } %>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

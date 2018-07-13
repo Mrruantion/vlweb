@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf_8"/>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='css/bootstrap.min.css'/>
+    <link href="css/font-awesome.min.css" rel="stylesheet">
+    <!--[if IE 7]>
+    <link href="css/font-awesome-ie7.min.css" rel="stylesheet">
+    <![endif]-->
+    <link rel='stylesheet' href='css/style.css'/>
+    <link rel='stylesheet' href='css/playback.css'/>
+    <link rel='stylesheet' href='css/jquery.dataTables.min.css'/>
+    <!--<link rel='stylesheet' href='/stylesheets/DataTable/demo_page.css'/>-->
+    <!--<link rel='stylesheet' href='/stylesheets/DataTable/demo_table_jui.css'/>-->
+    <link rel='stylesheet' href='css/jquery.ui.slider.css'/>
+    <link rel='stylesheet' href='css/jquery.ui.theme.css'/>
+    <link rel='stylesheet' href='css/wisemap.css'/>
+    <script type="text/javascript" src="js/Calendar/WdatePicker.js"></script>
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src='js/jquery.cookie.js'></script>
+    <script type="text/javascript" src="js/json.js"></script>
+    <script type="text/javascript" src="js/jquery.dataTables.js"></script>
+    <!--<script type="text/javascript" src="js/dataTables/jquery.tooltip.js"></script>-->
+    <script type="text/javascript" src="js/slider/jquery.ui.core.js"></script>
+    <script type="text/javascript" src="js/slider/jquery.ui.widget.js"></script>
+    <script type="text/javascript" src="js/slider/jquery.ui.mouse.js"></script>
+    <script type="text/javascript" src="js/slider/jquery.ui.slider.js"></script>
+    <script type="text/javascript" src="js/bootstrap-tab.js"></script>
+    <script type="text/javascript" src="js/system.js"></script>
+    <script type="text/javascript" src="js/map.js"></script>
+    <script type="text/javascript" src="js/MapJs/define.js"></script>
+    <script type="text/javascript" src="js/MapJs/global.js"></script>
+    <script type="text/javascript" src="js/MapJs/convertor.js"></script>
+    <script type="text/javascript" src="js/MapJs/bmap.js"></script>
+    <script type="text/javascript" src="js/MapJs/wisemap.js"></script>
+    <script type="text/javascript">
+        //当前URL地址 countPlay = $("#countPlay")
+        var url = self.location.href;
+        var str = redUrl(url);
+        var page_no = 1, page_count = 100, time, carSum;
+        var VerifMsg = $("#VerifMsg");
+        var _VerifMsg = $("#_VerifMsg");
+        var PlayBack = $("#PlayBack");
+        var _location = $("#location");
+        var isHold = false, _isHold = true, ajax_request = false;
+        var timer = null;
+        var last_stop_time = 0;
+        var last_active_stop_time = 0;
+        var tbHtml = '<table width="100%" cellpadding="0" cellspacing="0" border="0" id="DataTable" class="hover stripe display">\
+                    <thead>\
+                      <tr class="tops">\
+			           <th width="10%">定位时间</th><th width="10%">接收时间</th><th width="6%">速度</th><th width="6%">方向</th><th width="6%">里程</th><th width="10%">目标状态</th><th width="5%">启动</th><th width="6%">经度</th><th width="6%">纬度</th><th class="lonUpdate">位置</th>\
+                     </tr>\
+                   </thead><tbody></tbody></table>';
+        var t = null;
+
+        $(function () {
+            $("#DataDiv").html(tbHtml);
+            var objTable = {
+                "bInfo": true,
+                "iDisplayLength": 5,
+                "bLengthChange": false,
+                "bProcessing": false,
+                "bServerSide": false,
+                "bFilter": false,
+                "oLanguage": {"sUrl": 'stylesheets/lang.txt'} //,
+//        "columnDefs": [
+//            {
+//                "targets": [ 8 ],
+//                "visible": false
+//            }
+//        ]
+            };
+            t = $('#DataTable').DataTable(objTable);
+            $('#DataTable tbody').on('click', 'tr', function () {
+                if ($(this).hasClass('selected')) {
+                    $(this).removeClass('selected');
+                }
+                else {
+                    t.$('tr.selected').removeClass('selected');
+                    $(this).addClass('selected');
+                    var lon = parseFloat($(this).children(0)[7].innerText);
+                    var lat = parseFloat($(this).children(0)[8].innerText);
+//            alert(lon + "," + lat);
+                    wimap.addStartMarker(lon, lat, "定位时间: " + $(this).children(0)[0].innerText);
+                    wimap.setCenter(lon, lat);
+                }
+            });
+            $('#DataTable').on( 'draw.dt', function () {
+                $(".lonUpdate").each(function (i) {
+                    if (i != 0) {
+                        if($(this).html().indexOf(",") > -1){
+                            loc = $(this).html().split(",");
+                            setLocation2(i, loc[0], loc[1], $(this), showLocation);
+                        }
+                    } else {
+                        $(this).attr("style", "text-align:center !important;");
+                    }
+                });
+            } );
+            //初始化地图
+            var center_point = {lon: 114.84714, lat: 22.47805};
+            wimap = new wiseMap(MAP_TYPE_BAIDU, document.getElementById('map_canvas'), center_point, 9);
+            wimap.setShowLocation(showLocation);
+
+            //地图助手
+            $("#txtNumber").val(unescape(str[1].replace(/\\/g, '%'))); //转码后的数据
+//            var getMyCarUrl = $.cookie('xmlHost') + "vehicle/" + $.cookie('Obj_id') + "";
+//            var getMyCarData = {auth_code: $.cookie('Login_auth_code')};
+//            var getMyCarObj = {
+//                type: "GET",
+//                url: getMyCarUrl,
+//                data: getMyCarData,
+//                success: getMyCar_success,
+//                error: getMyCar_error
+//            };
+//            ajax_function(getMyCarObj);
+
+            var now = new Date();
+            var day = now.format("yyyy-MM-dd");
+            $("#statrDate").val(day + " 00:00:00");
+            $("#endDate").val(now.format("yyyy-MM-dd hh:mm:ss"));
+
+
+            //地图助手
+            $(".helpimg").click(function () {
+                $(".map_explode.widthNo").toggle();
+            });
+
+            //浏览器高度变化菜单栏对应改变
+            var windowobj = $(window), contentID = $("#mytab_flagContent"), map_canvas = $("#map_canvas");
+            var windowHeight, windowHeight, map_canvasHeight;
+            windowHeight = windowobj.height();
+            map_canvasHeight = windowobj.height() - 240;
+            //刷新设置css
+            browsCss(contentID, windowHeight);
+            browsCss(map_canvas, map_canvasHeight);
+            //高度变化改变(要重新计算_browserheight)
+            windowobj.resize(function () {
+                _browserheight = windowobj.height();
+                _map_canvasHeight = windowobj.height() - 240;
+                browsCss(contentID, _browserheight);
+                browsCss(map_canvas, _map_canvasHeight);
+            });
+
+            //超速设定
+            var obj = {value: 100, min: 10, max: 300, step: 0.5}; //全局变量
+            var OverspeedSetID = $("#txtSpeed"), slider_sp = $("#slider-Speed");
+            Slider_Extend(slider_sp, OverspeedSetID, obj, "slider_sp", "paly");
+
+            // 获取目标历史数据，用于目标回放
+            $("#start_PlayBack").on('click', function () {
+                if (ajax_request == false) {
+                    if (isHold) {
+                        $("#PlayBack").attr("title", "回放");
+                        $("#PlayBack").attr("src", '/img/icon_play.gif');
+                        $("#VerifMsg").text("暂停.....!");
+                        isHold = false;
+                    } else {
+                        $("#PlayBack").attr("title", "暂停");
+                        $("#PlayBack").attr("src", '/img/icon_sto.gif');
+                        isHold = true;
+                        LastTime = $("#txtSpeed").val();
+                        if (!_isHold) {
+                            setTimeout("refusePlay()", LastTime);
+                        }
+                        $("#Stop").show();
+                        $("#divInfo").show();
+                    }
+                    if (_isHold) {
+                        _isHold = false;
+                        playBackInfo();
+                    }
+                }
+            });
+
+
+            //停止播放事件
+            $("#Stop").on('click', function () {
+                endplay();
+            });
+
+            $("#VerifMsg").bind("ajaxStart", function () {
+                $(this).show();
+            });
+
+        });
+        // 获取目标历史数据，用于目标回放
+
+        var LastTime, HistoryJson, txtSpeed = $("#txtSpeed");
+        var p = 0, j = 1;
+        var imgHtml = $("#imgWidth"), iPlay = 0, imgWidth, imgWidthSize, imgChange;
+
+        var playfor = false;
+        var endDate;
+        var statrDate;
+        var hc = 1;
+        var statrDates;
+        var ticks; //计算得到的小时 时间差
+        var sectimes = 0; //得到加载的次数
+        var _statrDates;
+        var _endDates;
+        var endtime;
+        var nowSum;
+        var _data;
+
+        function playBackInfo() {
+            // 清除原有轨迹
+            if (addmyCar != null) {
+                wimap.removeTrackLine(addmyCar);
+                wimap.clearStopMakers();
+            }
+            clearTable();
+            ajax_request = true;
+            statrDate = $("#statrDate").val().trim();
+            endDate = $("#endDate").val().trim();
+//    _data = _weekDiff(statrDate, endDate);
+//    if (_data) {
+//        _isHold = true;
+//        isHold = false;
+//        $("#_VerifMsg").text("时间间隔不能超过3天!");
+//        $("#Stop").hide();
+//        $("#divInfo").hide();
+//        $("#_VerifMsg").show();
+//        $("#PlayBack").attr("src", '/images/icon_play.gif');
+//        ajax_request = false;
+//        return;
+//    } else {
+            playinfo(hc);
+//    }
+        }
+
+        function playinfo(mc) {
+            $("#_VerifMsg").text("读取回放数据,请稍后......");
+            $("#_VerifMsg").hide();
+            if (mc > sectimes && sectimes > 0) {
+                endplay();
+                return;
+            }
+            else {
+                var playBackUrl = $.cookie('xmlHost') + "vehicle/" + str[0] + "/gps_data3";
+                var playBackData = {
+                    auth_code: $.cookie('Login_auth_code'),
+                    start_time: statrDate,
+                    end_time: endDate,
+                    page_no: mc,
+                    page_count: page_count
+                };
+                var playBackObj = {
+                    type: "GET",
+                    url: playBackUrl,
+                    data: playBackData,
+                    success: playBack_success,
+                    error: playBack_error
+                };
+                ajax_function(playBackObj);
+                hc++;
+            }
+        }
+
+        function getTripData() {
+            var playBackUrl = $.cookie('xmlHost') + "vehicle/" + str[0] + "/gps_data2";
+            var playBackData = {
+                auth_code: $.cookie('Login_auth_code'),
+                start_time: statrDate,
+                end_time: endDate,
+                page_no: mc,
+                page_count: page_count
+            };
+            var playBackObj = {
+                type: "GET",
+                url: playBackUrl,
+                data: playBackData,
+                success: playBack_success,
+                error: playBack_error
+            };
+            ajax_function(playBackObj);
+        }
+
+        //根据id找到目标信息后开始填充数据
+        var getMyCar_success = function playBack_success(json) {
+            addmyCar = json;
+            //新增批量目标
+            var vehicles = [];
+            if (addmyCar != null) {
+                if (addmyCar.active_gps_data.gps_flag % 2 == 1) {
+                    addmyCar.active_gps_data.speed = 0;
+                }
+                vehicles.push(addmyCar);
+                wimap.addVehicles(vehicles);
+                wimap.setCenter(addmyCar.active_gps_data.lon, addmyCar.active_gps_data.lat);
+            }
+        }
+
+        var getMyCar_error = function getMyCar_error(json) {
+            alert("加载目标数据失败");
+        }
+
+        var addRow = function (gps_time, rcv_time, speed, direct, mileage, status, acc, lon, lat) {
+            var lonlat = "<a class='lonUpdate' href='#'>" + lon + "," + lat + "</a>";
+            t.row.add([
+                gps_time,
+                rcv_time,
+                speed,
+                direct,
+                mileage,
+                status,
+                acc,
+                lon,
+                lat,
+                lonlat
+            ]).draw(false);
+        }
+
+        var clearTable = function () {
+            t.clear();
+        }
+
+        var showLocation = function showLocation(thisID, address) {
+            thisID.html(address);
+        }
+
+
+        // 获取目标历史数据，用于目标回放
+        var playBack_success = function playBack_success(json) {
+            ajax_request = false;
+            _VerifMsg.hide();
+            if (json != null && json.data.length > 0) {
+                HistoryJson = json.data;
+                if (hc == 2) {
+                    if (HistoryJson[0] != undefined && HistoryJson[0] != "" && addmyCar != null) {
+                        addmyCar.active_gps_data.lon = HistoryJson[0].lon;
+                        addmyCar.active_gps_data.lat = HistoryJson[0].lat;
+                        addmyCar.active_gps_data.rev_lon = HistoryJson[0].rev_lon;
+                        addmyCar.active_gps_data.rev_lat = HistoryJson[0].rev_lat;
+                        addmyCar.active_gps_data.b_lon = HistoryJson[0].b_lon;
+                        addmyCar.active_gps_data.b_lat = HistoryJson[0].b_lat;
+                        addmyCar.active_gps_data.speed = HistoryJson[0].speed;
+                        addmyCar.active_gps_data.direct = HistoryJson[0].direct;
+                        addmyCar.active_gps_data.gps_time = HistoryJson[0].gps_time;
+                        addmyCar.active_gps_data.uni_status = HistoryJson[0].uni_status;
+                        addmyCar.active_gps_data.uni_alerts = HistoryJson[0].uni_alerts;
+                        wimap.updateVehicle(addmyCar, false, false, false, 'green', 3);
+                        wimap.setCenter(HistoryJson[0].b_lon, HistoryJson[0].b_lat);
+                        wimap.setZoom(14);
+                    }
+                }
+                sectimes = Math.ceil(json.total / 100);
+                carSum = json.total;
+                nowSum = json.page_total;
+                //画轨迹
+//        wimap.addTrackLine(addmyCar, HistoryJson, '#FF0000', 3);
+                // 添加轨迹记录
+                for (var i = 0; i < HistoryJson.length; i++) {
+                    var gps_time = NewDate(HistoryJson[i].gps_time);
+                    gps_time = gps_time.format("MM-dd hh:mm:ss");
+                    var rcv_time = NewDate(HistoryJson[i].rcv_time);
+                    rcv_time = rcv_time.format("MM-dd hh:mm:ss");
+                    var speed = HistoryJson[i].speed.toFixed(0);
+                    var direct = HistoryJson[i].direct;
+                    var mileage = HistoryJson[i].mileage;
+                    var status = _getStatusDesc(HistoryJson[i], 1);
+                    var acc = "熄火";
+                    if (inArray(HistoryJson[i].uni_status, 8196)) {
+                        acc = "启动";
+                    }
+//            var lonlat = HistoryJson[i].b_lon.toFixed(6) + "," + HistoryJson[i].b_lat.toFixed(6);
+                    addRow(gps_time, rcv_time, speed, direct, mileage, status, acc, HistoryJson[i].b_lon.toFixed(6), HistoryJson[i].b_lat.toFixed(6));
+                }
+                $(".lonUpdate").each(function (i) {
+                    if (i != 0) {
+                        loc = $(this).html().split(",");
+                        setLocation2(i, loc[0], loc[1], $(this), showLocation);
+                    } else {
+                        $(this).attr("style", "text-align:center !important;");
+                    }
+                });
+                //回放
+                changePlay();
+            }
+            else {
+                if (json.page_total > 0) {
+                    hc--;
+                    playinfo(hc);
+                } else {
+                    endplay();
+                    $("#_VerifMsg").text("该目标没有可供回放的数据!");
+                    $("#_VerifMsg").show();
+                }
+            }
+        }
+
+
+        function changePlay() {
+            imgChange = 186 / carSum;
+            LastTime = $("#txtSpeed").val();
+            timer = setTimeout("refusePlay()", LastTime);
+        }
+
+        //轨迹回放
+        function refusePlay() {
+            if (!isHold) {
+                return;
+            }
+            //        VerifMsg.text("正在回放中......");
+            $("#VerifMsg").hide();
+            var NowTime = $("#txtSpeed").val();
+            var if_open_win = false; //关闭gps提示框
+            if (p == nowSum) {
+//        clearInterval(timer);
+                clearTimeout(timer);
+                p = 0;
+                playinfo(hc);
+            }
+            else {
+                imgWidth = iPlay;
+                imgPlay();
+                if (addmyCar != null) {//判断当数据获取正确的时候划线，否则就提示报错
+                    if(HistoryJson[p] != undefined) {
+                        wimap.moveTrackPoint(addmyCar, HistoryJson[p], if_open_win);
+                        if (inArray(HistoryJson[p].uni_status, 8196)) { //启动
+                            if (last_stop_time > 0) {
+                                var now_time = new Date(HistoryJson[p].gps_time);
+                                var stop_duration = (now_time.getTime() - last_stop_time.getTime()) / 1000 / 60;
+                                if (stop_duration > 5) {
+                                    var stop_content = "<div class='zhishichuang'><div class='wind2'>";
+                                    stop_content += "<p><span><font style='font-size: 14px; font-weight:bold; font-family:微软雅黑;' >开始时间：" + last_stop_time.format("yyyy-MM-dd hh:mm:ss") + "</font></span></p>";
+                                    stop_content += "<p><span><font style='font-size: 14px; font-weight:bold; font-family:微软雅黑;' >停留时间：" + formatStopTime(stop_duration) + "</font></span></p>";
+                                    stop_content += "<p><span><font color='#244FAF'>位置描述：</font></span><span id='location" + iPlay + "'><img style='width:16px;height:16px' src='/img/waiting.gif'/></span></p>";
+                                    stop_content += "</div></div>";
+                                    wimap.addStopMarker(HistoryJson[p].b_lon, HistoryJson[p].b_lat, stop_content, iPlay);
+                                }
+                                last_stop_time = 0;
+                            }
+                        } else { //熄火
+                            if (last_stop_time == 0) {
+                                last_stop_time = new Date(HistoryJson[p].gps_time);
+                            }
+                        }
+
+                        //判断启动状态下，是否进入怠速，如果是，则保存怠速开始时间
+                        if (!(inArray(HistoryJson[p].uni_status, 8196) && HistoryJson[p].speed == 0)) {
+                            if (last_active_stop_time > 0) {
+                                var now_time = new Date(HistoryJson[p].gps_time);
+                                var stop_duration = (now_time.getTime() - last_active_stop_time.getTime()) / 1000 / 60;
+                                if (stop_duration > 5) {
+                                    var stop_content = "<div class='zhishichuang'><div class='wind2'>";
+                                    stop_content += "<p><span><font style='font-size: 14px; font-weight:bold; font-family:微软雅黑;' >开始时间：" + last_active_stop_time.format("yyyy-MM-dd hh:mm:ss") + "</font></span></p>";
+                                    stop_content += "<p><span><font style='font-size: 14px; font-weight:bold; font-family:微软雅黑;' >启停时间：" + formatStopTime(stop_duration) + "</font></span></p>";
+                                    stop_content += "<p><span><font color='#244FAF'>位置描述：</font></span><span id='location" + iPlay + "'><img style='width:16px;height:16px' src='/img/waiting.gif'/></span></p>";
+                                    stop_content += "</div></div>";
+                                    wimap.addStopMarker2(HistoryJson[p].b_lon, HistoryJson[p].b_lat, stop_content, iPlay);
+                                }
+                                last_active_stop_time = 0;
+                            }
+                        } else {
+                            //怠速
+                            if (last_active_stop_time == 0) {
+                                last_active_stop_time = new Date(HistoryJson[p].gps_time);
+                            }
+                        }
+                    }
+                } else {
+                    $("#VerifMsg").hide();
+                    $("#Stop").hide();
+                    $("#divInfo").hide();
+                    page_no = 1;
+                    $("#imgWidth").css("width", "0px");
+//                countPlay.text("");
+                    $("#_VerifMsg").text("请求数据时发生错误!");
+                    $("#_VerifMsg").attr("color", "red");
+                    $("#_VerifMsg").show();
+                }
+                //轨迹信息赋值
+                if(HistoryJson[p] != undefined){
+                    var statrTime = NewDate(HistoryJson[p].gps_time);
+                    $("#carDate").text(statrTime.format("yyyy-MM-dd hh:mm:ss"));
+
+                    for (var j = 0; j < HistoryJson.length; j++) {
+                        if (HistoryJson[j].gps_flag % 2 == 1) {
+                            HistoryJson[j].speed = 0;
+                        }
+                    }
+                    var Status = _getStatusDesc(HistoryJson[p], 1);
+
+                    $("#carStatus").text(Status);
+                }
+                //wimap.updateVehicle(HistoryJson, true, true, true, '#FF0000', 3);
+                LastTime = $("#txtSpeed").val();
+                if(HistoryJson[p] != undefined && HistoryJson[p].speed == 0){
+                    p++;
+                    setTimeout("refusePlay()", 1);
+                }else{
+                    p++;
+                    setTimeout("refusePlay()", LastTime);
+                }
+            }
+        }
+        //图片播放
+        function imgPlay() {
+            iPlay++;
+            imgWidthSize = imgChange + (iPlay - 1) * imgChange;
+            //        countPlay.text("回放进度 " + ((i / carSum) * 100).toFixed(0) + "%");
+//        countPlay.hide();
+            if (iPlay == carSum) {
+                imgWidthSize = 186;
+                $("#imgWidth").css("width", imgWidthSize + "px");
+            } else {
+                $("#imgWidth").css("width", imgWidthSize + "px");
+            }
+        }
+
+
+        function endplay() {
+            $("#VerifMsg").hide();
+            $("#_VerifMsg").text("回放完毕!");
+            page_no = 1;
+            $("#imgWidth").css("width", "0px");
+//        countPlay.text("");
+            $("#_VerifMsg").show();
+            $("#PlayBack").attr("src", '/img/icon_play.gif');
+            _isHold = true;
+            isHold = false;
+            iPlay = 0;
+            p = 0;
+            hc = 1;
+            sectimes = 0;
+            $("#Stop").hide();
+            $("#divInfo").hide();
+        }
+
+        var playBack_error = function playBack_error(XMLHttpRequest, textStatus, errorThrown) {
+            if (errorThrown || textStatus == "error" || textStatus == "parsererror" || textStatus == "notmodified") {
+                //            VerifMsg.hide();
+                $("#Stop").hide();
+                $("#divInfo").hide();
+                $("#_VerifMsg").text("请求数据时发生错误!");
+                $("#_VerifMsg").attr("color", "red");
+                $("#_VerifMsg").show();
+                return;
+            }
+            if (textStatus == "timeout") {
+                $("#_VerifMsg").attr("color", "red");
+                $("#_VerifMsg").text("请求数据超时!");
+                $("#_VerifMsg").show();
+            }
+        }
+
+        function toggleRealDataPanel(target) {
+            var $this = $(target);
+            if ($this.hasClass("toggle-down") || $this.hasClass("toggle-ellipsis")) {
+                closeRealDataPanel(true);
+            } else {
+                closeRealDataPanel(false);
+            }
+        }
+
+        // 隐藏实时列表切换
+        function closeRealDataPanel(checked) {
+            var $realContainer = $(".data_list");
+            var h = $(window).height();
+            var almArtBottom = 0;
+            if (checked) {
+                // 关闭实时列表
+                $realContainer.hide();
+                $("#map_canvas").height(h);
+                $.map($(".alm-itm"), function (o) {
+                    almArtBottom = parseInt($(o).css("bottom").replace("px", ""));
+                    $(o).css("bottom", almArtBottom - 180);
+                });
+                $(".toggle-realData").removeClass("toggle-down").removeClass("toggle-ellipsis").addClass("toggle-up");
+            } else {
+                // 打开实时列表
+                $realContainer.removeClass("realData-ellipsis-mode");
+                $realContainer.show();
+                $("#map_canvas").height(h - 240);
+                $.map($(".alm-itm"), function (o) {
+                    almArtBottom = parseInt($(o).css("bottom").replace("px", ""));
+                    $(o).css("bottom", almArtBottom + 180);
+                });
+                $(".toggle-realData").removeClass("toggle-up").addClass("toggle-down");
+                $(".realData-table-toggle").removeClass("realData-table-up").addClass("realData-table-down");
+            }
+        }
+    </script>
+
+</head>
+<body>
+<div class="container">
+    <div class="content">
+        <table border="0" cellpadding="0" cellspacing="0" height="100%" width="100%">
+            <tbody>
+            <td valign="top" width="100%">
+                <div class="pg_right">
+                    <div class="maplive">
+                        <!--<div class="mapleftbg">-->
+                        <!--</div>-->
+                        <div id="map_canvas" style="height: 800px;">
+                        </div>
+                        <a class="toggle-realData toggle-down" href="javascript:void(0);" onclick="toggleRealDataPanel(this)"><!-- 展开/收起 实时轨迹表图标 --></a>
+                        <div id="DataDiv" class="data_list">
+
+                        </div>
+                        <!-- 地图结束 -->
+                        <!-- 地图操作 -->
+                        <!-- 地图操作 -->
+                        <!-- 地图助手 -->
+                        <div class="map_helper">
+                            <a href="#">
+                                <img src="/img/guijizushou.png" id="helpimg" class="helpimg" align="absmiddle"/></a>
+                            <!-- 地图助手展开 -->
+                            <div class="map_explode widthNo" id="map_explode">
+                                <ul id="guiji">
+                                    <!--<li>-->
+                                        <!--<a id="query" href="#">-->
+                                            <!--<i class="icon-search"></i>-->
+                                        <!--</a>-->
+                                    <!--</li>-->
+                                    <li><a id="start_PlayBack" href="#">
+                                            <img id="PlayBack" alt="开始" title="回放" src="/img/icon_play.gif"
+                                                 align="absmiddle"/></a>
+                                    </li>
+                                    <li><a id="stop_Playback" href="#">
+                                            <img id="Stop" alt="停止" style="display:none" title="停止"
+                                                 src="/img/icon_stop.gif"
+                                                 align="absmiddle"/></a></li>
+                                    <li class="tiao">
+                                        <div align="center">
+                                            <img id="imgWidth" style="height:21px; width:0px;"
+                                                 src="/img/ybg1.png"
+                                                    />
+                                        </div>
+                                    </li>
+                                </ul>
+                                <ul class="nav nav-tabs" id="tab">
+                                    <li class="active"><a data-toggle="tab" href="#profile">轨迹查询</a></li>
+                                </ul>
+                                <div class="tab-content" id="mymenuContent">
+                                    <!-- 轨迹查询 -->
+                                    <div id="profile" class="tab-pane fade in active">
+                                        <div class="forms formExtend">
+                                            <table cellpadding="0" cellspacing="0" border="0">
+                                                <tr>
+                                                    <td width="59" align="right">
+                                                        车牌号
+                                                    </td>
+                                                    <td align="left">
+                                                        <input id="txtNumber" type="text" class="input1"
+                                                               readonly="readonly"/>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td align="right">
+                                                        开始时间
+                                                    </td>
+                                                    <td align="left">
+                                                        <input id="statrDate" value="" class="Wdate1" type="text"
+                                                               onFocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss',maxDate:'#F{$dp.$D(\'endDate\')||\'2099-10-01\'}'})"/>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td align="right">
+                                                        结束时间
+                                                    </td>
+                                                    <td align="left">
+                                                        <input id="endDate" value="" class="Wdate1" type="text"
+                                                               onFocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss',minDate:'#F{$dp.$D(\'statrDate\')}',maxDate:'2099-10-01'})"/>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td align="right">
+                                                        回放速度
+                                                    </td>
+                                                    <td align="left">
+                                                        <span style="float: left; margin-top: 1px; margin-right: 5px;">慢</span>
+
+                                                        <div id="slider-Speed"
+                                                             style="margin-top: 3px;">
+                                                        </div>
+                                                        <span style="float: left; margin-top: 1px;">快</span>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                            <div style="padding-bottom: 15px;">
+                                                <span id="VerifMsg" class="login_info">读取回放数据,请稍后......</span> <span
+                                                        id="_VerifMsg"
+                                                        class="login_info">没有回放数据!</span>
+                                                <input id="txtSpeed" type="text" style="display: none;"/>
+                                            </div>
+                                            <div style="display: none; border-top: 1px solid #dddddd; padding-top: 15px;"
+                                                 class="forms formExtend"
+                                                 id="divInfo">
+                                                <table cellpadding="0" cellspacing="0" border="0">
+                                                    <tr>
+                                                        <td width="72" align="right" style="color: Blue">
+                                                            目标状态:
+                                                        </td>
+                                                        <td align="left">
+                                                            <span id="carStatus"/>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td align="right" style="color: Blue">
+                                                            定位时间:
+                                                        </td>
+                                                        <td align="left">
+                                                            <span id="carDate"/>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                                <br/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- 地图助手结束 -->
+                        </div>
+                    </div>
+                </div>
+            </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+</body>
+</html>

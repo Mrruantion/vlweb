@@ -1,0 +1,60 @@
+<div id="divUser" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" title="">
+    <form id="frmUser" class="form-horizontal">
+        <div class="modal-body form-horizontal">
+            <div class="control-group">
+                <!-- Text input-->
+                <label class="control-label" for="username" data-i18n="customer.login_username"><%= t('customer.login_username') %></label>
+
+                <div class="controls">
+                    <input id="username" name="username" type="text" placeholder="<%= t('customer.login_username') %>"
+                           class="input-xlarge" data-i18n="[placeholder]customer.login_username">
+                </div>
+            </div>
+            <div class="control-group" id="password_bar">
+                <!-- Text input-->
+                <label class="control-label" for="password" data-i18n="customer.login_passsword"><%= t('customer.login_passsword') %></label>
+
+                <div class="controls">
+                    <input id="password" name="password" type="password" placeholder="<%= t('customer.login_passsword') %>"
+                           class="input-xlarge" data-i18n="[placeholder]customer.login_passsword">&nbsp;&nbsp;<button type="button" class="btn" id="resetPassword" data-i18n="customer.reset"><%= t('customer.reset') %></button>
+                </div>
+            </div>
+            <div class="control-group" id="password_bar2">
+                <!-- Text input-->
+                <label class="control-label" for="password2" data-i18n="customer.password_again"><%= t('customer.password_again') %></label>
+
+                <div class="controls">
+                    <input id="password2" name="password2" type="password" placeholder="<%= t('customer.password_again') %>"
+                           class="input-xlarge" data-i18n="[placeholder]customer.password_again">
+                </div>
+            </div>
+            <div class="control-group">
+                <!-- Text input-->
+                <label class="control-label" for="remark" data-i18n="user.remark"><%= t('user.remark') %></label>
+
+                <div class="controls">
+                    <input id="remark" name="remark" type="text" placeholder="<%= t('user.remark') %>"
+                           class="input-xlarge" data-i18n="[placeholder]user.remark">
+                </div>
+            </div>
+            <div class="control-group">
+                <!-- Select Basic -->
+                <label class="control-label" for="roleId" data-i18n="user.role"><%= t('user.role') %></label>
+
+                <div class="controls">
+                    <select id="roleId" name="roleId" class="input-xlarge">
+                    </select>
+                    <button type="button" class="btn" id="addRole" data-i18n="user.add_role"><%= t('user.add_role') %></button>
+                </div>
+            </div>
+            <div class="control-group" id="create_time_bar">
+                <!-- Search input-->
+                <label class="control-label" for="create_time" data-i18n="customer.create_date"><%= t('customer.create_date') %></label>
+
+                <div class="controls">
+                    <input id="create_time" name="create_time" type="text" class="input-xlarge">
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

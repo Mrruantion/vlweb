@@ -1,0 +1,43 @@
+.AMapLib_Drawing_panel {
+    height: 47px;
+    border: 1px solid #666;
+    border-radius: 5px;
+    overflow: hidden;
+    box-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+    float: left;
+    position: absolute;
+    z-index: 999;
+    top: 10px;
+    left: 80px;
+}
+
+.AMapLib_Drawing_panel .AMapLib_box {
+    border-right: 1px solid #d2d2d2;
+    float: left;
+    height: 100%;
+    width: 64px;
+    height: 100%;
+    background-image: url(../img/bg_drawing_tool.png);
+    cursor: pointer;
+}
+.AMapLib_Drawing_panel .AMapLib_last {
+    border-right: 0;
+}
+.AMapLib_Drawing_panel .BMapLib_hander {
+    background-position: 0 0;
+}
+.AMapLib_Drawing_panel .AMapLib_hander_hover {
+    background-position: 0 -52px;
+}
+.AMapLib_Drawing_panel .AMapLib_circle {
+    background-position: -130px 0;
+}
+.AMapLib_Drawing_panel .AMapLib_circle_hover {
+    background-position: -130px -52px;
+}
+.AMapLib_Drawing_panel .AMapLib_polygon {
+    background-position: -260px 0;
+}
+.AMapLib_Drawing_panel .AMapLib_polygon_hover {
+    background-position: -260px -52px;
+}

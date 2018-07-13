@@ -1,0 +1,45 @@
+<div id="divDevice" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" title="<%= t('device.import_device') %>" data-i18n="[title]device.import_device">
+    <form id="frmDevice" class="form-horizontal">
+        <div class="modal-body form-horizontal">
+            <!-- <div class="control-group">
+                <label class="control-label" for="csvfile" data-i18n="system.select_file"><%= t('system.select_file') %></label>
+                <div class="controls">
+                    <span id="scan" style="position: relative" class="btn btn-primary input-group-addon">Browser<input id="csvfile" name="csvfile" style="width: 60px;height:40px; position: absolute;top:-6px;left: -4px;opacity: 0; filter:alpha(opacity=0)" class="form-control" type="file"></span>
+                </div>
+            </div> -->
+            <div class="control-group">
+                <!-- Text input-->
+                <label class="control-label" for="model" data-i18n="device.model"><%= t('device.model') %></label>
+
+                <div class="controls">
+                    <input id="model" name="model" type="text" placeholder="<%= t('device.model') %>" class="input-xlarge" data-i18n="[placeholder]device.model">
+                </div>
+            </div>
+            <div class="control-group">
+                <!-- Text input-->
+                <label class="control-label" for="workType" data-i18n="device.work_type"><%= t('device.work_type') %></label>
+
+                <div class="controls">
+                    <select class="input-xlarge" id="workType" name="workType">
+                        <option value="0" data-i18n="device.wired_device"><%= t('device.wired_device') %></option>
+                        <option value="1" data-i18n="device.wireless_device"><%= t('device.wireless_device') %></option>
+                    </select>
+                </div>
+            </div>
+            <div class="control-group">
+                <!-- Text input-->
+                <label class="control-label" for="devices" data-i18n="device.import_device"><%= t('device.import_device') %></label>
+                <div class="controls">
+                    <textarea rows="10" cols="20" class="input-xlarge" id="devices" name="devices"></textarea>
+                    <p id="count"></p>
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="csvfile" data-i18n="system.select_file"><%= t('system.select_file') %></label>
+                <div class="controls">
+                    <span id="scan" style="position: relative" class="btn btn-primary input-group-addon">Browser<input id="csvfile" name="csvfile" style="width: 60px;height:40px; position: absolute;top:-6px;left: -4px;opacity: 0; filter:alpha(opacity=0)" class="form-control" type="file"></span>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
